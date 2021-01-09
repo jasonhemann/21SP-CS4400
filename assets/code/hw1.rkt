@@ -12,7 +12,15 @@
 
 ;; You must use #lang racket for this homework.
 
+;; You must test your solutions before submitting your assignment. We
+;; have provided some test cases for each exercise to get you started,
+;; but the provided test cases are not exhaustive.
+
 ;; Your solutions must be naturally recursive or you will lose credit.
+
+;;  Remember, you need not and should not consider bad data in your
+;;  definition.
+
 
 ;; You may not use built-in procedures that handle the bulk of the
 ;; work. For example, you may not use the append function from
