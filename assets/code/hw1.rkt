@@ -21,7 +21,6 @@
 ;;  Remember, you need not and should not consider bad data in your
 ;;  definition.
 
-
 ;; You may not use built-in procedures that handle the bulk of the
 ;; work. For example, you may not use the append function from
 ;; Racket. But once you have defined your own append for problem 8,

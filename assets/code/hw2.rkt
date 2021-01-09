@@ -2,7 +2,7 @@
 (require rackunit-abbrevs
          rackunit/chk)
 
-#| Assignment 2: Free, Bound, and Lexical Address |# 
+#| Free, Bound, and Lexical Address |# 
 
 
 ;; There may, indeed, be other applications of the system than its use
@@ -84,8 +84,8 @@ function. It should behave like Racket's list-ref.
 ;; course add newlines as needed.
 
 (check-true* equal? 
-             [(list-ref '(a b c) 2) 'c]
-             [(list-ref '(a b c) 0) 'a])
+  [(list-ref '(a b c) 2) 'c]
+  [(list-ref '(a b c) 0) 'a])
 
 #|
 
@@ -112,14 +112,15 @@ returned predicate should hold for exactly those things that are eqv?
 to x or satisfy pred.
 
 |# 
+
 (check-true* equal?
- [((extend 1 even?) 0) '#t]
- [((extend 1 even?) 1) '#t]
- [((extend 1 even?) 2) '#t]
- [((extend 1 even?) 3) '#f]
- [(filter (extend 1 even?) '(0 1 2 3 4 5)) '(0 1 2 4)]
- [(filter (extend 3 (extend 1 even?)) '(0 1 2 3 4 5)) '(0 1 2 3 4)]
- [(filter (extend 7 (extend 3 (extend 1 even?))) '(0 1 2 3 4 5)) '(0 1 2 3 4)])
+  [((extend 1 even?) 0) '#t]
+  [((extend 1 even?) 1) '#t]
+  [((extend 1 even?) 2) '#t]
+  [((extend 1 even?) 3) '#f]
+  [(filter (extend 1 even?) '(0 1 2 3 4 5)) '(0 1 2 4)]
+  [(filter (extend 3 (extend 1 even?)) '(0 1 2 3 4 5)) '(0 1 2 3 4)]
+  [(filter (extend 7 (extend 3 (extend 1 even?))) '(0 1 2 3 4 5)) '(0 1 2 3 4)])
 
 #| 
 
@@ -418,6 +419,9 @@ example:
 ;; In order to return multiple values, you should see the Racket
 ;; documentation on values and let-values (and call-with-values though
 ;; you probably won't need it to define var-occurs-both?).
+
+;; I use the chk library for testing here because it copes better with
+;; values
 
 #| 
 
