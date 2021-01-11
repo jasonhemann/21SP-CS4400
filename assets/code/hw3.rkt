@@ -13,6 +13,10 @@
  
 #| Assignment Guidelines |#
 
+;; To begin with, copy your correctly-implemented lex over from last
+;; assignment. If you did not get this correct last week, please see a
+;; TA and get help on this before you go further.
+
 ;; Recall that in recent lectures, we've learned how to write an
 ;; interpreter that takes a Racket expression and returns the
 ;; expression's value. We have also learned to make this interpreter
@@ -20,7 +24,7 @@
 ;; have written two different representations of the helpers
 ;; extend-env, apply-env, and empty-env.
 
-;; In the first part of this assignment you will implement the three
+;; In the second part of this assignment you will implement the three
 ;; interpreters I presented in lecture.
 
 ;; For the 2nd and 3rd interpreters you must also define two sets of
@@ -54,7 +58,7 @@
 ;; numbers, booleans, variables, lambda-abstraction, application,
 ;; zero?, sub1, *, if, and let.
 
-;; In the second part you will implement a fourth interpreter, this
+;; In the third part you will implement a fourth interpreter, this
 ;; time an interpreter for a new language.
 
 ;; For this assignment your solutions must be compositional or you
@@ -63,52 +67,191 @@
 ;; lambda in this way for your interpreter's line for let
 ;; expressions. Instead, you must implement let in its own right.
 
+#| Regressiont Test and Extend lex |# 
+
+#| 
+
+1.  You previously implemented lex to handle variables, application,
+and ~lambda~-abstraction forms. Extend your previous definition of
+~lex~ so that it can handle not only those forms, but also numbers,
+~zero?~, ~sub1~, ~*~, ~if~, and ~let~. This should be a
+straightforward extension (~let~ should be the only line that requires
+any real effort), but it also serves as a chance to improve a
+misbehaving lex from an earlier assignment. In order to disambiguate
+numbers from lexical addresses, you should transform a number ~n~ into
+~(const n)~.
+
+|# 
+
+(check-true* equal? 
+  [(lex '(lambda (x) x) '())
+   '(lambda (var 0))]
+  [(lex '(lambda (y) (lambda (x) y)) '())
+   '(lambda (lambda (var 1)))]
+  [(lex '(lambda (y) (lambda (x) (x y))) '())
+   '(lambda (lambda ((var 0) (var 1))))]
+  [(lex '(lambda (x) (lambda (x) (x x))) '())
+   '(lambda (lambda ((var 0) (var 0))))]
+  [(lex '(lambda (y) ((lambda (x) (x y)) (lambda (c) (lambda (d) (y c))))) '()) 
+   '(lambda ((lambda ((var 0) (var 1))) (lambda (lambda ((var 2) (var 1))))))]
+  [(lex '(lambda (a)
+           (lambda (b)
+             (lambda (c)
+               (lambda (a)
+                 (lambda (b)
+                   (lambda (d)
+                     (lambda (a)
+                       (lambda (e)
+                         (((((a b) c) d) e) a))))))))) '())
+   '(lambda
+      (lambda
+        (lambda
+          (lambda
+            (lambda
+              (lambda
+                (lambda
+                  (lambda
+                    ((((((var 1) (var 3)) (var 5)) (var 2)) (var 0)) (var 1))))))))))]
+  [(lex '(lambda (a)
+           (lambda (b)
+             (lambda (c)
+               (lambda (w)
+                 (lambda (x)
+                   (lambda (y)
+                     ((lambda (a)
+                        (lambda (b)
+                          (lambda (c)
+                            (((((a b) c) w) x) y))))
+                      (lambda (w)
+                        (lambda (x)
+                          (lambda (y)
+                            (((((a b) c) w) x) y))))))))))) '())
+   '(lambda 
+      (lambda 
+        (lambda 
+          (lambda 
+            (lambda 
+              (lambda 
+                ((lambda
+                   (lambda
+                     (lambda
+                       ((((((var 2) (var 1)) (var 0)) (var 5)) (var 4)) (var 3)))))
+                 (lambda
+                   (lambda
+                     (lambda
+                       ((((((var 8) (var 7)) (var 6)) (var 2)) (var 1)) (var 0))))))))))))]
+  [(lex '((lambda (x) x) 5)  '())
+   '((lambda (var 0)) (const 5))]
+  [(lex '(lambda (!)
+           (lambda (n)
+             (if (zero? n) 1 (* n (! (sub1 n))))))
+         '())
+   '(lambda
+      (lambda
+        (if (zero? (var 0))
+            (const 1)
+            (* (var 0) ((var 1) (sub1 (var 0)))))))]
+  [(lex '(let ((! (lambda (!)
+                    (lambda (n)
+                      (if (zero? n) 1 (* n ((! !) (sub1 n))))))))
+           ((! !) 5))
+        '())
+   '(let (lambda
+           (lambda
+             (if (zero? (var 0))
+                 (const 1)
+                 (* (var 0) (((var 1) (var 1)) (sub1 (var 0)))))))
+      (((var 0) (var 0)) (const 5)))])
+
+
+
 #| Interpreters and Environments |#
 
 #|
 
-1. value-of 
+2. value-of 
 
 |# 
 
-(check-true equal?
+(check-true* equal?
+  [(value-of '#f (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #f]
+  [(value-of '#t (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #t]
+  [(value-of '3 (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   3]
+  [(value-of '(sub1 4) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   3]
+  [(value-of '(zero? 3) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #f]
+  [(value-of '(zero? 0) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #t]
+  [(value-of '(zero? (sub1 1)) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #t]
+  [(value-of '(* 3 4) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   12]
+  [(value-of '(if #t 30 25) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   30]
+  [(value-of '(if #f 30 25) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   25]
+  [(value-of '(if #f #f #t) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #t]
+  [(value-of '(if (zero? 5) 0 1) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   1]
+  [(value-of '(if (zero? 0) #f #t) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   #f]
+  [(value-of '((lambda (x) 5) 6) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   5]
+  [(value-of '((lambda (x) x) 6) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   6]
   [(value-of
-     '((lambda (x) (if (zero? x)
-                       #t
-                       #f))
-       0)
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
-   #t]   
+     '((lambda (z) (* z 3)) 2)
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   6]
+  [(value-of '((lambda (y) ((lambda (x) y) 6)) 5)
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   5]
+  [(value-of '(((lambda (y) (lambda (x) y)) 5) 6) 
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   5]
   [(value-of 
-     '((lambda (x) (if (zero? x) 
-                       12 
-                       47)) 
-       0) 
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
-   12]   
+     '(let ((x 5)) 6) 
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   6]
+  [(value-of 
+     '(let ((x 5)) x) 
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   5]
   [(value-of
      '(let ([y (* 3 4)])
         ((lambda (x) (* x y)) (sub1 6)))
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
-   60]   
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   60]
   [(value-of
      '(let ([x (* 2 3)])
         (let ([y (sub1 x)])
           (* x y)))
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
-   30]   
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   30]
   [(value-of
      '(let ([x (* 2 3)])
         (let ([x (sub1 x)])
           (* x x)))
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
-   25]   
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   25]
+  [(value-of 
+     '(let ((f (lambda (f)
+                 (lambda (n)
+                   (if (zero? n) 1 ((f f) (sub1 n)))))))
+        ((f f) 5))
+   (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   1]
   [(value-of 
      '(let ((! (lambda (x) (* x x))))
         (let ((! (lambda (n)
                    (if (zero? n) 1 (* n (! (sub1 n)))))))
           (! 5)))
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
    80]   
   [(value-of
      '(((lambda (f)
@@ -116,30 +259,65 @@
         (lambda (f)
           (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n)))))))
        5)
-     (lambda (y) (error 'value-of "unbound variable ~s" y)))
-   120])    
+     (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   120])
+
 
 #| 
 
-2. value-of-fn 
+3. value-of-fn 
 
 |# 
 
 (check-true* equal?
+  [(value-of-fn '#f (empty-env-fn))
+   #f]
+  [(value-of-fn '#t (empty-env-fn))
+   #t]
+  [(value-of-fn '3 (empty-env-fn))
+   3]
+  [(value-of-fn '(sub1 4) (empty-env-fn))
+   3]
+  [(value-of-fn '(zero? 3) (empty-env-fn))
+   #f]
+  [(value-of-fn '(zero? 0) (empty-env-fn))
+   #t]
+  [(value-of-fn '(zero? (sub1 1)) (empty-env-fn))
+   #t]
+  [(value-of-fn '(* 3 4) (empty-env-fn))
+   12]
+  [(value-of-fn '(if #t 30 25) (empty-env-fn))
+   30]
+  [(value-of-fn '(if #f 30 25) (empty-env-fn))
+   25]
+  [(value-of-fn '(if #f #f #t) (empty-env-fn))
+   #t]
+  [(value-of-fn '(if (zero? 5) 0 1) (empty-env-fn))
+   1]
+  [(value-of-fn '(if (zero? 0) #f #t) (empty-env-fn))
+   #f]
+  [(value-of-fn '((lambda (x) 5) 6) (empty-env-fn))
+   5]
+  [(value-of-fn '((lambda (x) x) 6) (empty-env-fn))
+   6]
   [(value-of-fn
-     '((lambda (x) (if (zero? x)
-                       #t
-                       #f))
-       0)
+     '((lambda (z) (* z 3)) 2)
      (empty-env-fn))
-   #t]   
+   6]
+  [(value-of-fn '((lambda (y) ((lambda (x) y) 6)) 5)
+     (empty-env-fn))
+   5]
+  [(value-of-fn '(((lambda (y) (lambda (x) y)) 5) 6) 
+     (empty-env-fn))
+   5]
   [(value-of-fn 
-     '((lambda (x) (if (zero? x) 
-                       12 
-                       47)) 
-      0) 
-    (empty-env-fn))
-   12]    
+     '(let ((x 5)) 6) 
+     (empty-env-fn))
+   6]
+  [(value-of-fn 
+     '(let ((x 5)) x) 
+     (empty-env-fn))
+   5]
   [(value-of-fn
      '(let ([y (* 3 4)])
         ((lambda (x) (* x y)) (sub1 6)))
@@ -157,6 +335,20 @@
           (* x x)))
      (empty-env-fn))
    25]
+  [(value-of-fn 
+     '(let ((f (lambda (f)
+                 (lambda (n)
+                   (if (zero? n) 1 ((f f) (sub1 n)))))))
+        ((f f) 5))
+   (empty-env-fn))
+   1]
+  [(value-of-fn 
+     '(let ((! (lambda (x) (* x x))))
+        (let ((! (lambda (n)
+                   (if (zero? n) 1 (* n (! (sub1 n)))))))
+          (! 5)))
+     (empty-env-fn))
+   80]   
   [(value-of-fn
      '(((lambda (f)
           (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n))))))
@@ -168,25 +360,59 @@
 
 #| 
 
-3. value-of-ds
+4. value-of-ds
 
 |# 
 
 (check-true* equal?
-  [(value-of-ds
-     '((lambda (x) (if (zero? x)
-                       #t
-                       #f))
-       0)
-     (empty-env-ds))
+  [(value-of-ds '#f (empty-env-ds))
+   #f]
+  [(value-of-ds '#t (empty-env-ds))
    #t]
+  [(value-of-ds '3 (empty-env-ds))
+   3]
+  [(value-of-ds '(sub1 4) (empty-env-ds))
+   3]
+  [(value-of-ds '(zero? 3) (empty-env-ds))
+   #f]
+  [(value-of-ds '(zero? 0) (empty-env-ds))
+   #t]
+  [(value-of-ds '(zero? (sub1 1)) (empty-env-ds))
+   #t]
+  [(value-of-ds '(* 3 4) (empty-env-ds))
+   12]
+  [(value-of-ds '(if #t 30 25) (empty-env-ds))
+   30]
+  [(value-of-ds '(if #f 30 25) (empty-env-ds))
+   25]
+  [(value-of-ds '(if #f #f #t) (empty-env-ds))
+   #t]
+  [(value-of-ds '(if (zero? 5) 0 1) (empty-env-ds))
+   1]
+  [(value-of-ds '(if (zero? 0) #f #t) (empty-env-ds))
+   #f]
+  [(value-of-ds '((lambda (x) 5) 6) (empty-env-ds))
+   5]
+  [(value-of-ds '((lambda (x) x) 6) (empty-env-ds))
+   6]
   [(value-of-ds
-     '((lambda (x) (if (zero? x) 
-                       12 
-                       47)) 
-       0) 
+     '((lambda (z) (* z 3)) 2)
      (empty-env-ds))
-   12]    
+   6]
+  [(value-of-ds '((lambda (y) ((lambda (x) y) 6)) 5)
+     (empty-env-ds))
+   5]
+  [(value-of-ds '(((lambda (y) (lambda (x) y)) 5) 6) 
+     (empty-env-ds))
+   5]
+  [(value-of-ds 
+     '(let ((x 5)) 6) 
+     (empty-env-ds))
+   6]
+  [(value-of-ds 
+     '(let ((x 5)) x) 
+     (empty-env-ds))
+   5]
   [(value-of-ds
      '(let ([y (* 3 4)])
         ((lambda (x) (* x y)) (sub1 6)))
@@ -204,6 +430,20 @@
           (* x x)))
      (empty-env-ds))
    25]
+  [(value-of-ds 
+     '(let ((f (lambda (f)
+                 (lambda (n)
+                   (if (zero? n) 1 ((f f) (sub1 n)))))))
+        ((f f) 5))
+   (empty-env-ds))
+   1]
+  [(value-of-ds 
+     '(let ((! (lambda (x) (* x x))))
+        (let ((! (lambda (n)
+                   (if (zero? n) 1 (* n (! (sub1 n)))))))
+          (! 5)))
+     (empty-env-ds))
+   80]   
   [(value-of-ds
      '(((lambda (f)
           (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n))))))
@@ -217,7 +457,7 @@
 
 #| 
 
-4. Implement an interpreter fo-eulav. Let the below examples guide
+5. Implement an interpreter fo-eulav. Let the below examples guide
 you. I only require you to implement those forms I use in those
 examples.
 
@@ -271,7 +511,7 @@ examples.
 
 #| 
 
-5. Without using lambda or the implicit lambda in an "MIT-define",
+6. Without using lambda or the implicit lambda in an "MIT-define",
 define apply-env-lex and extend-env-lex. A correct solution is very
 short.  
 
@@ -279,7 +519,7 @@ short.
 
 #|
 
-6. Go back and extend your interpreter value-of to support set! and
+7. Go back and extend your interpreter value-of to support set! and
 begin2, where begin2 is a variant of Racket's begin that takes exactly
 two arguments, and set! mutates variables.
 
@@ -396,7 +636,7 @@ two arguments, and set! mutates variables.
 
 #| 
 
-7. Your task, however, is to implement csub1, Church predecessor. Your
+8. Your task, however, is to implement csub1, Church predecessor. Your
 implementation should pass the following tests. In the second case,
 the Church predecessor of Church zero is zero, as we haven't a notion
 of negative numbers. This was a difficult problem, but it's fun, so
