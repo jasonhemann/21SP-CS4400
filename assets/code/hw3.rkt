@@ -13,10 +13,6 @@
  
 #| Assignment Guidelines |#
 
-;; To begin with, copy your correctly-implemented lex over from last
-;; assignment. If you did not get this correct last week, please see a
-;; TA and get help on this before you go further.
-
 ;; Recall that in recent lectures, we've learned how to write an
 ;; interpreter that takes a Racket expression and returns the
 ;; expression's value. We have also learned to make this interpreter
@@ -24,7 +20,7 @@
 ;; have written two different representations of the helpers
 ;; extend-env, apply-env, and empty-env.
 
-;; In the second part of this assignment you will implement the three
+;; In the first part of this assignment you will implement the three
 ;; interpreters I presented in lecture.
 
 ;; For the 2nd and 3rd interpreters you must also define two sets of
@@ -58,7 +54,7 @@
 ;; numbers, booleans, variables, lambda-abstraction, application,
 ;; zero?, sub1, *, if, and let.
 
-;; In the third part you will implement a fourth interpreter, this
+;; In the second part you will implement a fourth interpreter, this
 ;; time an interpreter for a new language.
 
 ;; For this assignment your solutions must be compositional or you
@@ -66,104 +62,6 @@
 ;; (let ([x e]) body) as ((lambda (x) body) e), you must not use
 ;; lambda in this way for your interpreter's line for let
 ;; expressions. Instead, you must implement let in its own right.
-
-#| Regressiont Test and Extend lex |# 
-
-#| 
-
-1.  You previously implemented lex to handle variables, application,
-and ~lambda~-abstraction forms. Extend your previous definition of
-~lex~ so that it can handle not only those forms, but also numbers,
-~zero?~, ~sub1~, ~*~, ~if~, and ~let~. This should be a
-straightforward extension (~let~ should be the only line that requires
-any real effort), but it also serves as a chance to improve a
-misbehaving lex from an earlier assignment. In order to disambiguate
-numbers from lexical addresses, you should transform a number ~n~ into
-~(const n)~.
-
-|# 
-
-(check-true* equal? 
-  [(lex '(lambda (x) x) '())
-   '(lambda (var 0))]
-  [(lex '(lambda (y) (lambda (x) y)) '())
-   '(lambda (lambda (var 1)))]
-  [(lex '(lambda (y) (lambda (x) (x y))) '())
-   '(lambda (lambda ((var 0) (var 1))))]
-  [(lex '(lambda (x) (lambda (x) (x x))) '())
-   '(lambda (lambda ((var 0) (var 0))))]
-  [(lex '(lambda (y) ((lambda (x) (x y)) (lambda (c) (lambda (d) (y c))))) '()) 
-   '(lambda ((lambda ((var 0) (var 1))) (lambda (lambda ((var 2) (var 1))))))]
-  [(lex '(lambda (a)
-           (lambda (b)
-             (lambda (c)
-               (lambda (a)
-                 (lambda (b)
-                   (lambda (d)
-                     (lambda (a)
-                       (lambda (e)
-                         (((((a b) c) d) e) a))))))))) '())
-   '(lambda
-      (lambda
-        (lambda
-          (lambda
-            (lambda
-              (lambda
-                (lambda
-                  (lambda
-                    ((((((var 1) (var 3)) (var 5)) (var 2)) (var 0)) (var 1))))))))))]
-  [(lex '(lambda (a)
-           (lambda (b)
-             (lambda (c)
-               (lambda (w)
-                 (lambda (x)
-                   (lambda (y)
-                     ((lambda (a)
-                        (lambda (b)
-                          (lambda (c)
-                            (((((a b) c) w) x) y))))
-                      (lambda (w)
-                        (lambda (x)
-                          (lambda (y)
-                            (((((a b) c) w) x) y))))))))))) '())
-   '(lambda 
-      (lambda 
-        (lambda 
-          (lambda 
-            (lambda 
-              (lambda 
-                ((lambda
-                   (lambda
-                     (lambda
-                       ((((((var 2) (var 1)) (var 0)) (var 5)) (var 4)) (var 3)))))
-                 (lambda
-                   (lambda
-                     (lambda
-                       ((((((var 8) (var 7)) (var 6)) (var 2)) (var 1)) (var 0))))))))))))]
-  [(lex '((lambda (x) x) 5)  '())
-   '((lambda (var 0)) (const 5))]
-  [(lex '(lambda (!)
-           (lambda (n)
-             (if (zero? n) 1 (* n (! (sub1 n))))))
-         '())
-   '(lambda
-      (lambda
-        (if (zero? (var 0))
-            (const 1)
-            (* (var 0) ((var 1) (sub1 (var 0)))))))]
-  [(lex '(let ((! (lambda (!)
-                    (lambda (n)
-                      (if (zero? n) 1 (* n ((! !) (sub1 n))))))))
-           ((! !) 5))
-        '())
-   '(let (lambda
-           (lambda
-             (if (zero? (var 0))
-                 (const 1)
-                 (* (var 0) (((var 1) (var 1)) (sub1 (var 0)))))))
-      (((var 0) (var 0)) (const 5)))])
-
-
 
 #| Interpreters and Environments |#
 
