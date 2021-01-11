@@ -303,9 +303,11 @@ working your way down. Then think about what it is you're doing, and
 try and figure out how to do it without having to go back up the
 tree. That is, ensure that when you get to a variable position in the
 expression where you need to fill in the lexical address, that you
-already have all the information you need to figure it out.
+already have all the information you need to figure it out. Then code
+that.
 
-Then code that. 
+If you find the list-index-ofv function from your hw1
+will help you, copy it over to this file. 
 
 |#
 
