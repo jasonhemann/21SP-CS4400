@@ -55,8 +55,8 @@ number, in descending order.
 |#
 
 (check-true* equal? 
-  [(countdown 0) '()]
-  [(countdown 5) '(5 4 3 2 1)])
+  [(countdown 0) '(0)]
+  [(countdown 5) '(5 4 3 2 1 0)])
 
 #| 
 
