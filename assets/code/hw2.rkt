@@ -1,6 +1,7 @@
 #lang racket
 (require rackunit-abbrevs
-         rackunit/chk)
+         rackunit/chk
+         (only-in rebellion/collections/multiset sequence->multiset))
 
 #| Free, Bound, and Lexical Address |# 
 
@@ -189,7 +190,9 @@ matter.
 
 |#
 
-(check-true* (λ (s1 s2) (string<=? (symbol->string s1) (symbol->string s2)))
+(check-true* (λ (s1 s2) 
+               (equal? (sequence->multiset s1)
+                       (sequence->multiset s2)))
   [(vars 'x) '(x)]
   [(vars '(lambda (x) x)) '(x)]
   [(vars '((lambda (y) (x x)) (x y))) '(x x x y)]
