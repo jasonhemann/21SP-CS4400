@@ -193,37 +193,94 @@ closure helpers apply-closure-fn and make-closure-fn.
 
 |# 
 
-Using one of your interpreters from last week's assignment as a starting point, create two interpreters that are representation independent with respect to closures. You should add a set of two new closure helpers for each: apply-closure-fn, closure-fn, apply-closure-ds, and closure-ds.
-Since you are free to pick a single representation of environments, you should change either empty-env-fn or empty-env-ds to empty-env. 
-
-  * value-of-fn should use a functional representation of closures.
-  * value-of-ds should use a data-structural representation of closures.
-
 (check-true* equal?
-  [(value-of-fn 
-     '((lambda (x) (if (zero? x) 
-                       12 
-                       47)) 
-        0) 
-     (empty-env))
-   12]    
+  [(value-of-fn '#f (empty-env))
+   #f]
+  [(value-of-fn '#t (empty-env))
+   #t]
+  [(value-of-fn '3 (empty-env))
+   3]
+  [(value-of-fn '(sub1 4) (empty-env))
+   3]
+  [(value-of-fn '(zero? 3) (empty-env))
+   #f]
+  [(value-of-fn '(zero? 0) (empty-env))
+   #t]
+  [(value-of-fn '(zero? (sub1 1)) (empty-env))
+   #t]
+  [(value-of-fn '(* 3 4) (empty-env))
+   12]
+  [(value-of-fn '(if #t 30 25) (empty-env))
+   30]
+  [(value-of-fn '(if #f 30 25) (empty-env))
+   25]
+  [(value-of-fn '(if #f #f #t) (empty-env))
+   #t]
+  [(value-of-fn '(if (zero? 5) 0 1) (empty-env))
+   1]
+  [(value-of-fn '(if (zero? 0) #f #t) (empty-env))
+   #f]
+  [(value-of-fn '((lambda (x) 5) 6) (empty-env))
+   5]
+  [(value-of-fn '((lambda (x) x) 6) (empty-env))
+   6]
   [(value-of-fn
-    '(let ([y (* 3 4)])
-       ((lambda (x) (* x y)) (sub1 6)))
-    (empty-env))
+     '((lambda (z) (* z 3)) 2)
+     (empty-env))
+   6]
+  [(value-of-fn '((lambda (y) ((lambda (x) y) 6)) 5)
+     (empty-env))
+   5]
+  [(value-of-fn '(((lambda (y) (lambda (x) y)) 5) 6) 
+     (empty-env))
+   5]
+  [(value-of-fn 
+     '(let ((x 5)) 6) 
+     (empty-env))
+   6]
+  [(value-of-fn 
+     '(let ((x 5)) x) 
+     (empty-env))
+   5]
+  [(value-of-fn
+     '(let ([y (* 3 4)])
+        ((lambda (x) (* x y)) (sub1 6)))
+     (empty-env))
    60]
   [(value-of-fn
-    '(let ([x (* 2 3)])
-       (let ([y (sub1 x)])
-         (* x y)))
-    (empty-env))
+     '(let ([x (* 2 3)])
+        (let ([y (sub1 x)])
+          (* x y)))
+     (empty-env))
    30]
   [(value-of-fn
-    '(let ([x (* 2 3)])
-       (let ([x (sub1 x)])
-         (* x x)))
+     '(let ([x (* 2 3)])
+        (let ([x (sub1 x)])
+          (* x x)))
+     (empty-env))
+   25]
+  [(value-of-fn 
+     '(let ((f (lambda (f)
+                 (lambda (n)
+                   (if (zero? n) 1 ((f f) (sub1 n)))))))
+        ((f f) 5))
    (empty-env))
-  25])
+   1]
+  [(value-of-fn 
+     '(let ((! (lambda (x) (* x x))))
+        (let ((! (lambda (n)
+                   (if (zero? n) 1 (* n (! (sub1 n)))))))
+          (! 5)))
+     (empty-env))
+   80]   
+  [(value-of-fn
+     '(((lambda (f)
+          (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n))))))
+        (lambda (f)
+          (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n)))))))
+       5)
+     (empty-env))
+   120])
 
 #| 
 
@@ -235,135 +292,197 @@ apply-closure-ds and make-closure-ds.
 |#
 
 (check-true* equal?
+  [(value-of-ds '#f (empty-env))
+   #f]
+  [(value-of-ds '#t (empty-env))
+   #t]
+  [(value-of-ds '3 (empty-env))
+   3]
+  [(value-of-ds '(sub1 4) (empty-env))
+   3]
+  [(value-of-ds '(zero? 3) (empty-env))
+   #f]
+  [(value-of-ds '(zero? 0) (empty-env))
+   #t]
+  [(value-of-ds '(zero? (sub1 1)) (empty-env))
+   #t]
+  [(value-of-ds '(* 3 4) (empty-env))
+   12]
+  [(value-of-ds '(if #t 30 25) (empty-env))
+   30]
+  [(value-of-ds '(if #f 30 25) (empty-env))
+   25]
+  [(value-of-ds '(if #f #f #t) (empty-env))
+   #t]
+  [(value-of-ds '(if (zero? 5) 0 1) (empty-env))
+   1]
+  [(value-of-ds '(if (zero? 0) #f #t) (empty-env))
+   #f]
+  [(value-of-ds '((lambda (x) 5) 6) (empty-env))
+   5]
+  [(value-of-ds '((lambda (x) x) 6) (empty-env))
+   6]
   [(value-of-ds
-     '((lambda (x) (if (zero? x) 
-                       12 
-                       47)) 
-        0) 
+     '((lambda (z) (* z 3)) 2)
      (empty-env))
-   12]    
+   6]
+  [(value-of-ds '((lambda (y) ((lambda (x) y) 6)) 5)
+     (empty-env))
+   5]
+  [(value-of-ds '(((lambda (y) (lambda (x) y)) 5) 6) 
+     (empty-env))
+   5]
+  [(value-of-ds 
+     '(let ((x 5)) 6) 
+     (empty-env))
+   6]
+  [(value-of-ds 
+     '(let ((x 5)) x) 
+     (empty-env))
+   5]
   [(value-of-ds
-    '(let ([y (* 3 4)])
-       ((lambda (x) (* x y)) (sub1 6)))
-    (empty-env))
+     '(let ([y (* 3 4)])
+        ((lambda (x) (* x y)) (sub1 6)))
+     (empty-env))
    60]
   [(value-of-ds
-    '(let ([x (* 2 3)])
-       (let ([y (sub1 x)])
-         (* x y)))
-    (empty-env))
+     '(let ([x (* 2 3)])
+        (let ([y (sub1 x)])
+          (* x y)))
+     (empty-env))
    30]
   [(value-of-ds
-    '(let ([x (* 2 3)])
-       (let ([x (sub1 x)])
-         (* x x)))
-    (empty-env))
-   25])
+     '(let ([x (* 2 3)])
+        (let ([x (sub1 x)])
+          (* x x)))
+     (empty-env))
+   25]
+  [(value-of-ds 
+     '(let ((f (lambda (f)
+                 (lambda (n)
+                   (if (zero? n) 1 ((f f) (sub1 n)))))))
+        ((f f) 5))
+   (empty-env))
+   1]
+  [(value-of-ds 
+     '(let ((! (lambda (x) (* x x))))
+        (let ((! (lambda (n)
+                   (if (zero? n) 1 (* n (! (sub1 n)))))))
+          (! 5)))
+     (empty-env))
+   80]   
+  [(value-of-ds
+     '(((lambda (f)
+          (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n))))))
+        (lambda (f)
+          (lambda (n) (if (zero? n) 1 (* n ((f f) (sub1 n)))))))
+       5)
+     (empty-env))
+   120])
+
 
 #| Dynamic Scope |# 
 
-   The second part of this week's assignment is to create an
-   interpreter that uses dynamic scope.
+#| 
 
-** Explanation/recapitulation of dynamic scope
+The second part of this week's assignment is to create an
+interpreter that uses dynamic scope.
 
-   So far, we have implemented our interpreters so that, if there are
-   variables that occur free in an a procedure, they take their values
-   from the environment in which the lambda expression is defined. We
-   accomplish this by creating a closure for each procedure we see,
-   and we save the environment in the closure. We call this technique
-   static binding of variables, or static scope. Lexical scope is a
-   kind of static scope.
+So far, we have implemented our interpreters so that, if there are
+variables that occur free in an a procedure, they take their values
+from the environment in which the lambda expression is defined. We
+accomplish this by creating a closure for each procedure we see,
+and we save the environment in the closure. We call this technique
+static binding of variables, or static scope. Lexical scope is a
+kind of static scope.
 
-   Alternatively, we could implement our interpreters such that any
-   variables that occur free in the body of a procedure get their
-   values from the environment from which the procedure is called,
-   rather than from the environment in which the procedure is defined.
+Alternatively, we could implement our interpreters such that any
+variables that occur free in the body of a procedure get their
+values from the environment from which the procedure is called,
+rather than from the environment in which the procedure is defined.
 
-   For example, consider what would happen if we were to evaluate the
-   following expression in an interpreter that used lexical scope:
+For example, consider what would happen if we were to evaluate the
+following expression in an interpreter that used lexical scope:
 
-   #+BEGIN_SRC scheme
-   (let ([x 2])
-     (let ([f (lambda (e) x)])
-       (let ([x 5])
-	 (f 0))))
-   #+END_SRC
+(let ([x 2])
+ (let ([f (lambda (e) x)])
+   (let ([x 5])
+     (f 0))))
 
-   Our lexical interpreter would add x to the environment with a
-   value of 2. For f, it would create a closure that contained the
-   binding of x to 2, and it would add f to the environment with
-   that closure as its value. Finally, the inner let would add x to
-   the environment with a value of 5. Then the call (f 0) would be
-   evaluated, but since it would use the value of x that was saved
-   in the closure (which was 2) rather than the value of x that was
-   current at the time f was called (which was 5), the entire
-   expression would evaluate to 2.
+Our lexical interpreter would add x to the environment with a
+value of 2. For f, it would create a closure that contained the
+binding of x to 2, and it would add f to the environment with
+that closure as its value. Finally, the inner let would add x to
+the environment with a value of 5. Then the call (f 0) would be
+evaluated, but since it would use the value of x that was saved
+in the closure (which was 2) rather than the value of x that was
+current at the time f was called (which was 5), the entire
+expression would evaluate to 2.
 
-   Under dynamic scope, we wouldn't save the value of x in the
-   closure for f. Instead, the application (f 0) would use the
-   value of x that was current in the environment at the time it was
-   called, so the entire expression would evaluate to 5.
+Under dynamic scope, we wouldn't save the value of x in the
+closure for f. Instead, the application (f 0) would use the
+value of x that was current in the environment at the time it was
+called, so the entire expression would evaluate to 5.
 
-** Your task
+|# 
 
-   Define value-of-dynamic, an interpreter that implements dynamic
-   scope. You can start with the dynamically-scoped interpreter we
-   wrote in class that used let and pmatch. You should be able to
-   share use your environment helpers from a previous assignment, but
-   you should not implement an abstraction for closures in this
-   interpreter. Instead, the value of a lambda abstraction should be
-   that same lambda abstraction. In the same way the value of a number
-   is that same number. You'll find then, that when you go to evaluate
-   an application, there's only one environment in which you can
-   evaluate the body. This is a pretty simple change. To liven things
-   up a little (and also to allow us a more interesting test case),
-   this interpreter should also implement let, if, *, sub1,
-   null?, zero?, cons, car, cdr, and quote. When
-   evaluating the expression (cons 1 (cons 2 '())) value-of-dynamic
-   should return (1 2). Now quote is a bit of a tricky beast. So
-   here's the quote line for the interpreter.
+#| 
 
-   #+BEGIN_EXAMPLE
-   [(quote ,v) v]
-   #+END_EXAMPLE
+4. Define value-of-dynamic, an interpreter that implements dynamic
+scope. You can start with the dynamically-scoped interpreter we wrote
+in class that used let and pmatch. You should be able to share use
+your environment helpers from a previous assignment, but you should
+not implement an abstraction for closures in this
+interpreter. Instead, the value of a lambda abstraction should be that
+same lambda abstraction. In the same way the value of a number is that
+same number. You'll find then, that when you go to evaluate an
+application, there's only one environment in which you can evaluate
+the body. This is a pretty simple change. To liven things up a
+little (and also to allow us a more interesting test case), this
+interpreter should also implement let, if, *, sub1, null?, zero?,
+cons, car, cdr, and quote. When evaluating the expression (cons
+1 (cons 2 '())) value-of-dynamic should return (1 2). Now quote is a
+bit of a tricky beast. So here's the quote line for the interpreter.
 
-   #+BEGIN_EXAMPLE
-   > (value-of-dynamic 
-       '(let ([x 2])
-	  (let ([f (lambda (e) x)])
-	    (let ([x 5])
-	      (f 0))))
-       (empty-env))
-   5
-   > (value-of-dynamic
-       '(let ([! (lambda (n)
-		   (if (zero? n) 
-		       1
-		       (* n (! (sub1 n)))))])
-	  (! 5))
-       (empty-env))
-   120
-   > (value-of-dynamic
-       '((lambda (!) (! 5))
-	   (lambda (n)
-	     (if (zero? n) 
-		 1
-		 (* n (! (sub1 n))))))
-       (empty-env))
-   120
-   > (value-of-dynamic
-       '(let ([f (lambda (x) (cons x l))])
-	  (let ([cmap 
-		 (lambda (f)
-		   (lambda (l)               
-		     (if (null? l) 
-			 '()
-			 (cons (f (car l)) ((cmap f) (cdr l))))))])
-	    ((cmap f) (cons 1 (cons 2 (cons 3 '())))))) 
-       (empty-env))
-   ((1 1 2 3) (2 2 3) (3 3))
-   #+END_EXAMPLE
+[(quote ,v) v]
+
+|# 
+
+(check-true* equal?
+  [(value-of-dynamic 
+     '(let ([x 2])
+        (let ([f (lambda (e) x)])
+          (let ([x 5])
+            (f 0))))
+     (empty-env))
+  5]
+  [(value-of-dynamic
+     '(let ([! (lambda (n)
+                 (if (zero? n) 
+                     1
+                     (* n (! (sub1 n)))))])
+        (! 5))
+     (empty-env))
+   120]
+  [(value-of-dynamic
+     '((lambda (!) (! 5))
+         (lambda (n)
+           (if (zero? n) 
+               1
+               (* n (! (sub1 n))))))
+     (empty-env))
+   120]
+  [(value-of-dynamic
+    '(let ([f (lambda (x) (cons x l))])
+       (let ([cmap 
+              (lambda (f)
+                (lambda (l)               
+                  (if (null? l) 
+                      '()
+                      (cons (f (car l)) ((cmap f) (cdr l))))))])
+         ((cmap f) (cons 1 (cons 2 (cons 3 '())))))) 
+    (empty-env))
+   '((1 1 2 3) (2 2 3) (3 3))])
 
 #| Brainteasers - 5400 Only |# 
 
