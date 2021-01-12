@@ -1,0 +1,24 @@
+Office hours
+Search via website
+"Fork me on Github" banner.
+Additional tests via old repos.
+Backup additional hw problems?
+Recording FAQ. Obviously I [cannot stop you](https://obsproject.com/forum/resources/obs-studio-high-quality-recording-and-multiple-audio-tracks.221/) better half of a decade.
+
+Frankly iterated to near perfection in an old model, and I'm loathe to upset that for temporary (d.v.!) change in the medium. I will try to add some more interactive sessions. 
+
+Add required (pre)readings and optional readings on HW assignments pages.
+
+These are not at all required reading, but for a wider understanding
+of what we're doing, see Reynolds and Danvy papers for a3
+
+Church encoding is the visitor pattern. 
+https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html
+
+
+For another description of substitutions that may be used for redexes,
+see Ken Slonneger and Barry L. Kurt, Addison-Wesley Publishing
+Company, 1995. 146 - 149.)//: {{:sub.pdf}}
+
+[[http://www.divms.uiowa.edu/~slonnegr/plf/Book/ | Formal Syntax
+and Semantics of Programming Languages]]
