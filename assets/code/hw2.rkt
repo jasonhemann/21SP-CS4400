@@ -1,7 +1,7 @@
 #lang racket
 (require rackunit-abbrevs
          rackunit/chk
-         (only-in rebellion/collections/multiset sequence->multiset))
+         (only-in rebellion/collection/multiset sequence->multiset))
 
 #| Free, Bound, and Lexical Address |# 
 
