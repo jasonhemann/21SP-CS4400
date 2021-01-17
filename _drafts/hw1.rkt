@@ -18,8 +18,8 @@
 
 ;; Your solutions must be naturally recursive or you will lose credit.
 
-;;  Remember, you need not and should not consider bad data in your
-;;  definition.
+;; Remember, you need not and should not consider bad data in your
+;; definition.
 
 ;; You may not use built-in procedures that handle the bulk of the
 ;; work. For example, you may not use the append function from
@@ -36,6 +36,12 @@
 ;; I have linked notes and resources for you on the schedule; you
 ;; should consult them.
 
+
+#| Assignment Guidelines |#
+
+;; You should write your solutions as much as possible without
+;; creating explict help functions. You may, however re-use your
+;; solutions to prior problems.
 
 #| 
 
@@ -73,7 +79,9 @@ functions need only hold over eqv?-comparable structures.
 
 #| 
 
-3. Define and test a procedure remove that takes a symbol and a list and returns a list similar except its missing the first occurrence (if any) of the symbol 
+3. Define and test a procedure remove that takes a symbol and a list
+and returns a list similar except its missing the first occurrence (if
+any) of the symbol.
 
 |# 
 
