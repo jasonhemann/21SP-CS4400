@@ -1,0 +1,39 @@
+# main links
+main:
+  - title: "Homework"
+    url: javascript:void(0)
+  - title: "Lectures"
+    url: /lec/
+  - title: "Office Hours"
+    url: /office-hours/
+  - title: "Schedule"
+    url: /schedule/    
+
+# sidebar links    
+sidebar-site-map:
+  - title: "Homework"
+    url: javascript:void(0)
+  - title: "Lectures"
+    url: /lec/
+  - title: "Office Hours"
+    url: /office-hours/
+  - title: "Schedule"
+    url: /schedule/
+  - title: "Piazza"
+    url: javascript:void(0)
+  - title: "Handins/Bottlenose"
+    url: javascript:void(0)
+  - title: "Syllabus"
+    url: /syllabus/
+  - title: "Tech"
+    url: /tech/
+  - title: "FAQ"
+    url: /FAQ/
+  - title: "Site Source"
+    url: https://github.ccs.neu.edu/jhemann/21SP-4400
+  - title: "Enrichment"
+    url: /enrichment/
+  - title: "How's My Driving?"
+    url: /hows-my-driving/
+
+
