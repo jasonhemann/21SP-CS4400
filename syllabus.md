@@ -1,4 +1,4 @@
---
+---
 title: Syllabus
 layout: single
 toc: true
@@ -89,7 +89,7 @@ I will assign overall course grades as follows:
      | Homework                  |         40 |
      | Final Project             |         10 |
      | TRACE                     |          2 | 
-     | Total                     |        100 |
+     | Total                     |        102 |
 
 We (I) will calculate overall numeric grade according to this grading
 scheme. Your final grades will be at least as good as the standard
@@ -139,7 +139,7 @@ attendance](https://vm.tiktok.com/ZMJBoQovg/) as such, but some
 reading and lecture content quizzes will serve as proxies for
 participation and thus attendance.
 
-## Lecture Content Quizzes
+## Lecture Quizzes/Polls
 
 There may be quick pop quizzes during the session. These act as a
 forcing function for the readings, for lecture notes and to alert me
@@ -443,11 +443,11 @@ To summarize:
 
 # Acknowledgments 
 
-Pete Manolios is responsible for much of our course infrastructure and
-assignments. Pete Manolios and [Stavros
-Tripakis](https://www.ccs.neu.edu/~stavros/) inspired some the lecture
-contents and topics, and in some cases designed the slides. [Lindsey
-Kuper](https://users.soe.ucsc.edu/~lkuper/) inspires some of this site
-as well as being all-around inspirational.
+I derived many of our course's lecture's contents and topics, as well
+as assignments, from Dan Friedman's 311 at Indiana
+University. [Lindsey Kuper](https://users.soe.ucsc.edu/~lkuper/)
+inspires some of this site as well as being all-around
+inspirational. Other pieces come from [Kevin Lin's "just-the-class"
+template](https://kevinl.info/just-the-class/)
 
 ![In the syllabus]({{ site.baseurl }}/assets/images/syllabus.gif "Might just be worth checking.")
