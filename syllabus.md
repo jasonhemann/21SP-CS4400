@@ -86,8 +86,7 @@ I will assign overall course grades as follows:
      |---------------------------+------------|
      | Participation             |         10 |
      | Exams                     |         50 |
-     | Homework                  |         40 |
-     | Final Project             |         10 |
+     | Homework*                 |         40 |
      | TRACE                     |          2 | 
      | Total                     |        102 |
 
@@ -170,7 +169,9 @@ in what you can complete and to seek help. Homework assignments will
 build on one other conceptually, and some later assignments require
 the successful completion of problems from earlier ones. **Do not fall
 behind.** If you feel yourself falling behind, seek help immediately
-and take advantage of both lab sessions and additional support.
+and take advantage of both lab sessions and additional support. Follow
+both the general homework guidelines, as well as any special
+instructions given on the assignment itself.
 
 Your submission will be evaluated under the following rubric. We
 provide you a test suite for each assignment. *A submission that does
@@ -260,12 +261,12 @@ interpreter written in C 2) keep copies of your program at each stage
 of this transformation 3) successfully pass a code review, to be
 scheduled with one of the instructors.* We will provide a tool to
 schedule a code review with an instructor. You may take as many code
-reviews as you need, without penalty. This assignment is given as a
-completion grade---you will receive 100\% if you complete it
-successfully by the scheduled time. However, you must complete all
-portions of this assignment before the date and time of the final
-exam. *You must complete this assignment to receive a passing grade in
-this course.*
+reviews as you need, without penalty. This project is given as an
+assignment, and graded for completion---you will receive 100\% if you
+complete it successfully by the scheduled time. However, you must
+complete all portions of this assignment before the date and time of
+the final exam. *You must complete this assignment to receive a
+passing grade in this course.*
 
 # Lecture
 
