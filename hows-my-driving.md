@@ -4,8 +4,6 @@ layout: single
 classes: wide
 ---
 
-![The ACL2 Sedan itself]({{ site.baseurl }}/assets/images/acl2sedan.jpeg "A bumper-sticker on the back reads: 'How's my Driving?'")
-
 We hope you always feel comfortable letting us know how you think the
 course is going, how you feel you are doing, and how we can improve or
 help you do better. For various reasons a student may not always feel
