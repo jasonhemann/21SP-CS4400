@@ -107,20 +107,10 @@ ITS support](http://its.northeastern.edu/support/#et-boc:~:text=Still%20Need%20S
 
 ## VDI Linux Machines 
 
-[Khoury VDI Virtual Desktops](http://khoury.northeastern.edu/systems/vdi/), and the [relevant ITS KB articles](http://northeastern.service-now.com/tech?id=kb_category&kb_category=6b863d8d4f3b5b4450a5798e0210c735&kb_id=d82ad28c134922401528f5104244b068).
-
-## Eclipse & ACL2s
-
-Follow the Installation Instructions as part of the [first lab](javascript:void(0)). You
-will know you have this installed correctly if you can achieve the
-following.
-
-## CodeTogether 
-
-We will expect you to be able to share your screen with us (and one
-another) via the CodeTogether platform. You can install it from [here](https://www.codetogether.com/download/drag-to-install/)
-by following their instructions. If you have difficulty you can get
-the best help from [CodeTogether chat](https://gitter.im/CodeTogether-com/community). 
+[Khoury VDI Virtual
+Desktops](http://khoury.northeastern.edu/systems/vdi/), and the
+[relevant ITS KB
+articles](http://northeastern.service-now.com/tech?id=kb_category&kb_category=6b863d8d4f3b5b4450a5798e0210c735&kb_id=d82ad28c134922401528f5104244b068).
 
 ## Racket
 
@@ -155,18 +145,11 @@ Prepare yourself to download and install other packages as necessary
 to make our test suites run. You will not need any additional packages
 to complete your homework, nor should you use them. 
 
-## Waitwhile
+## Applause!
 
-As you may or may not have heard, this semester all courses' office
-hours are remote, by teleconference. Waitwhile will be our office
-hours queue management system. [Here is the 2800 Waitwhile Office
-Hours Queue](https://app.waitwhile.com/l/280018279office)
-
-<!-- ## Applause!  -->
-
-<!-- One of the things I miss most about real, in-person classrooms is -->
-<!-- being able to applaud someone for a job well done, and for getting up -->
-<!-- and giving it a shot. Here's our [best -->
-<!-- alternative](https://applause.haggett.org/FA20-2800). If each of us -->
-<!-- goes here and enters his or her name then, when one of us presses the -->
-<!-- applause button, we can all see and hear it.  -->
+One of the things I miss most about real, in-person classrooms is
+being able to applaud someone for a job well done, and for giving it a
+shot. Here's our [best
+alternative](https://applause.haggett.org/SP21-4400). If each of us
+goes here and enters his or her name then, when one of us presses the
+applause button, we can all see and hear it.
