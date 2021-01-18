@@ -206,10 +206,10 @@ but we would be remiss in skipping them entirely.
 
 ## Exams 
 
-You will have two long-form exams in this class. The midterm will take
-place during one of our class periods, and the final takes place at
-the date, time, and location given by the registrar. We calibrate our
-exams to make full use of the grading spectrum, and assume you fully
+You will have two long-form in-class exams. You will also have a
+final, that takes place at the date, time, and location given by the
+registrar. Thus there are three exams in total. We calibrate our exams
+to make full use of the grading spectrum, and assume you fully
 understand the lecture material and the skills and techniques
 practiced on homework, and that you can apply them in new ways. They
 are not intended to be "easy" for even accomplished students. We will
@@ -441,7 +441,6 @@ I derived many of our course's lecture's contents and topics, as well
 as assignments, from Dan Friedman's 311 at Indiana
 University. [Lindsey Kuper](https://users.soe.ucsc.edu/~lkuper/)
 inspires some of this site as well as being all-around
-inspirational. Other pieces come from [Kevin Lin's "just-the-class"
-template](https://kevinl.info/just-the-class/)
+inspirational. 
 
 ![In the syllabus]({{ site.baseurl }}/assets/images/syllabus.gif "Might just be worth checking.")
