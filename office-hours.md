@@ -17,6 +17,8 @@ waiting for help!
 We encourage you to, while stuck, try and help a fellow student who
 could benefit from what you might already know how to explain.
 
+<img src="https://imgs.xkcd.com/comics/wisdom_of_the_ancients.png">
+
 # Office Hours Location and Format
 
 For obvious reasons, this semester we will hold office hours
@@ -35,4 +37,6 @@ during his office hours. Otherwise [email me]({{ site.baseurl }}/syllabus/#conta
 {% endraw %}
 
 
-![Effective Office Hours]({{ site.baseurl }}/assets/images/office-hours.jpeg "Logic in everyday life!")
+
+
+
