@@ -20,9 +20,9 @@ sidebar-site-map:
   - title: "Schedule"
     url: /schedule/
   - title: "Piazza"
-    url: javascript:void(0)
+    url: http://piazza.com/
   - title: "Handins/Bottlenose"
-    url: javascript:void(0)
+    url: https://handins.ccs.neu.edu/
   - title: "Syllabus"
     url: /syllabus/
   - title: "Tech"
