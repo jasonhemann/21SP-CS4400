@@ -31,5 +31,5 @@ This being a [NUflex](https://nuflex.northeastern.edu/) class,
 students may attend in different ways. Please defer to the [dynamic
 scheduler](https://nuflex.northeastern.edu/dynamic-scheduling/) on how to attend on any given day.
 
- | 30368 | Jason | M, W | 14:50-16:30 | Snell Engineering Center 108 or [Zoom](javascript:void(0)) |
+ | 30368 | Jason | M, W | 14:50-16:30 | Snell Engineering Center 108 or Zoom |
 
