@@ -173,22 +173,15 @@ and take advantage of both lab sessions and additional support. Follow
 both the general homework guidelines, as well as any special
 instructions given on the assignment itself.
 
-Your submission will be evaluated under the following rubric. We
-provide you a test suite for each assignment. *A submission that does
-not load in Racket and execute the test suite without warning or
-exception will automatically receive no better than a U.* To avoid
-this, ensure that sure your submission runs and passes the test suites
-provide you. We allow an unlimited number of submissions per
-assignment, up to the deadline.
+Your submission will be evaluated under the [following rubric]({{
+site.baseurl }}/assets/images/grading_flowchart.png). We provide you a
+test suite for each assignment. *A submission that does not load in
+Racket and execute the test suite without warning or exception will
+automatically receive no better than a U.* To avoid this, ensure that
+sure your submission runs and passes the test suites provide you. We
+allow an unlimited number of submissions per assignment, up to the
+deadline.
 
-    | Grade | Interpretation                                                     |
-    |-------|--------------------------------------------------------------------|
-    | S+    | Great job                                                          |
-    | S     | Better than average.                                               |
-    | S-    | Below average. Contains lots of  mistakes or unattempted problems. |
-    | U     | Unacceptable.                                                      |
-    | N     | Not turned in, or turned in after the due date.                    |
-	
 
 Your work is evaluated both for correctness and for style. The
 autograder merely ensures that your programs compute the correct
