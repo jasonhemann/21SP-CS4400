@@ -3,12 +3,6 @@ title: Office Hours
 layout: single
 ---
 
-
----
-title: Office Hours
-layout: single
----
-
 # Waiting Room / Study Hall
 
 We will use the Microsoft Teams Team room for this class as a standing
