@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Homework"
-    url: /hw/
+    url: https://handins.ccs.neu.edu/courses/135/assignments/2742
   - title: "Lectures"
     url: /lec/
   - title: "Office Hours"
@@ -12,7 +12,7 @@ main:
 # sidebar links    
 sidebar-site-map:
   - title: "Homework"
-    url: /hw/
+    url: https://handins.ccs.neu.edu/courses/135/assignments/2742
   - title: "Lectures"
     url: /lec/
   - title: "Office Hours"
