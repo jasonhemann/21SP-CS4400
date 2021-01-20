@@ -72,12 +72,6 @@ re-post it on Piazza, answer it there, and forward you the link.
 A great regular way to reach out for help is via our [office
 hours]({{ site.baseurl }}/office-hours/).
 
-# Final Exam
-
-We will not have a final exam. Instead, our course will have a [final
-project](Projects) component. During finals week, we will schedule
-slots for students to present their final projects.
-
 # Grade Breakdown
 
 I will assign overall course grades as follows:
