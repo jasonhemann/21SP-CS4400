@@ -1,4 +1,4 @@
-# 21SP-4400
+# 21SP-CS4400
 
 Repository for Hemann's Spring 2021 edition of CS4400
 

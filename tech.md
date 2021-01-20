@@ -150,6 +150,6 @@ to complete your homework, nor should you use them.
 One of the things I miss most about real, in-person classrooms is
 being able to applaud someone for a job well done, and for giving it a
 shot. Here's our [best
-alternative](https://applause.haggett.org/SP21-4400). If each of us
+alternative](https://applause.haggett.org/SP21-CS4400). If each of us
 goes here and enters his or her name then, when one of us presses the
 applause button, we can all see and hear it.
