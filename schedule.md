@@ -35,7 +35,7 @@ classes: wide
 | 4 / 21 | Wed | Final Exam Review / Closing Lecture            |                                                                                                                              |                                                                                                                                                                                                                                                                          |
 
 
-| EOPL | "Essentials of Programming Languages", 3rd edition |
+| EOPL | ["Essentials of Programming Languages", 3rd edition](https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51224732410001401) |
 | SAOP | "Scheme and the Art of Programming" |
 
 Our final exam will be held on the date, time, and location given by the registrar.

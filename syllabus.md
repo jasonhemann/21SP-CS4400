@@ -326,8 +326,8 @@ lecture. The schedule lists optional readings from each when they
 contain supplementary material that complements that lecture. Both are
 available at the campus bookstore.
 
-  - "Scheme and the Art of Programming"
-  - "Essentials of Programming Languages"
+  - "Scheme and the Art of Programming" (Selections made available on this website)
+  - ["Essentials of Programming Languages", 3rd edition](https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51224732410001401)
 
 Neither will cover topics precisely the way we do in lecture. Their
 implementations will also differ in technical details and particulars
