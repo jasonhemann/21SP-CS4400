@@ -233,9 +233,9 @@ I'm also planning to use some of the last part of the course, while
 students are working on these larger projects, to talk about a
 different area in programming languages: logic programming. We can
 also get into the "guts" of an implementation of such a system. If in
-fact you're interested in PL research, logic, logic program, automated
-theorem proving or the like, please let me know on that too! [I'm
-excited to talk more about it all
+fact you're interested in PL research, logic, logic programming,
+automated theorem proving or the like, please let me know on that too!
+[I'm excited to talk more about it all
 :-)](https://scholar.google.com/citations?user=SePR8OkAAAAJ)
 
 # Project 
