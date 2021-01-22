@@ -248,23 +248,4 @@ it produced yet *another* function as the value. Whoooa! ᕕ( ᐛ )ᕗ
 (rember8* '(4 (8 (5 (((8)) 7))) (3 8)))
 ```
 
-### `cons-every`
-
-```
-;; cons-every symbol and a list and produces a list
-;; conses that symbol onto every element of the list
-
-;; > (cons-every 'x '(a b c d))
-;; '((x . a) (x . b) (x . c) (x . d))
-;; > (cons-every 'y '())
-;; '()
-;; > (cons-every 'a '(d e f))
-;; '((a . d) (a . e) (a . f))
-
-(define (cons-every x ls)
-  (cond
-    ((empty? ls) '())
-    (else (cons (cons x (car ls)) (cons-every x (cdr ls))))))
-```
-
 ### Arithmetic examples, if we get there. 

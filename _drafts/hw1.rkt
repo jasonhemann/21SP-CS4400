@@ -46,8 +46,7 @@
 #| 
 
 0. I've recently updated the course syllabus for this semester. Please
-read ( ) through it carefully before beginning the rest of the
-assignment.
+read through it carefully before beginning the rest of the assignment.
 
 |# 
 
@@ -79,16 +78,16 @@ functions need only hold over eqv?-comparable structures.
 
 #| 
 
-3. Define and test a procedure remove that takes a symbol and a list
+3. Define and test a procedure remv that takes a symbol and a list
 and returns a list similar except its missing the first occurrence (if
 any) of the symbol.
 
 |# 
 
 (check-true* equal? 
-  [(remove 'x '(x y z x)) '(y z x)]
-  [(remove 'y '(x y z y x)) '(x z y x)]
-  [(remove 'z '(a b c)) '(a b c)])
+  [(remv 'x '(x y z x)) '(y z x)]
+  [(remv 'y '(x y z y x)) '(x z y x)]
+  [(remv 'z '(a b c)) '(a b c)])
 
 #| 
 
@@ -270,11 +269,24 @@ all the elements in s1 that are not in s2.
 (check-true* equal?
   [(set-difference '(1 2 3 4 5) '(2 4 6 8)) '(1 3 5)])
 
+#| 
+
+18. Define a function cons-every that takes an element x and a list l
+and returns a list with x consed to the front of each element of l. 
+
+|# 
+
+(check-true* equal?
+  [(cons-every 'y '()) '()]
+  [(cons-every 'x '(a b c d)) '((x . a) (x . b) (x . c) (x . d))]
+  [(cons-every '(a) '(d e f)) '(((a) . d) ((a) . e) ((a) . f))]
+  [(cons-every 'a '((e))) '((a e))])
+
 #| Brainteasers - 5400 Only |#
 
 #| 
 
-18. In mathematics, the power set of any set S, denoted P(S), is the
+19. In mathematics, the power set of any set S, denoted P(S), is the
 set of all subsets of S, including the empty set and S itself. The
 procedure powerset takes a list and returns the power set of the
 elements in the list. Implementations may different in the exact order
@@ -288,7 +300,7 @@ of their results' sublists.
 
 #| 
 
-19. The cartesian-product is defined over a list of sets (again, by
+20. The cartesian-product is defined over a list of sets (again, by
 our agreed upon convention, sets are lists that don't have
 duplicates). The result is a list of tuples (i.e. a list of
 lists). Each tuple has in the first position an element of the first
@@ -304,7 +316,7 @@ your tuples may differ; this is acceptable.
 
 #| 
 
-20. Rewrite some of the natural-recursive programs from above instead
+21. Rewrite some of the natural-recursive programs from above instead
 using foldr. That is, the bodies of your definitions should not refer
 to themselves. The names should be as follows.
 
@@ -364,7 +376,7 @@ enlightenment/text ratio. That's my sales pitch.
 
 #| 
 
-21. Consider the below function f. It is an open question in
+22. Consider the below function f. It is an open question in
 mathematics, known as the Collatz Conjecture, as to whether, for every
 positive integer n, the function power limit of f on n is 1. Your task
 is to, complete the below definition of collatz. collatz should be a
@@ -420,7 +432,7 @@ non-positive integers, it should signal an error “Invalid value”.
 
 #| 
 
-22. A quine is a program whose output is the listings (i.e. source
+23. A quine is a program whose output is the listings (i.e. source
 code) of the original program. In Racket, 5 and #t are both quines.
 
 > 5
