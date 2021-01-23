@@ -10,9 +10,13 @@
  
 #| Assignment Guidelines |#
 
-;; You should write your solutions as much as possible without
-;; creating explict help functions. You may, however re-use your
-;; solutions to prior problems.
+
+;; In addition to the standard Assignment Guidelines
+;; (https://pages.github.ccs.neu.edu/jhemann/21SP-CS4400/hw/)
+
+;; You should write your solutions without creating explict help
+;; functions. You may, however re-use your solutions to prior
+;; problems.
 
 #| 
 
