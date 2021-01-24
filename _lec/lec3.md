@@ -91,12 +91,11 @@ We don't need define to write recursive functions.
      cond expression, but uses the "shape" of an expression instead.
 
 ```racket
-  (define fun
-    (lambda (x)
-     (match x
-	   (`(,item1 ,item2 ,item3) `(,item1 ,item3))
-	   (`(,a . ,d) `(,d . ,a))
-	   (else x))))
+(define (fun x)
+  (match x
+	(`(,item1 ,item2 ,item3) `(,item1 ,item3))
+	(`(,a . ,d) `(,d . ,a))
+	(else x)))
 ```
 
    - it's like Wheel of Fortune
@@ -107,13 +106,12 @@ We don't need define to write recursive functions.
 ## A complicated example
 
 ```racket
-(define new-fun
-  (lambda (x)
-    (match (fun x)
-      (`(,a b ,c) (list c))
-      (`(1 ,b 3) (* b b))
-      (`,y (guard (symbol? y)) (cons y y))
-      (`,n (guard (number? n)) (* 2 n)))))
+(define (new-fun x)
+  (match (fun x)
+	(`(,a b ,c) (list c))
+	(`(1 ,b 3) (* b b))
+	(`,y (guard (symbol? y)) (cons y y))
+	(`,n (guard (number? n)) (* 2 n)))))
 ```
 
 Try it out
