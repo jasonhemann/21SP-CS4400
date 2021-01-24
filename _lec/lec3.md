@@ -1,5 +1,5 @@
 ---
-title: `letrec` quasiquote, and match
+title: letrec quasiquote, and match
 date: 2020-01-27
 ---
 
@@ -131,5 +131,5 @@ Try it out
 
 # quasiquote and unquote
 
-  `(list 'a 'thing 'that 'is 'built 'with 'all 'but (- 5 4) 'value)`  
+  `(list 'a 'thing 'that 'is 'built 'with 'all 'but (- 5 4) 'value)`
 
