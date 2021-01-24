@@ -18,7 +18,7 @@ Northeastern's digital resources. Northeastern has at least two
 tutorials for installing and using the Duo 2FA system:
 
    - [The express version](https://express.northeastern.edu/get2fa/how-to-enroll-in-2fa/)
-   - [The ~servicenow~ guide, (with pictures)](https://northeastern.service-now.com/kb_view.do?sys_kb_id=436cd1dbdb808854c5575e38dc9619e3&sysparm_class_name=kb_knowledge)
+   - [The `servicenow` guide, (with pictures)](https://northeastern.service-now.com/kb_view.do?sys_kb_id=436cd1dbdb808854c5575e38dc9619e3&sysparm_class_name=kb_knowledge)
 
 ## Piazza 
 
@@ -53,7 +53,7 @@ Pages. Student corrections and improvements are *incredibly* welcome!
 You can submit a [pull request
 (PR)](http://github.ccs.neu.edu/jhemann/21SP-2800) for a quick
 correction and improvement. Every page on this website has a direct
-links to its ~.md~ file in this repository.
+links to its `.md` file in this repository.
 
 ## Handin Server
 

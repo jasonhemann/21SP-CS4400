@@ -5,7 +5,7 @@ toc: true
 toc_label: "Syllabus Contents"
 ---
 
-## Collaborative Course Construction and Feedback 
+### Collaborative Course Construction and Feedback 
 
 We are together in unprecedented times. The typical course structure
 implicitly assumes regular whole-class in-person meetings. We will not
@@ -20,7 +20,7 @@ and all changes on the course website's repository.
 I cannot promise that we will act on all suggestions, and even those
 we find compelling may not be implementable as we go. 
 
-# Purpose and Objectives
+## Purpose and Objectives
 
 This course introduces programming languages concepts with a hands-on,
 "learn by doing" approach. This means both writing working programs
@@ -59,7 +59,7 @@ may be modified at any time by the course instructor. Notice of such
 changes will be made by announcement in class, by written or email
 notice, or by changes to this syllabus posted on the course website.
 
-# Contact
+## Contact
 
 The best way to get in contact for personal, private (FERPA, etc)
 messages is via my email address
@@ -72,7 +72,7 @@ re-post it on Piazza, answer it there, and forward you the link.
 A great regular way to reach out for help is via our [office
 hours]({{ site.baseurl }}/office-hours/).
 
-# Grade Breakdown
+## Grade Breakdown
 
 I will assign overall course grades as follows:
 
@@ -97,7 +97,7 @@ I will base some portions of your lab, homework, and lecture quiz
 grades on completion and submission of the relevant exercises. I will
 base the remaining portion of each on correctness. 
 
-## Total Running Grade Calculation
+### Total Running Grade Calculation
 
 We will track the completion portions of your exam and homework
 grades, as well as your project grades, in handins. We will maintain a
@@ -105,7 +105,7 @@ record of the remaining grades, and will update you with the *current*
 status of that before the Add/Drop deadline. Please ignore the grade
 tracker on Canvas. 
 
-<!-- ## Alternate/Additional Assignment/Project Option -->
+<!-- ### Alternate/Additional Assignment/Project Option -->
 
 <!-- Throughout the semester there may be multiple opportunities for extra -->
 <!-- credit. I want to give students an opportunity to demonstrate mastery -->
@@ -119,7 +119,7 @@ tracker on Canvas.
 <!-- substitute. Certainly not the easy way to receive full marks. But -->
 <!-- perhaps a way to redistribute some portion of the grade. -->
 
-# Participation
+## Participation
 
 I expect you to attend each lecture. Your attendance is a prerequisite
 for a substantial portion of the course's grade. Students are expected
@@ -132,13 +132,13 @@ attendance](https://vm.tiktok.com/ZMJBoQovg/) as such, but some
 reading and lecture content quizzes will serve as proxies for
 participation and thus attendance.
 
-## Lecture Quizzes/Polls
+### Lecture Quizzes/Polls
 
 There may be quick pop quizzes during the session. These act as a
 forcing function for the readings, for lecture notes and to alert me
 to students' difficulties.
 
-# Homework
+## Homework
 
 Homework, consisting of weekly programming assignments, is an
 essential part of the course. Assignments are available by at least
@@ -198,7 +198,7 @@ grade--they are there for your fun and excitement. Often, these
 problems explore interesting topics we will not have get to in class,
 but we would be remiss in skipping them entirely.
 
-## Exams 
+### Exams 
 
 You will have two long-form in-class exams. You will also have a
 final, that takes place at the date, time, and location given by the
@@ -219,7 +219,7 @@ it. Exams are strictly individual. Make sure to avoid even the
 *appearance* of misconduct. Instructors reserve the right to at any
 point in time call students individually to explain their work. 
 
-## TRACE evaluations
+### TRACE evaluations
 
 I encourage students to take time and submit TRACE evaluations. Your
 time is busy at the end of the term when these are available. In order
@@ -227,7 +227,7 @@ to fairly compensate you for that time, if 85% or more of the enrolled
 students complete these TRACE evaluations, then I shall add 2 points
 onto the class-wide final average. 
 
-# Recent Changes
+## Recent Changes
 
 I'm also planning to use some of the last part of the course, while
 students are working on these larger projects, to talk about a
@@ -238,7 +238,7 @@ automated theorem proving or the like, please let me know on that too!
 [I'm excited to talk more about it all
 :-)](https://scholar.google.com/citations?user=SePR8OkAAAAJ)
 
-# Project 
+## Project 
 
 This course culminates in a final project. This project also presumes
 an understanding of the prior material in the course, and acts as a
@@ -255,7 +255,7 @@ complete all portions of this assignment before the date and time of
 the final exam. *You must complete this assignment to receive a
 passing grade in this course.*
 
-# Lecture
+## Lecture
 
 The vast majority of course content will come from in-class lecture,
 supplemented with notes distributed online. Therefore, attending
@@ -288,13 +288,13 @@ distribution of such recordings is prohibited. Obviously I cannot
 [stop you](https://obsproject.com/), but it's to both our benefits.
 
 
-# Additional Support 
+## Additional Support 
 
 In addition to lecture, we provide the following additional resources
 for students to avail themselves. Do consider taking regular advantage
 of them.
 
-## Scheduled Office Hours
+### Scheduled Office Hours
 
 Course personnel will make ourselves available for 8-10 hours of
 [office hours]({{ site.baseurl}}/office-hours/) available weekly,
@@ -302,7 +302,7 @@ concentrated toward assignment due dates. If our office hours schedule
 in particularly ill-suited to your class schedule, let me know and we
 may be able to adjust them.
 
-## Piazza Forums
+### Piazza Forums
 
 Outside of office hours, you should utilize the class's Piazza forums
 for questions. We have disabled private messages to instructors, but
@@ -314,7 +314,7 @@ homework question. For more sensitive questions, or administrative
 issues that should addressed in private, please email me at the
 address listed on the front of this syllabus.
 
-## Optional Texts 
+### Optional Texts 
 
 There are *no required texts* for this class. Simply put, no companion
 textbooks mirror this course's development of these topics. For
@@ -339,7 +339,7 @@ ahead. In the rare circumstance you must miss lecture, these may help
 supplement your understanding from lab, our additional support, and
 perhaps lecture notes from a friend.
 
-# Academic Integrity Policy
+## Academic Integrity Policy
 
 Students of course play an integral part in ensuring they receive the
 full benefit of their coursework. The students of 2800 are certainly
@@ -348,7 +348,7 @@ University](http://www.northeastern.edu/osccr/academic-integrity-policy/),
 the [Khoury
 College](https://www.khoury.northeastern.edu/information-for-overview/current-undergrad/undergraduate-advising-academic-support/academic-policies/).
 
-# Academic Accommodations 
+## Academic Accommodations 
 
 If you have accommodations from the [Disability Resource Center
 (DRC)](http://www.northeastern.edu/drc/) please submit your Professor
@@ -361,7 +361,7 @@ I encourage all students who may benefit from learning more about DRC
 services to [contact the
 DRC](http://www.northeastern.edu/drc/#fp-blog-entry:~:text=Contact%20Information).
 
-# Technology and Platforms
+## Technology and Platforms
 
 As a course and a student body, we are more remote than usual, and
 preferable. We will leverage a number of Northeastern's technology
@@ -374,7 +374,7 @@ unconventional semester. These include Racket, Khoury Office Hours,
 PollEverywhere, and Piazza. Please see the [technology page]({{
 site.baseurl }}/tech/) for more details.
 
-# Health and Safety
+## Health and Safety
 
 The university has put into place a robust plan to make the campus
 healthy and safe for all — but you must do your part. On August 22, all
@@ -429,12 +429,12 @@ To summarize:
   Keep in mind the “Protect the Pack” theme. Remember that our
   individual actions will help everyone stay safe this fall."
 
-# Acknowledgments 
+## Acknowledgments 
 
 I derived many of our course's lecture's contents and topics, as well
-as assignments, from Dan Friedman's 311 at Indiana
+as assignments, from [Dan
+Friedman](https://legacy.cs.indiana.edu/~dfried/)'s 311 at Indiana
 University. [Lindsey Kuper](https://users.soe.ucsc.edu/~lkuper/)
-inspires some of this site as well as being all-around
-inspirational. 
+inspires some of this site as well as being all-around inspirational.
 
 ![In the syllabus]({{ site.baseurl }}/assets/images/syllabus.gif "Might just be worth checking.")
