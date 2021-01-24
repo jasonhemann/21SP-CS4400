@@ -104,24 +104,22 @@ We will use these at the appropriate time.
 ### `count8`
 
 ```racket
-(define count8
-  (λ (ls)
-    (cond
-      ((null? ls) 0)
-      ((eqv? (car ls) 8) (add1 (count8 (cdr ls))))
-      (else (count8 (cdr ls))))))
+(define (count8 ls)
+  (cond
+    ((null? ls) 0)
+    ((eqv? (car ls) 8) (add1 (count8 (cdr ls))))
+    (else (count8 (cdr ls)))))
 ```
 
 ```racket
-(define count8*
-  (λ (ls)
-    (cond
-      ((null? ls) 0)
-      ;; this is our test for listitude 
-      ;; we have a list, and it's car is a list
-      ((pair? (car ls)) (+ (count8* (car ls)) (count8* (cdr ls))))
-      ((eqv? (car ls) 8) (add1 (count8* (cdr ls))))
-      (else (count8* (cdr ls))))))
+(define (count8* ls)
+  (cond
+    ((null? ls) 0)
+    ;; this is our test for listitude 
+    ;; we have a list, and it's car is a list
+    ((pair? (car ls)) (+ (count8* (car ls)) (count8* (cdr ls))))
+    ((eqv? (car ls) 8) (add1 (count8* (cdr ls))))
+    (else (count8* (cdr ls)))))
 ```
 
 ```racket
@@ -135,24 +133,22 @@ We will use these at the appropriate time.
 ;; '(4  8 5 8 7 3 8) => '(4  5 7 3) 
 ;;    '(8 5 8 7 3 8) =>    '(5 7 3)
 
-(define rember8
-  (λ (ls)
-    (cond
-      ((null? ls) '())
-      ((eqv? (car ls) 8) (rember8 (cdr ls)))
-      (else (cons (car ls) (rember8 (cdr ls)))))))
+(define (rember8 ls)
+  (cond
+    ((null? ls) '())
+    ((eqv? (car ls) 8) (rember8 (cdr ls)))
+    (else (cons (car ls) (rember8 (cdr ls))))))
 ```
 
 ### `rember8*`
 
 ```racket
-(define rember8*
-  (λ (ls)
-    (cond
-      ((null? ls) '())
-      ((pair? (car ls)) (cons (rember8* (car ls)) (rember8* (cdr ls))))
-      ((eqv? (car ls) 8) (rember8* (cdr ls)))
-      (else (cons (car ls) (rember8* (cdr ls)))))))
+(define (rember8* ls)
+  (cond
+    ((null? ls) '())
+    ((pair? (car ls)) (cons (rember8* (car ls)) (rember8* (cdr ls))))
+    ((eqv? (car ls) 8) (rember8* (cdr ls)))
+    (else (cons (car ls) (rember8* (cdr ls))))))
 
 (rember8* '(4 (8 (5 (((8)) 7))) (3 8)))
 ```
