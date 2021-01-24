@@ -86,7 +86,7 @@ We will use these at the appropriate time.
 
 ## `cons`, `car`, and `cdr`.
 
-```lisp
+```racket
 ;; (cons (car (cons α β)) (cdr (cons α β)))
 ;; =
 ;; (cons α β)
@@ -103,7 +103,7 @@ We will use these at the appropriate time.
 
 ### `count8`
 
-```lisp
+```racket
 (define count8
   (λ (ls)
     (cond
@@ -112,7 +112,7 @@ We will use these at the appropriate time.
       (else (count8 (cdr ls))))))
 ```
 
-```lisp
+```racket
 (define count8*
   (λ (ls)
     (cond
@@ -124,14 +124,14 @@ We will use these at the appropriate time.
       (else (count8* (cdr ls))))))
 ```
 
-```lisp
+```racket
 (count8* '(4 (8 (5 (((8)) 7))) (3 8)))
 3
 ```
 
 ### `rember8` 
 
-```lisp
+```racket
 ;; '(4  8 5 8 7 3 8) => '(4  5 7 3) 
 ;;    '(8 5 8 7 3 8) =>    '(5 7 3)
 
@@ -145,7 +145,7 @@ We will use these at the appropriate time.
 
 ### `rember8*`
 
-```lisp
+```racket
 (define rember8*
   (λ (ls)
     (cond
@@ -156,5 +156,5 @@ We will use these at the appropriate time.
 
 (rember8* '(4 (8 (5 (((8)) 7))) (3 8)))
 ```
-
+	
 ### Arithmetic examples, if we get there. 

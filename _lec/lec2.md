@@ -11,7 +11,7 @@ date: 2020-01-24
 
 ### `count8`
 
-```lisp
+```racket
 (define count8
   (λ (ls)
     (cond
@@ -22,7 +22,7 @@ date: 2020-01-24
 
 ### `count8*`
 
-```lisp
+```racket
 (define count8*
   (λ (ls)
     (cond
@@ -34,7 +34,7 @@ date: 2020-01-24
       (else (count8* (cdr ls))))))
 ```
 
-```lisp
+```racket
 (count8* '(4 (8 (5 (((8)) 7))) (3 8)))
 3
 ```
@@ -50,4 +50,38 @@ date: 2020-01-24
 
 ## Generalizing 
 
+### This is not news. 
+
+  - Wilhelm Ackermann
+  - Gabriel Sudan
+
+```racket
+(define phi
+  (lambda (p m n)
+    (cond
+      [(zero? p) (+ m n)]
+      [(and (zero? n) (zero? (sub1 p))) 0]
+      [(and (zero? n) (zero? (sub1 (sub1 p)))) 1]
+      [(zero? n) m]
+      [else (phi (sub1 p) m (phi p m (sub1 n)))])))
+```
+
+> After Ackermann's publication of his function (which had three
+> nonnegative integer arguments), many authors modified it to suit
+> various purposes, so that today "the Ackermann function" may refer to
+> any of numerous variants of the original function. One common version,
+> the two-argument Ackermann–Péter function, is defined as follows for
+> nonnegative integers m and n:
+>
+> -- wiki
+
+
+```racket
+(define ack-peter
+  (lambda (m n)
+    (cond
+      [(zero? m) (add1 n)]
+      [(zero? n) (ack-peter (sub1 m) 1)]
+      [else (ack-peter (sub1 m) (ack-peter m (sub1 n)))])))
+```
 
