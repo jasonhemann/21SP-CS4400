@@ -1,6 +1,6 @@
 ---
 title: Naturally Recursive Functions
-date: 2020-01-24
+date: 2020-01-25
 ---
 # All the Racket you need to know x2
 
@@ -34,7 +34,7 @@ date: 2020-01-24
       (else (count8* (cdr ls))))))
 ```
 
-```racket
+	```racket
 (count8* '(4 (8 (5 (((8)) 7))) (3 8)))
 3
 ```
