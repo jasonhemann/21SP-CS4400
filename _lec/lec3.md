@@ -1,5 +1,5 @@
 ---
-title: Naturally Recursive Functions
+title: `letrec` quasiquote, and match
 date: 2020-01-27
 ---
 
@@ -109,11 +109,11 @@ We don't need define to write recursive functions.
 ```racket
 (define new-fun
   (lambda (x)
-    (pmatch (fun x)
-      ((,a b ,c) (list c))
-      ((1 ,b 3) (* b b))
-      (,y (guard (symbol? y)) (cons y y))
-      (,n (guard (number? n)) (* 2 n)))))
+    (match (fun x)
+      (`(,a b ,c) (list c))
+      (`(1 ,b 3) (* b b))
+      (`,y (guard (symbol? y)) (cons y y))
+      (`,n (guard (number? n)) (* 2 n)))))
 ```
 
 Try it out
