@@ -1,5 +1,5 @@
 ---
-title: letrec quasiquote, and match
+title: letrec, quasiquote, and match
 date: 2020-01-27
 ---
 

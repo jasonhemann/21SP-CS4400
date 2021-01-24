@@ -1,6 +1,6 @@
 ---
 title: Free, bound, and lexical address
-date: 2020-01-27
+date: 2020-02-01
 ---
 
 # Questions 
