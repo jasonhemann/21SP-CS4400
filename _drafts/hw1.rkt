@@ -275,9 +275,9 @@ of their results' sublists.
 
 #| 
 
-20. The cartesian-product is defined over a list of sets (again, by
-our agreed upon convention, sets are lists that don't have
-duplicates). The result is a list of tuples (i.e. a list of
+20. The cartesian-product is defined over a non-empty list of
+sets (again, by our agreed upon convention, sets are lists that don't
+have duplicates). The result is a list of tuples (i.e. a list of
 lists). Each tuple has in the first position an element of the first
 set, in the second position an element of the second set, etc. The
 output list should contains all such combinations. The exact order of
