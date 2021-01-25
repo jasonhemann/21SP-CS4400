@@ -20,6 +20,13 @@ always, after the first assignment).
       to get you started, but the provided test cases are not
       exhaustive.
 
+   1. Follow the design
+      recipe. (https://course.ccs.neu.edu/cs2500/design_recipe.html)
+   
+   1. We expect to see data definitions, signatures, and purpose
+      statements. We're flexible viz the "syntax" you use for your
+      signatures and data definitions, but we want to see them.
+
    1. Your solutions must be naturally recursive or you will lose
       credit.
 
@@ -28,8 +35,9 @@ always, after the first assignment).
 
    1. You may not use built-in procedures that handle the bulk of the
       work. For example, you may not use the append function from
-      Racket. But once you have defined your own append for problem 8,
-      feel free to use it for other problems.
+      Racket to implement your append. But once you have defined your
+      own function for a problem, feel free to use it for subsequent
+      problems.
 
    1. The objective is not simply to write programs that get the
       correct answers; it is to write answers in the style of programs
