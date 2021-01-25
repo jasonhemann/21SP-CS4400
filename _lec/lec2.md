@@ -12,26 +12,24 @@ date: 2020-01-25
 ### `count8`
 
 ```racket
-(define count8
-  (λ (ls)
-    (cond
-      ((null? ls) 0)
-      ((eqv? (car ls) 8) (add1 (count8 (cdr ls))))
-      (else (count8 (cdr ls))))))
+(define (count8 ls)
+  (cond
+    ((null? ls) 0)
+    ((eqv? (car ls) 8) (add1 (count8 (cdr ls))))
+    (else (count8 (cdr ls)))))
 ```
 
 ### `count8*`
 
 ```racket
-(define count8*
-  (λ (ls)
-    (cond
-      ((null? ls) 0)
-      ;; this is our test for listitude 
-      ;; we have a list, and it's car is a list
-      ((pair? (car ls)) (+ (count8* (car ls)) (count8* (cdr ls))))
-      ((eqv? (car ls) 8) (add1 (count8* (cdr ls))))
-      (else (count8* (cdr ls))))))
+(define (count8* ls)
+  (cond
+    ((null? ls) 0)
+    ;; this is our test for listitude 
+    ;; we have a list, and it's car is a list
+    ((pair? (car ls)) (+ (count8* (car ls)) (count8* (cdr ls))))
+    ((eqv? (car ls) 8) (add1 (count8* (cdr ls))))
+    (else (count8* (cdr ls)))))
 ```
 
 	```racket
@@ -56,14 +54,13 @@ date: 2020-01-25
   - Gabriel Sudan
 
 ```racket
-(define phi
-  (lambda (p m n)
-    (cond
-      [(zero? p) (+ m n)]
-      [(and (zero? n) (zero? (sub1 p))) 0]
-      [(and (zero? n) (zero? (sub1 (sub1 p)))) 1]
-      [(zero? n) m]
-      [else (phi (sub1 p) m (phi p m (sub1 n)))])))
+(define (phi p m n)
+  (cond
+    [(zero? p) (+ m n)]
+    [(and (zero? n) (zero? (sub1 p))) 0]
+    [(and (zero? n) (zero? (sub1 (sub1 p)))) 1]
+    [(zero? n) m]
+    [else (phi (sub1 p) m (phi p m (sub1 n)))]))
 ```
 
 > After Ackermann's publication of his function (which had three
@@ -77,11 +74,10 @@ date: 2020-01-25
 
 
 ```racket
-(define ack-peter
-  (lambda (m n)
-    (cond
-      [(zero? m) (add1 n)]
-      [(zero? n) (ack-peter (sub1 m) 1)]
-      [else (ack-peter (sub1 m) (ack-peter m (sub1 n)))])))
+(define (ack-peter m n)
+  (cond
+    [(zero? m) (add1 n)]
+    [(zero? n) (ack-peter (sub1 m) 1)]
+    [else (ack-peter (sub1 m) (ack-peter m (sub1 n)))]))
 ```
 
