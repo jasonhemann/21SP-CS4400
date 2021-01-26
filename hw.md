@@ -20,8 +20,11 @@ always, after the first assignment).
       to get you started, but the provided test cases are not
       exhaustive.
 
-   1. Follow the design
-      recipe. (https://course.ccs.neu.edu/cs2500/design_recipe.html)
+   1. Follow the [design
+      recipe](https://course.ccs.neu.edu/cs2500/design_recipe.html). If
+      you are new to this you can see the
+      [textbook](https://htdp.org/2018-01-06/Book/part_one.html#%28part._sec~3adesign-func%29)
+      for more details.
    
    1. We expect to see data definitions, signatures, and purpose
       statements. We're flexible viz the "syntax" you use for your
