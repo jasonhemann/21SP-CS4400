@@ -73,8 +73,8 @@ that element in the list. List without that element are bad data.
 |# 
 
 (check-true* equal?
-  [(list-index-ofv 'x '(x y z x x)) '0]
-  [(list-index-ofv 'x '(y z x x)) '2])
+  [(list-index-ofv 'x '(x y z x x)) 0]
+  [(list-index-ofv 'x '(y z x x)) 2])
 
 #| 
 
@@ -150,8 +150,8 @@ factorial of 0 is defined to be 1 (https://oeis.org/A000142).
 |# 
 
 (check-true* equal? 
- [(fact 0) '1]
- [(fact 5) '120])
+ [(fact 0) 1]
+ [(fact 5) 120])
 
 #|
 
@@ -162,9 +162,9 @@ the sequence is computed by adding the two previous numbers.
 
 |# 
 (check-true* equal?
- [(fib 0) '0]
- [(fib 1) '1]
- [(fib 7) '13])
+ [(fib 0) 0]
+ [(fib 1) 1]
+ [(fib 7) 13])
 
 #| 
 
@@ -187,12 +187,12 @@ order and returns that number. For example:
 |# 
 
 (check-true* equal? 
-  [(binary->natural '()) '0]
-  [(binary->natural '(0 0 1)) '4]
-  [(binary->natural '(0 0 1 1)) '12]
-  [(binary->natural '(1 1 1 1)) '15]
-  [(binary->natural '(1 0 1 0 1)) '21]
-  [(binary->natural '(1 1 1 1 1 1 1 1 1 1 1 1 1)) '8191])
+  [(binary->natural '()) 0]
+  [(binary->natural '(0 0 1)) 4]
+  [(binary->natural '(0 0 1 1)) 12]
+  [(binary->natural '(1 1 1 1)) 15]
+  [(binary->natural '(1 0 1 0 1)) 21]
+  [(binary->natural '(1 1 1 1 1 1 1 1 1 1 1 1 1)) 8191])
 
 #| 
 
@@ -203,8 +203,8 @@ will be nonnegative.
 |# 
 
 (check-true* equal? 
- [(minus 5 3) '2]
- [(minus 100 50) '50])
+ [(minus 5 3) 2]
+ [(minus 100 50) 50])
 
 #| 
 
@@ -216,8 +216,8 @@ Nat). Divisions by zero is of course bad data.
 |# 
 
 (check-true* equal? 
-  [(div 25 5) '5]
-  [(div 36 6) '6])
+  [(div 25 5) 5]
+  [(div 36 6) 6])
 
 #| 
 
@@ -332,12 +332,12 @@ enlightenment/text ratio. That's my sales pitch.
   [(reverse-fr '(a 3 x)) '(x 3 a)])
 
 (check-true* equal? 
-  [(binary->natural-fr '()) '0]
-  [(binary->natural-fr '(0 0 1)) '4]
-  [(binary->natural-fr '(0 0 1 1)) '12]
-  [(binary->natural-fr '(1 1 1 1)) '15]
-  [(binary->natural-fr '(1 0 1 0 1)) '21]
-  [(binary->natural-fr '(1 1 1 1 1 1 1 1 1 1 1 1 1)) '8191])
+  [(binary->natural-fr '()) 0]
+  [(binary->natural-fr '(0 0 1)) 4]
+  [(binary->natural-fr '(0 0 1 1)) 12]
+  [(binary->natural-fr '(1 1 1 1)) 15]
+  [(binary->natural-fr '(1 0 1 0 1)) 21]
+  [(binary->natural-fr '(1 1 1 1 1 1 1 1 1 1 1 1 1)) 8191])
 
 (check-true* equal?
   [(append-map-fr countdown (countdown 5)) '(5 4 3 2 1 0 4 3 2 1 0 3 2 1 0 2 1 0 1 0 0)])
