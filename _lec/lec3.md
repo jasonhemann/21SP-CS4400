@@ -8,7 +8,7 @@ date: 2020-01-27
    + Homework, otherwise
 ## Homework
    + Remember, homework 0 is due Wednesday night @ 10:00pm
-   + Homework 2 available that evening 
+   + Homework 1 available that evening 
 
 ## Truthiness
 ## Help functions, etc, accumulator parameters. 
@@ -110,8 +110,8 @@ We don't need define to write recursive functions.
   (match (fun x)
 	(`(,a b ,c) (list c))
 	(`(1 ,b 3) (* b b))
-	(`,y (guard (symbol? y)) (cons y y))
-	(`,n (guard (number? n)) (* 2 n)))))
+	(`,y #:when (symbol? y) (cons y y))
+	(`,n #:when (number? n) (* 2 n)))))
 ```
 
 Try it out
