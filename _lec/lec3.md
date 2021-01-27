@@ -111,7 +111,7 @@ We don't need define to write recursive functions.
 	(`(,a b ,c) (list c))
 	(`(1 ,b 3) (* b b))
 	(`,y #:when (symbol? y) (cons y y))
-	(`,n #:when (number? n) (* 2 n)))))
+	(`,n #:when (number? n) (* 2 n))))
 ```
 
 Try it out
