@@ -37,9 +37,9 @@ It can `let` us avoid recomputing expressions
 
 ```racket
 > (let ((! (lambda (n)
-	     (if (zero? n) 
-		 1
-	         (* n (! (sub1 n)))))))
+      (if (zero? n) 
+          1
+          (* n (! (sub1 n)))))))
     (! 5))
 
 ERROR: unbound identifier '!'
@@ -55,9 +55,9 @@ For our purposes, for constructing anonymous recursive or anonymous mutually rec
 ```racket
 > (letrec 
     ((! (lambda (n)
-	  (if (zero? n) 
-	      1
-	      (* n (! (sub1 n)))))))
+          (if (zero? n) 
+              1
+             (* n (! (sub1 n)))))))
     (! 5))
 120
 >
@@ -68,14 +68,14 @@ For our purposes, for constructing anonymous recursive or anonymous mutually rec
 ```racket
 > (letrec 
     ((e? (lambda (n)
-	  (if (zero? n) 
-	      #t
-	      (o? (sub1 n)))))
+           (if (zero? n) 
+               #t
+        	   (o? (sub1 n)))))
      (o? (lambda (n)
-	(if (zero? n) 
-	    #f
-	    (e? (sub1 n))))))
-    (e? 5))
+           (if (zero? n) 
+               #f
+               (e? (sub1 n))))))
+   (e? 5))
 #f
 ```
 
@@ -108,10 +108,10 @@ We don't need define to write recursive functions.
 ```racket
 (define (new-fun x)
   (match (fun x)
-	(`(,a b ,c) (list c))
-	(`(1 ,b 3) (* b b))
-	(`,y #:when (symbol? y) (cons y y))
-	(`,n #:when (number? n) (* 2 n))))
+    (`(,a b ,c) (list c))
+    (`(1 ,b 3) (* b b))
+    (`,y #:when (symbol? y) (cons y y))
+    (`,n #:when (number? n) (* 2 n))))
 ```
 
 Try it out
