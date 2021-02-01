@@ -24,40 +24,40 @@ date: 2020-02-01
 ```racket
 (define (_ e)
   (match e
-	[`,y #:when (symbol? y)    ]
-	[`(lambda (,x) ,body)      ]
-	[`(,rator ,rand)           ]))
+    [`,y #:when (symbol? y)  ]
+    [`(lambda (,x) ,body)   ]
+    [`(,rator ,rand)      ]))
 ```
 
 ## Example
 
 ```racket
-    (define (expression-depth e)
-	  (match e
-		[`,y #:when (symbol? y) 0]
-		[`(lambda (,x) ,body) (add1 (expression-depth body))]
-		[`(,rator ,rand) (add1 (max (expression-depth rator) (expression-depth rand)))]))
+  (define (expression-depth e)
+   (match e
+     [`,y #:when (symbol? y) 0]
+     [`(lambda (,x) ,body) (add1 (expression-depth body))]
+     [`(,rator ,rand) (add1 (max (expression-depth rator) (expression-depth rand)))]))
 ```
 
 ## Try it out
 
 ```racket
-  (define (_ e)
-	(match e
-	  [`,y #:when (symbol? y)                                              ]
+ (define (_ e)
+(match e
+  [`,y #:when (symbol? y)                       ]
 
-	  [`(lambda (,x) ,body)                                                ]
+  [`(lambda (,x) ,body)                        ]
 
-	  [`(,rator ,rand)                                                     ])))
+  [`(,rator ,rand)                           ])))
 ```
 
 # Variable occurrences
 
-  For us, to say a variable *occurs* is a technical term. An
-  *occurrence* of a variable is something we can reach via recursion.
+ For us, to say a variable *occurs* is a technical term. An
+ *occurrence* of a variable is something we can reach via recursion.
 
-  A variable *occurs* in an expression when we can reach that variable
-  by structural recursion on that expression.
+ A variable *occurs* in an expression when we can reach that variable
+ by structural recursion on that expression.
 
     |------+--------+----------+--------------------------+---------|
     | Does |        | occur in |                          | ? (Y/N) |
