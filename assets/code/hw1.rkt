@@ -305,11 +305,13 @@ years ago, back when lexical scope wasn't a thing, higher-order
 functions weren't commonplace like they are today, and many of the
 common programming idioms and that we take for granted just weren't
 around. Since I hate to pass up an excuse to show off something cool,
-I gotta tell you about the derivation and explanation of the last
-couple of answers here, but you have to promise (1) you'll try it
-first on your own, and (2) that if you peek at the answers, you'll
-read the whole thing. It's short, moves quickly, and very high
-enlightenment/text ratio. That's my sales pitch.
+I gotta tell you about
+[this](https://www.brics.dk/RS/07/14/BRICS-RS-07-14.pdf) derivation
+and explanation of answers to the last couple of problems, but you
+have to promise (1) you'll try it first on your own, and (2) that if
+you peek at the answers, you'll read the whole thing. It's short,
+moves quickly, and very high enlightenment/text ratio. That's my sales
+pitch.
 
 |# 
 
@@ -348,6 +350,10 @@ enlightenment/text ratio. That's my sales pitch.
 (check-true* (λ (s1 s2) (set=? (map ((curryr sort) >) s1) s2))
   [(powerset-fr '()) '(())]
   [(powerset-fr '(3 2 1)) '((3 2 1) (3 2) (3 1) (3) (2 1) (2) (1) ())])
+
+(check-true* set=?
+  [(cartesian-product-fr '((5 4) (3 2 1))) '((5 3) (5 2) (5 1) (4 3) (4 2) (4 1))]
+  [(cartesian-product-fr '((1) (5 4) (3 2 1))) '((1 5 3) (1 5 2) (1 5 1) (1 4 3) (1 4 2) (1 4 1))])
 
 #| 
 
