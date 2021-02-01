@@ -216,7 +216,10 @@ vars but does not return duplicates. Use union in your definition.
 
 9. Define and test a procedure var-occurs-free? that takes a symbol
 and a lambda-calculus expression and returns #t if that variable
-occurs free in that expression, and #f otherwise.
+occurs free in that expression, and #f otherwise. You may have seen
+solutions in class to these problems that use accumulators. You are
+not permitted to use accumulators on these problems; such solutions do
+not receive credit.
 
 |#
 
