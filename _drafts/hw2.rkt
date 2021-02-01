@@ -61,7 +61,7 @@
         (lambda (g)
           o)))))
 
-#| Natural Recursion Refresher |# 
+#| Part I Natural Recursion Refresher |# 
 
 #| 
 
@@ -143,7 +143,7 @@ return x. You should use assv on this problem.
   [(walk-symbol 'd '((a . 5) (b . 6) (c . f) (e . c) (d . e))) 'f])
 
 
-#| Free, Bound, Lexical Address |# 
+#| Part II Free, Bound, Lexical Address |# 
 
 #| 
 
@@ -249,7 +249,11 @@ occurs bound in the expression, and #f otherwise.
 
 #| 
 
-11. Define and test a procedure unique-free-vars that takes a lambda-calculus expression and returns a list of all the variables that occur free in that expression. Order doesn't matter, but the list must not contain duplicate variables. You may find it helpful to use the definition of unique-vars as a starting point.
+11. Define and test a procedure unique-free-vars that takes a
+lambda-calculus expression and returns a list of all the variables
+that occur free in that expression. Order doesn't matter, but the list
+must not contain duplicate variables. You may find it helpful to use
+the definition of unique-vars as a starting point.
 
 |#
 
