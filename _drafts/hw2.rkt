@@ -260,7 +260,7 @@ the definition of unique-vars as a starting point.
 
 |#
 
-(check-true* equal? 
+(check-true* set=?
   [(unique-free-vars 'x) '(x)]
   [(unique-free-vars '(lambda (x) (x y))) '(y)]
   [(unique-free-vars '((lambda (x) ((x y) e)) (lambda (c) (x (lambda (x) (x (e c))))))) '(y e x)])
