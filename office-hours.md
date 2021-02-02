@@ -7,7 +7,7 @@ layout: single
 
 We will use the Microsoft Teams Team room for this class as a standing
 ["study hall"
-room](https://teams.microsoft.com/l/team/19%3a60905eee13be41edaf24bb474bb6feda%40thread.tacv2/conversations?groupId=f452b406-b176-4311-a553-896cd36bfae7&tenantId=a8eec281-aaa3-4dae-ac9b-9a398b9215e7),
+room](https://teams.microsoft.com/l/team/19%3a823a4fa4711746fcbd6d15a7d267383f%40thread.tacv2/conversations?groupId=4ef8c36a-97f0-4e58-92f9-6afd1b0e91bd&tenantId=a8eec281-aaa3-4dae-ac9b-9a398b9215e7),
 and a waiting room where students should virtually wait for our staff
 will go to find you when it is your turn. If you can help another
 student without "giving away the punchline" of a question or
