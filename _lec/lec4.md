@@ -6,8 +6,6 @@ date: 2020-02-01
 # Questions 
   + Brief Homework questions 
 
-# Review 
-
 # `lambda` calculus expressions as datatype.
 
 ```
