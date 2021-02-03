@@ -121,7 +121,8 @@ in your definition.
 
 8. Define and test a procedure append that takes a list l and any
 racket datum d, and returns a new racket datum with the elements of l
-prepended.
+prepended. This should work for any racket datum d, but testing
+against the data we have talked about in class is sufficient.
 
 |# 
 
