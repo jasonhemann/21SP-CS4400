@@ -53,9 +53,9 @@ functions need only hold over eqv?-comparable structures.
 
 #| 
 
-3. Define and test a procedure remv that takes a symbol and a list
-and returns a list similar except its missing the first occurrence (if
-any) of the symbol.
+3. Define and test a procedure remv that takes an atom and a list of
+atoms and returns a list similar except its missing the first
+occurrence (if any) of the input atom.
 
 |# 
 
