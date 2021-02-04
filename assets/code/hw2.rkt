@@ -82,7 +82,8 @@ function. It should behave like Racket's list-ref.
 ;; list-ref's definition by completing a naturally-recursive
 ;; implementation of nth-cdr, so that the following tests pass. You
 ;; must not modify the provided code beyond adding a body. You may of
-;; course add newlines as needed.
+;; course add newlines as needed. Do not call list-ref, either ours or
+;; Racket's, in your definition.
 
 (check-true* equal? 
   [(list-ref '(a b c) 2) 'c]
