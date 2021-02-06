@@ -381,8 +381,10 @@ will help you, copy it over to this file.
 
 ;; Boxes are mutable memory references, meaning we can change the
 ;; value the box contains. You will find it useful to consult the
-;; Racket Documentation about boxes for information about the box,
-;; unbox, and set-box! functions for this problem.
+;; [Racket Documentation about
+;; boxes](https://docs.racket-lang.org/reference/boxes.html) for
+;; information about the box, unbox, and set-box! functions for this
+;; problem.
 
 ;; For this problem we will now, instead, write our association list
 ;; such that the right-hand side of each association is always a box
