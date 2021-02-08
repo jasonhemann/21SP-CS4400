@@ -93,3 +93,117 @@ haven\'t a notion of negative numbers.
 ## `Ω`, `Y` and recursion
 
 
+# Recursion in the `lambda` calculus
+
+```racket
+((lambda (x) (x x))
+ (lambda (x) (x x)))
+```
+
+-   What? Huh
+
+## The objective: recursion
+
+Pick a simple function we\'d like to write, something like factorial.
+It\'s *pretty* close. We have a free variable in there, `!`.
+
+```racket
+(lambda (n)
+  (if (zero? n) 1
+  (* n (! (sub1 n)))))
+```
+
+We have one, and only one, way bind a free variable - `lambda`.
+
+```racket
+(lambda (!)
+  (lambda (n)
+(if (zero? n) 1
+    (* n (! (sub1 n))))))
+```
+
+Now we have a working definition! (provided we already have a definition
+of `!`. Not [exactly]{.ul} useful.)
+
+```racket
+((lambda (!)
+   (lambda (n)
+ (if (zero? n) 1
+     (* n (! (sub1 n))))))
+ the-real-working-factorial)
+```
+
+And of course, if *that* blob is a real working factorial, then we could
+pass it in to our \"almost factorial\", and that too, would work.
+
+```racket
+((lambda (!)
+   (lambda (n)
+ (if (zero? n) 1
+     (* n (! (sub1 n))))))
+ ((lambda (!)
+(lambda (n)
+  (if (zero? n) 1
+      (* n (! (sub1 n))))))
+  the-real-working-factorial))
+```
+
+It would be pretty slick to be able to pass this \"almost factorial\"
+into itself.
+
+```racket
+((lambda (!) (! !))
+ (lambda (!)
+   (lambda (n)
+ (if (zero? n) 1
+     (* n ((! !) (sub1 n)))))))
+```
+
+We can do that. One additional change, the recursion now needs to take
+`!` into itself.
+
+``` {.example}
+> (((lambda (!) (! !))
+    (lambda (!)
+  (lambda (n)
+    (if (zero? n) 1
+        (* n ((! !) (sub1 n)))))))
+   5)
+120
+```
+
+Voila!
+
+## Abstracting it out.
+
+There\'s two things going on here:
+
+1.  The \"business logic\" of the actual function we\'re writing
+2.  The specialty that\'s giving us recursion.
+
+It\'s a hop, skip, and a jump to separating out the recursion-y part.
+This is the call-by-value Y combinator.
+
+```racket
+(lambda (f)
+  ((lambda (x) (x x))
+   (lambda (x) (f (lambda (y) ((x x) y))))))
+```
+
+To write a recursive function in our language use the following recipe:
+
+1.  Get rid of the `define`, and turn it into an \"almost-\" function.
+2.  Pass that function as an argument to the CBV Y-combinator.
+
+```
+> (((lambda (f)
+  ((lambda (x) (x x))
+   (lambda (x) (f (lambda (y) ((x x) y))))))
+    (lambda (!)
+  (lambda (n)
+    (if (zero? n)
+        1
+        (* n (! (sub1 n)))))))
+   5)
+120
+```
