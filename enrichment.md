@@ -15,14 +15,20 @@ classes: wide
 
 - Vanier's [blogpost on the Y combinator](https://mvanier.livejournal.com/2897.html)
 - Yin Wang's [slide deck on (re-)deriving the Y combinator](https://www.slideshare.net/yinwang0/reinventing-the-ycombinator)
+- [The smallest (in AIT) fix-point combinator](https://tromp.github.io/cl/LC.pdf)
+- [Poly-variadic fixpoint combinators for *mutual* recursion](http://okmij.org/ftp/Computation/fixed-point-combinators.html#Poly-variadic)
+
+- [Hunting the history of Moses Schönfinkel](https://writings.stephenwolfram.com/2020/12/where-did-combinators-come-from-hunting-the-story-of-moses-schonfinkel/)
 
 - [Kleene's "Church predecessor" via a trip to the
 dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
+- [Church encoding is the vistor pattern](https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html)
+- [Bohm-Berarducci encoding--an extension of Church encoding](http://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
 
 - [A Profile of Mathematical Logic](https://store.doverpublications.com/0486434753.html) (A fun, quick-ish read on the story of modern logic)
 - [The Search for Mathematical Roots, 1870-1940: Logics, Set Theories and the Foundations of Mathematics from Cantor through Russell to Gödel](https://press.princeton.edu/books/paperback/9780691058580/the-search-for-mathematical-roots-1870-1940) (A grown-up text on much of the same.)
 - [Philosophy of Computer Science](https://cse.buffalo.edu/~rapaport/Papers/phics.pdf) (Draft text)
 - [Logicomix](https://en.wikipedia.org/wiki/Logicomix) (It's a comic about Russell and early 20th century mathematical logic. ᕕ( ᐛ )ᕗ) 
 
-
+- [SKI Combinator Tetris](https://dirk.rave.org/combinatris/)
 
