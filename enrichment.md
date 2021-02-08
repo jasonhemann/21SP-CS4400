@@ -13,6 +13,12 @@ classes: wide
 - Reynold's ["Definitional Interpreters for Higher-order Programming Languages"](https://link.springer.com/content/pdf/10.1023/A:1010027404223.pdf) [(Updated Notes)](https://link.springer.com/content/pdf/10.1023/A:1010075320153.pdf)
 - Danvy & Nielsen's ["Defunctionalization at Work"](https://www.brics.dk/RS/01/23/BRICS-RS-01-23.pdf)
 
+- Vanier's [blogpost on the Y combinator](https://mvanier.livejournal.com/2897.html)
+- Yin Wang's [slide deck on (re-)deriving the Y combinator](https://www.slideshare.net/yinwang0/reinventing-the-ycombinator)
+
+- [Kleene's "Church predecessor" via a trip to the
+dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
+
 - [A Profile of Mathematical Logic](https://store.doverpublications.com/0486434753.html) (A fun, quick-ish read on the story of modern logic)
 - [The Search for Mathematical Roots, 1870-1940: Logics, Set Theories and the Foundations of Mathematics from Cantor through Russell to Gödel](https://press.princeton.edu/books/paperback/9780691058580/the-search-for-mathematical-roots-1870-1940) (A grown-up text on much of the same.)
 - [Philosophy of Computer Science](https://cse.buffalo.edu/~rapaport/Papers/phics.pdf) (Draft text)

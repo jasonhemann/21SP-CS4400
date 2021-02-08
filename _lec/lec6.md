@@ -35,7 +35,8 @@ Remember, we said that, in a particular sense
 ```
   
   We called that sense *α-equivalence*.
-  
+
+## β, η
 
 # Universality of the `lambda` calculus
 
@@ -44,7 +45,7 @@ Remember, we said that, in a particular sense
 
 ## Church numerals
 
-The lambda calculus can be used to define a representation of natural
+The λ calculus can be used to define a representation of natural
 numbers, called Church numerals, and arithmetic over them. For instance,
 `c5` is the definition of the Church numeral for 5.
 
@@ -88,3 +89,7 @@ should pass.)
 
 In the second case, the Church predecessor of Church zero is zero, as we
 haven\'t a notion of negative numbers.
+
+## `Ω`, `Y` and recursion
+
+
