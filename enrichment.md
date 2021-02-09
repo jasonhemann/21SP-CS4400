@@ -34,3 +34,7 @@ dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
 
 - [SKI Combinator Tetris](https://dirk.rave.org/combinatris/)
 
+- Kowalski on [relational programming, logic beyond prolog](https://arxiv.org/pdf/1412.3480.pdf)
+- [Purity](https://www.metalevel.at/prolog/purity) and [programming purely in Prolog](http://www.complang.tuwien.ac.at/ulrich/papers/PDF/2008-fdpe.pdf)
+- [Paulson on logic programs as inductive definitions](https://link.springer.com/chapter/10.1007/BFb0038699)
+
