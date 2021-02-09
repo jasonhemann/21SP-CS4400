@@ -10,6 +10,8 @@ classes: wide
 - Hutton's [Tutorial on `fold` operators](http://www.cs.nott.ac.uk/~pszgmh/fold.pdf)
 - [On Barron & Strachey's Cartesian product function](https://www.brics.dk/RS/07/14/BRICS-RS-07-14.pdf)
 
+- The [feeling you should get looking at our interpreter](https://www.youtube.com/watch?v=Ow9AtuIuMLw)
+
 - Reynold's ["Definitional Interpreters for Higher-order Programming Languages"](https://link.springer.com/content/pdf/10.1023/A:1010027404223.pdf) [(Updated Notes)](https://link.springer.com/content/pdf/10.1023/A:1010075320153.pdf)
 - Danvy & Nielsen's ["Defunctionalization at Work"](https://www.brics.dk/RS/01/23/BRICS-RS-01-23.pdf)
 
@@ -19,9 +21,9 @@ classes: wide
 - [Poly-variadic fixpoint combinators for *mutual* recursion](http://okmij.org/ftp/Computation/fixed-point-combinators.html#Poly-variadic)
 
 - [Hunting the history of Moses Schönfinkel](https://writings.stephenwolfram.com/2020/12/where-did-combinators-come-from-hunting-the-story-of-moses-schonfinkel/)
-
 - [Kleene's "Church predecessor" via a trip to the
 dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
+
 - [Church encoding is the vistor pattern](https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html)
 - [Bohm-Berarducci encoding--an extension of Church encoding](http://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
 
