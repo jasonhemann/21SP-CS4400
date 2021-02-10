@@ -21,6 +21,8 @@ sidebar-site-map:
     url: /schedule/
   - title: "Piazza"
     url: http://piazza.com/
+  - title: "People"
+    url: /people/
   - title: "Handins/Bottlenose"
     url: https://handins.ccs.neu.edu/
   - title: "Syllabus"
