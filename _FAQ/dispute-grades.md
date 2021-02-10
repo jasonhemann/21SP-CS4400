@@ -28,3 +28,7 @@ should of course raise your concerns with the [Associate Dean of
 Undergraduate Education and
 Experience](http://google.com/search?q=Associate+Dean+of+Undergraduate+Education+and+Experience+site:khoury.northeastern.edu&btnI)
 at Khoury.
+
+Note that, when you dispute a grade, the graders reserve the
+right to either increase *or* decrease your grade, pick choose
+your battles wisely.
