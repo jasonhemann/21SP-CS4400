@@ -126,11 +126,12 @@ to x or satisfy pred.
 
 #| 
 
-4. Define and test a procedure walk-symbol that takes a symbol x and
-an association list s. Your procedure should search through s for the
-value associated with x. If the associated value is a symbol, it too
-must be walked in s. If x has no association, then walk-symbol should
-return x. You should use assv on this problem. 
+4. Define and test a procedure walk-symbol that takes an atom x and an
+association list of symbols to atoms. Your procedure should search
+through s for the value associated with x. If the associated value is
+a symbol, it too must be walked in s. If x has no association, then
+walk-symbol should return x. You should use assv on this
+problem. Cycles are absolutely bad data.
 
 |# 
 
