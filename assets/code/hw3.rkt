@@ -171,7 +171,21 @@
 
 #| 
 
-2. value-of-fn 
+2. value-of-fn. 
+
+We walked through the steps of implementing this in lecture, at least
+for the basic forms. From a software engineering point-of-view, you
+can see this process as follows. In the above, we hard-coded our
+implementation of "environment", tightly coupling the client
+code (value-of) to the implementation of environments. Now, we will
+correct that mistake by engineering an interface: `apply-env-fn`,
+`extend-env-fn`, and `empty-env-fn` collectively make up the interface
+for environments. By replacing those hard-coded implementations of
+environments with calls to these "help functions" we will construct an
+interface against which we can program, correctly separating the
+client code that uses environment from the implementation that
+provides environment across the interface.
+
 
 |# 
 
@@ -267,6 +281,31 @@
 #| 
 
 3. value-of-ds
+
+We walked through the steps of implementing this in lecture, at least
+for the basic forms. We can also see this step from a software
+engineering point-of-view as follows. In the above, we shimmed in an
+interface to separate our client code that uses environment and our
+implementation code that provides environment, across an interface
+that is the three functions `apply-env-fn`, `extend-env-fn`, and
+`empty-env-fn`. In this step, we will now demonstrate to ourselves
+that this was a well-defined interface, that is, that our interface is
+not "leaky." We will re-implement environment, using an entirely
+different representation behind-the-scenes. Since our client (the
+interpreter) is programming against the interface, though, the client
+code won't have to change at all*.
+
+With this switch to a representation of environments as data
+structures, we notice another neat thing. We changed our environment
+went from a higher-order, functional representation in the last part
+of the assignment to now, a first-order data structure
+representation. And we can match against our environment like you
+would any old data definition. 
+
+
+* Okay, we're changing it from -fn to -ds both the interpreter and
+the "helper" interface functions, but this is just so that we can have
+them all in the same file.
 
 |# 
 
