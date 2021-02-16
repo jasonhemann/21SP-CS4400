@@ -17,15 +17,17 @@
 ;; not get this correct last week, please see a TA and get help on
 ;; this before you go further.
 
-;; Rename that interpreter value-of, rename its environment helpers
-;; extend-env, apply-env, and empty-env, respectively. 
+;; In this file, rename that interpreter value-of, rename its
+;; environment helpers extend-env, apply-env, and empty-env,
+;; respectively.
 
 ;; Copy your correctly-implemented lex over from the second
-;; assignment. If you do not yet have this correct please see a TA and
-;; get help on this before you go further.
+;; assignment. If you do not yet have this correct please seek
+;; guidance from a TA. This is a second chance at a whack at that
+;; earlier problem.
 
 ;; The main goal of this assignment is to implement dynamic scope, you
-;; must complete value-of-scopes to get an S- or above on this
+;; must complete value-of-dynamic to get an S- or above on this
 ;; assignment.
 
 #| Regression Testing and Enhancing |# 
