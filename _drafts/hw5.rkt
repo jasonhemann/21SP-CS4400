@@ -64,96 +64,93 @@
 
 |#
 
-;; ...but returns 55 under CBV!  You can change the "begin2" to
-;; "begin" and evaluate this in the Racket REPL as evidence that
-;; Racket uses CBV.
-> (val-of-cbv
-   '((lambda (f)
-       ((lambda (g)
-          ((lambda (z) (begin2
-                        (g z)
-                        z))
-           55))
-        (lambda (y) (f y)))) (lambda (x) (set! x 44)))
-   (empty-env))
-55
-
-;; ...but returns 3 under CBV.
-> (val-of-cbv
-   '((lambda (a)
-       ((lambda (p)
-          (begin2
-           (p a)
-           a)) (lambda (x) (set! x 4)))) 3)
-   (empty-env))
-3
-;; ...but returns 33 under CBV.
-> (val-of-cbv
-   '((lambda (swap)
-       ((lambda (a)
-          ((lambda (b)
+(check-true* equal?
+  ;; Returns 55 under CBV. You can change the "begin2" to "begin" and
+  ;; evaluate this in the Racket REPL as evidence that Racket uses CBV.
+  [(val-of-cbv
+    '((lambda (f)
+        ((lambda (g)
+           ((lambda (z) (begin2
+                         (g z)
+                         z))
+            55))
+         (lambda (y) (f y)))) (lambda (x) (set! x 44)))
+    (empty-env))
+  55]
+  ;; Returns 3 under CBV.
+  [(val-of-cbv
+    '((lambda (a)
+        ((lambda (p)
+           (begin2
+            (p a)
+            a)) (lambda (x) (set! x 4)))) 3)
+    (empty-env))
+  3]
+  ;; Returns 33 under CBV.
+  [(val-of-cbv
+    '((lambda (swap)
+        ((lambda (a)
+           ((lambda (b)
+              (begin2
+               ((swap a) b)
+               a)) 44)) 33))
+      (lambda (x)
+        (lambda (y)
+          ((lambda (temp)
              (begin2
-              ((swap a) b)
-              a)) 44)) 33))
-     (lambda (x)
-       (lambda (y)
-         ((lambda (temp)
-            (begin2
-             (set! x y)
-             (set! y temp))) x))))
-   (empty-env))
-33
+              (set! x y)
+              (set! y temp))) x))))
+    (empty-env))
+  33])
 
 #| 
 
 2. val-of-cbr, your call-by-reference interpreter
 
 |# 
-
-;; Making sure set! works
-> (val-of-cbr
-   '((lambda (x) (begin2 (set! x #t)
-                         (if x 3 5))) #f)
-   (empty-env))
-3
-
-;; Returns 4 under CBR...
-> (val-of-cbr
-   '((lambda (a)
-       ((lambda (p)
-          (begin2
-           (p a)
-           a)) (lambda (x) (set! x 4)))) 3)
-   (empty-env))
-4
-;; returns 44 under CBR...
-> (val-of-cbr
-   '((lambda (f)
-       ((lambda (g)
-          ((lambda (z) (begin2
-                        (g z)
-                        z))
-           55))
-        (lambda (y) (f y)))) (lambda (x) (set! x 44)))
-   (empty-env))
-44
-
-;; Returns 44 under CBR...
-> (val-of-cbr
-   '((lambda (swap)
-       ((lambda (a)
-          ((lambda (b)
+(check-true* equal?
+  ;; Making sure set! works
+  [(val-of-cbr
+    '((lambda (x) (begin2 (set! x #t)
+                          (if x 3 5))) #f)
+    (empty-env))
+  3]
+  ;; Returns 4 under CBR. 
+  [(val-of-cbr
+    '((lambda (a)
+        ((lambda (p)
+           (begin2
+            (p a)
+            a)) (lambda (x) (set! x 4)))) 3)
+    (empty-env))
+  4]
+  ;; Returns 44 under CBR.
+  [(val-of-cbr
+    '((lambda (f)
+        ((lambda (g)
+           ((lambda (z) (begin2
+                         (g z)
+                         z))
+            55))
+         (lambda (y) (f y)))) (lambda (x) (set! x 44)))
+    (empty-env))
+  44]
+  ;; Returns 44 under CBR.
+  [(val-of-cbr
+    '((lambda (swap)
+        ((lambda (a)
+           ((lambda (b)
+              (begin2
+               ((swap a) b)
+               a)) 44)) 33))
+      (lambda (x)
+        (lambda (y)
+          ((lambda (temp)
              (begin2
-              ((swap a) b)
-              a)) 44)) 33))
-     (lambda (x)
-       (lambda (y)
-         ((lambda (temp)
-            (begin2
-             (set! x y)
-             (set! y temp))) x))))
-   (empty-env))
-44
+              (set! x y)
+              (set! y temp))) x))))
+    (empty-env))
+  44])
 
 #| 
 
@@ -168,25 +165,27 @@
           (if (zero? n) #f (if (zero? n) #f (if (zero? n) #f (if (zero? n) #f (if (zero? n) #f (if (zero? n) #f #t))))))))
     (random 2)))
 
-;;P(false positive) <= .01
-> (val-of-cbname random-sieve (empty-env))
-#f
-;; Does not terminate with val-of-cbr or val-of-cbv -- try it!
-> (val-of-cbname
-   '((lambda (z) 100)
-     ((lambda (x) (x x)) (lambda (x) (x x))))
-   (empty-env))
-100
+(check-true* equal? 
+  ;;P(false positive) <= .01
+  [(val-of-cbname random-sieve (empty-env))
+   #f]
+  ;; Does not terminate with val-of-cbr or val-of-cbv -- try it!
+  [(val-of-cbname
+    '((lambda (z) 100)
+      ((lambda (x) (x x)) (lambda (x) (x x))))
+    (empty-env))
+  100])
 
 #| 
 
-4. val-of-cbneed, your call-by-need      
+4. val-of-cbneed, your call-by-need interpreter.
 
 |# 
 
-;; call-by-need
-> (val-of-cbneed random-sieve (empty-env))
-#t
+(check-true* equal? 
+  ;; call-by-need
+  [(val-of-cbneed random-sieve (empty-env))
+  #t])
 
 #| Brainteasers - 5400 Only |#
 
@@ -228,8 +227,9 @@ interpreter along with add1, empty list, let, and null?.
                          (lambda (i)
                            (cons^ 1 ((map (lambda (x) (add1 x))) (m i)))))) 0)) 5)))))
 
-> (val-of-cbv cons-test (empty-env))
-(1 2 3 4 5)
+(check-true* equal?
+  [(val-of-cbv cons-test (empty-env))
+   '(1 2 3 4 5)])
 
 #| Just Dessert |#
 
@@ -239,6 +239,13 @@ interpreter along with add1, empty list, let, and null?.
 assignment, most similar? Why? For your choice of interpreter, give an
 example expression where that interpreter still behaves differently
 from norm.
+
+|# 
+
+#| 
+
+Answer:
+
 
 |# 
 
