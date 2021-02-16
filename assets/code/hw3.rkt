@@ -80,6 +80,8 @@
    3]
   [(value-of '(sub1 4) (lambda (y) (error 'value-of "unbound variable ~a" y)))
    3]
+  [(value-of '(sub1 (sub1 4)) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   2]
   [(value-of '(zero? 3) (lambda (y) (error 'value-of "unbound variable ~a" y)))
    #f]
   [(value-of '(zero? 0) (lambda (y) (error 'value-of "unbound variable ~a" y)))
@@ -88,6 +90,12 @@
    #t]
   [(value-of '(* 3 4) (lambda (y) (error 'value-of "unbound variable ~a" y)))
    12]
+  [(value-of '(* (sub1 4) 4) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   12]
+  [(value-of '(* 3 (sub1 4)) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   9]
+  [(value-of '(sub1 (* 3 4)) (lambda (y) (error 'value-of "unbound variable ~a" y)))
+   11]
   [(value-of '(if #t 30 25) (lambda (y) (error 'value-of "unbound variable ~a" y)))
    30]
   [(value-of '(if #f 30 25) (lambda (y) (error 'value-of "unbound variable ~a" y)))
