@@ -1,7 +1,7 @@
 #lang racket
 (require rackunit-abbrevs
          rackunit/chk
-         (only-in rebellion/collection/multiset sequence->multiset))
+         rebellion/collection/multiset)
 
 #| Free, Bound, and Lexical Address |# 
 
@@ -99,7 +99,7 @@ matter. You should use memv on this problem.
 
 |# 
 
-(check-true* set=?
+(check-true* (lambda args (apply equal? (apply multiset args)))
   [(union '() '()) '()]
   [(union '(x) '()) '(x)]
   [(union '(x) '(x)) '(x)]
@@ -178,6 +178,7 @@ whether that variable occurs in the expression.
 
 (check-true* equal?
   [(var-occurs? 'x 'x) '#t]
+  [(var-occurs? 'x '(lambda (x) x)) '#t]
   [(var-occurs? 'x '(lambda (x) y)) '#f]
   [(var-occurs? 'x '(lambda (y) x)) '#t]
   [(var-occurs? 'x '((z y) x)) '#t])
@@ -209,7 +210,7 @@ vars but does not return duplicates. Use union in your definition.
 
 |#
 
-(check-true* set=?
+(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
   [(unique-vars '((lambda (y) (x x)) (x y))) '(x y)]
   [(unique-vars '((lambda (z) (lambda (y) (z y))) x)) '(z y x)]
   [(unique-vars '((lambda (a) (a b)) ((lambda (c) (a c)) (b a)))) '(c b a)])
@@ -262,7 +263,7 @@ the definition of unique-vars as a starting point.
 
 |#
 
-(check-true* set=?
+(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
   [(unique-free-vars 'x) '(x)]
   [(unique-free-vars '(lambda (x) (x y))) '(y)]
   [(unique-free-vars '((lambda (x) ((x y) e)) (lambda (c) (x (lambda (x) (x (e c))))))) '(y e x)])
@@ -283,7 +284,7 @@ the list must not contain duplicate variables.
 
 |# 
 
-(check-true* set=?  
+(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
   [(unique-bound-vars 'x) '()]
   [(unique-bound-vars '(lambda (x) y)) '()]
   [(unique-bound-vars '(lambda (x) (x y))) '(x)]
@@ -293,7 +294,10 @@ the list must not contain duplicate variables.
    '(x c)]
   [(unique-bound-vars '(lambda (y) y)) '(y)]
   [(unique-bound-vars '(lambda (x) (y z))) '()]
-  [(unique-bound-vars '(lambda (x) (lambda (x) x))) '(x)])
+  [(unique-bound-vars '(lambda (x) (lambda (x) x))) '(x)]
+  [(unique-bound-vars '(lambda (x) (lambda (x) (lambda (x) x)))) '(x)])
+
+
 
 #| 
 

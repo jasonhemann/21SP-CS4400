@@ -286,7 +286,7 @@ your tuples may differ; this is acceptable.
 
 |#
 
-(check-true* set=?
+(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
   [(cartesian-product '((5 4) (3 2 1))) '((5 3) (5 2) (5 1) (4 3) (4 2) (4 1))]
   [(cartesian-product '((1) (5 4) (3 2 1))) '((1 5 3) (1 5 2) (1 5 1) (1 4 3) (1 4 2) (1 4 1))])
 
@@ -352,7 +352,7 @@ pitch.
   [(powerset-fr '()) '(())]
   [(powerset-fr '(3 2 1)) '((3 2 1) (3 2) (3 1) (3) (2 1) (2) (1) ())])
 
-(check-true* set=?
+(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
   [(cartesian-product-fr '((5 4) (3 2 1))) '((5 3) (5 2) (5 1) (4 3) (4 2) (4 1))]
   [(cartesian-product-fr '((1) (5 4) (3 2 1))) '((1 5 3) (1 5 2) (1 5 1) (1 4 3) (1 4 2) (1 4 1))])
 
