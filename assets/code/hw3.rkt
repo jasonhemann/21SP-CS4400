@@ -67,7 +67,7 @@
 
 #|
 
-2. value-of 
+1. value-of 
 
 |# 
 
@@ -163,7 +163,7 @@
 
 #| 
 
-3. value-of-fn 
+2. value-of-fn 
 
 |# 
 
@@ -258,7 +258,7 @@
 
 #| 
 
-4. value-of-ds
+3. value-of-ds
 
 |# 
 
@@ -355,7 +355,7 @@
 
 #| 
 
-5. Implement an interpreter fo-eulav. Let the below examples guide
+4. Implement an interpreter fo-eulav. Let the below examples guide
 you. I only require you to implement those forms I use in those
 examples.
 
@@ -409,7 +409,7 @@ examples.
 
 #| 
 
-6. Without using lambda or the implicit lambda in an "MIT-define",
+5. Without using lambda or the implicit lambda in an "MIT-define",
 define apply-env-lex and extend-env-lex. A correct solution is very
 short.  
 
@@ -417,7 +417,7 @@ short.
 
 #|
 
-7. Go back and extend your interpreter value-of to support set! and
+6. Go back and extend your interpreter value-of to support set! and
 begin2, where begin2 is a variant of Racket's begin that takes exactly
 two arguments, and set! mutates variables.
 
@@ -534,7 +534,7 @@ two arguments, and set! mutates variables.
 
 #| 
 
-8. Your task, however, is to implement csub1, Church predecessor. Your
+7. Your task, however, is to implement csub1, Church predecessor. Your
 implementation should pass the following tests. In the second case,
 the Church predecessor of Church zero is zero, as we haven't a notion
 of negative numbers. This was a difficult problem, but it's fun, so
