@@ -269,8 +269,7 @@ elements in the list. Implementations may different in the exact order
 of their results' sublists.
 
 |# 
-
-(check-true* (λ (s1 s2) (set=? (map ((curryr sort) >) s1) s2))
+(check-true* (λ args (apply equal? (map (compose sequence->multiset ((curry map) sequence->multiset)) args)))
   [(powerset '()) '(())]
   [(powerset '(3 2 1)) '((3 2 1) (3 2) (3 1) (3) (2 1) (2) (1) ())])
 
@@ -286,7 +285,7 @@ your tuples may differ; this is acceptable.
 
 |#
 
-(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
+(check-true* (λ args (apply equal? (map sequence->multiset args))))
   [(cartesian-product '((5 4) (3 2 1))) '((5 3) (5 2) (5 1) (4 3) (4 2) (4 1))]
   [(cartesian-product '((1) (5 4) (3 2 1))) '((1 5 3) (1 5 2) (1 5 1) (1 4 3) (1 4 2) (1 4 1))])
 
@@ -348,11 +347,11 @@ pitch.
 (check-true* equal?
   [(set-difference-fr '(1 2 3 4 5) '(2 4 6 8)) '(1 3 5)])
 
-(check-true* (λ (s1 s2) (set=? (map ((curryr sort) >) s1) s2))
+(check-true* (λ args (apply equal? (map (compose sequence->multiset ((curry map) sequence->multiset)) args)))
   [(powerset-fr '()) '(())]
   [(powerset-fr '(3 2 1)) '((3 2 1) (3 2) (3 1) (3) (2 1) (2) (1) ())])
 
-(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
+(check-true* (λ args (apply equal? (map sequence->multiset args))))
   [(cartesian-product-fr '((5 4) (3 2 1))) '((5 3) (5 2) (5 1) (4 3) (4 2) (4 1))]
   [(cartesian-product-fr '((1) (5 4) (3 2 1))) '((1 5 3) (1 5 2) (1 5 1) (1 4 3) (1 4 2) (1 4 1))])
 

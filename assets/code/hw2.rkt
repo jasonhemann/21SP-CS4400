@@ -99,7 +99,7 @@ matter. You should use memv on this problem.
 
 |# 
 
-(check-true* (lambda args (apply equal? (apply multiset args)))
+(check-true* (λ args (apply equal? (apply multiset args)))
   [(union '() '()) '()]
   [(union '(x) '()) '(x)]
   [(union '(x) '(x)) '(x)]
@@ -193,9 +193,7 @@ matter.
 
 |#
 
-(check-true* (λ (s1 s2) 
-               (equal? (sequence->multiset s1)
-                       (sequence->multiset s2)))
+(check-true* (λ args (apply equal? (map sequence->multiset args))))
   [(vars 'x) '(x)]
   [(vars '(lambda (x) x)) '(x)]
   [(vars '((lambda (y) (x x)) (x y))) '(x x x y)]
@@ -210,7 +208,7 @@ vars but does not return duplicates. Use union in your definition.
 
 |#
 
-(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
+(check-true* (λ args (apply equal? (map sequence->multiset args))))
   [(unique-vars '((lambda (y) (x x)) (x y))) '(x y)]
   [(unique-vars '((lambda (z) (lambda (y) (z y))) x)) '(z y x)]
   [(unique-vars '((lambda (a) (a b)) ((lambda (c) (a c)) (b a)))) '(c b a)])
@@ -263,7 +261,7 @@ the definition of unique-vars as a starting point.
 
 |#
 
-(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
+(check-true* (λ args (apply equal? (map sequence->multiset args))))
   [(unique-free-vars 'x) '(x)]
   [(unique-free-vars '(lambda (x) (x y))) '(y)]
   [(unique-free-vars '((lambda (x) ((x y) e)) (lambda (c) (x (lambda (x) (x (e c))))))) '(y e x)])
@@ -284,7 +282,7 @@ the list must not contain duplicate variables.
 
 |# 
 
-(check-true* (lambda (s1 s2) (equal? (apply multiset s1) (apply multiset s2)))
+(check-true* (λ args (apply equal? (map sequence->multiset args))))
   [(unique-bound-vars 'x) '()]
   [(unique-bound-vars '(lambda (x) y)) '()]
   [(unique-bound-vars '(lambda (x) (x y))) '(x)]

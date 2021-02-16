@@ -386,20 +386,19 @@ examples.
 ;; are a few other slight variations in the syntax of the
 ;; language. These are of no particular consequence.
 
-(define value-of-lex
-  (lambda (exp env)
-    (match exp
-      [`(const ,expr) expr]
-      [`(mult ,x1 ,x2) (* (value-of-lex x1 env) (value-of-lex x2 env))]
-      [`(zero ,x) (zero? (value-of-lex x env))]
-      (`(sub1 ,body) (sub1 (value-of-lex body env)))
-      (`(if ,t ,c ,a) (if (value-of-lex t env) (value-of-lex c env) (value-of-lex a env)))
-      (`(var ,num) (apply-env-lex env num))
-      (`(lambda ,body) (lambda (a) (value-of-lex body (extend-env-lex a env))))
-      (`(,rator ,rand) ((value-of-lex rator env) (value-of-lex rand env))))))
+(define (value-of-lex exp env)
+  (match exp
+    [`(const ,expr) expr]
+    [`(mult ,x1 ,x2) (* (value-of-lex x1 env) (value-of-lex x2 env))]
+    [`(zero ,x) (zero? (value-of-lex x env))]
+    [`(sub1 ,body) (sub1 (value-of-lex body env))]
+    [`(if ,t ,c ,a) (if (value-of-lex t env) (value-of-lex c env) (value-of-lex a env))]
+    [`(var ,num) (apply-env-lex env num)]
+    [`(lambda ,body) (lambda (a) (value-of-lex body (extend-env-lex a env)))]
+    [`(,rator ,rand) ((value-of-lex rator env) (value-of-lex rand env))]))
  
-(define empty-env-lex 
-  (lambda () '()))
+(define (empty-env-lex)
+  '())
 
 ;; From the following call one can see we're using a data-structure
 ;; representation of environments.
@@ -497,12 +496,16 @@ two arguments, and set! mutates variables.
 ;; The lambda calculus can be used to define a representation of
 ;; natural numbers, called Church numerals, and arithmetic over
 ;; them. For instance, c5 is the definition of the Church numeral for
-;; 5.
+;; 5. This is often described as "representing a number by its
+;; fold". What they mean by this is: think of any given number not a
+;; piece of data, but in terms of "the interface it implements." What
+;; does a number *do* for you? It tells you how many times to iterate
+;; some behavior. 
 
 #| 
 
-> (define c0 (lambda (f) (lambda (x) x)))
-> (define c5 (lambda (f) (lambda (x) (f (f (f (f (f x))))))))
+> (define c0 (lambda (s) (lambda (z) z)))
+> (define c5 (lambda (s) (lambda (z) (s (s (s (s (s z))))))))
 > ((c5 add1) 0)
 5
 > ((c0 add1) 0)
@@ -513,11 +516,14 @@ two arguments, and set! mutates variables.
 ;; The following is a definition for Church plus, which performs
 ;; addition over Church numerals.
 
-#| 
+(define c+
+  (lambda (m) 
+    (lambda (n) 
+      (lambda (s)
+        (lambda (z)
+          ((m s) ((n s) z)))))))
 
-> (define c+ (lambda (m) 
-               (lambda (n) 
-                 (lambda (a) (lambda (b) ((m a) ((n a) b)))))))
+#| 
 > (let ((c10 ((c+ c5) c5)))
     ((c10 add1) 0))
 10
@@ -547,4 +553,6 @@ dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850).
 (check-true* equal? 
   [(((csub1 c5) add1) 0) 4]
   [(((csub1 c0) add1) 0) 0])
+  [((((c+ (csub1 (csub1 c5))) (csub1 c5)) add1) 0) 9]
+
 
