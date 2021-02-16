@@ -303,9 +303,10 @@ representation. And we can match against our environment like you
 would any old data definition. 
 
 
-* Okay, we're changing it from -fn to -ds both the interpreter and
-the "helper" interface functions, but this is just so that we can have
-them all in the same file.
+* Okay, so we're in point of fact changing both the interpreter client
+code and the "helper" interface functions from -fn to -ds, but this is
+just so that we can have the different versions of this interpreter in
+the same file.
 
 |# 
 
