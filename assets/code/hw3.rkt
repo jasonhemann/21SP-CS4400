@@ -190,6 +190,10 @@ provides environment across the interface.
 |# 
 
 (check-true* equal?
+  [(apply-env-fn (extend-env-fn 'x 7 (extend-env-fn 'x 6 (empty-env-fn))) 'x)
+   7]
+  [(apply-env-fn (extend-env-fn 'x 7 (extend-env-fn 'y 6 (empty-env-fn))) 'y)
+   6]
   [(value-of-fn '#f (empty-env-fn))
    #f]
   [(value-of-fn '#t (empty-env-fn))
@@ -311,6 +315,10 @@ the same file.
 |# 
 
 (check-true* equal?
+  [(apply-env-ds (extend-env-ds 'x 7 (extend-env-ds 'x 6 (empty-env-ds))) 'x)
+   7]
+  [(apply-env-ds (extend-env-ds 'x 7 (extend-env-ds 'y 6 (empty-env-ds))) 'y)
+   6]
   [(value-of-ds '#f (empty-env-ds))
    #f]
   [(value-of-ds '#t (empty-env-ds))
