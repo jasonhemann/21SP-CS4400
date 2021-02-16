@@ -17,32 +17,29 @@
 ;; -- Luke Palmer
 
 
-
 #| Assignment Guidelines |# 
 
-;; When CPSing, you may treat built-in procedures such as null?,
+;; When CPSing, you may treat built-in procedures such as empty?,
 ;; add1, assq, car, <, and the like as "simple".
    
 ;; Test your CPSed procedures using the initial continuation returned
 ;; from the following (uncommented) empty-k. You may have seen empty-k
 ;; defined as 
 
-;; (define empty-k 
-;;   (lambda ()
-;;     (lambda (v) v)))
+;; (define (empty-k)
+;;   (λ (v) v))
 
 ;; However, the one below is much better, in that it will help you
 ;; better detect if you have made a mistake in cps-ing.
 
-(define empty-k
-  (lambda ()
-    (let ((once-only #f))
-      (lambda (v)
-        (if once-only 
-	    (error 'empty-k "You can only invoke the empty continuation once")
-	    (begin (set! once-only #t) v))))))
+(define (empty-k)
+  (let ((once-only #f))
+    (λ (v)
+      (if once-only 
+          (error 'empty-k "You can only invoke the empty continuation once")
+          (begin (set! once-only #t) v)))))
 
-#| call/cc |#
+#| call/cc and let/cc |#
 
 ;; 1. Complete the following definition of last-non-zero, a function
 ;; which takes a list of numbers and returns the last cdr whose car is
@@ -50,20 +47,18 @@
 ;; should be all numbers before the first 0 is reached. See the test
 ;; cases below and student test file for examples. Your solution
 ;; should be naturally recursive, and should not contain any calls to
-;; member-like operations.
+;; member-like operations or last-non-zero. You must not modify the
+;; provided code beyond adding a body. You may of course add newlines
+;; as needed.
 
-(define last-non-zero
-  (lambda (ls) 
-    (call/cc
-     (lambda (k)
-       (letrec
-         ((lnz
-           (lambda (ls)
-             
-
-	     
-	     )))
-         (lnz ls))))))
+(define (last-non-zero ls)
+  (let/cc k
+    (letrec
+      ((lnz
+         (λ (ls)
+           ;; complete the definition	     
+           )))
+      (lnz ls))))
 
 (check-true* equal?
   [(last-non-zero '(0)) '()]
@@ -80,45 +75,54 @@
 ;; styles. Then, complete the definition below to build a third
 ;; version, mult/cc, which instead uses a system continuation k to
 ;; return with 0 if the list contains a 0. Your implementation should
-;; be naturally-recursive.
+;; be naturally-recursive, and should not contain any calls to
+;; member-like operations or last-non-zero. You must not modify the
+;; provided code beyond adding a body. You may of course add newlines
+;; as needed.
 
 #| 
-> (define my-*
-    (lambda (m n)
-      (* m n)))
-> (define mult
-    (lambda (n*)
-      (letrec
-        ((m
-          (lambda (n*)
-            (cond
-              ((null? n*) 1)
-              ((zero? (car n*)) 0)
-              (else (my-* (car n*) (mult (cdr n*))))))))
-        (m n*))))
-> (define mult/acc
-    (lambda (n*)
-      (letrec 
-        ((m/acc
-          (lambda (n* acc)
-            (cond
-              ((null? n*) acc)
-              ((zero? (car n*)) 0)
-              (else (m/acc (cdr n*) (my-* (car n*) acc)))))))
-        (m/acc n* 1))))
+> (define (my-* m n)
+    (* m n))
+> (define (mult n*)
+    (letrec
+      ((m
+         (λ (n*)
+           (cond
+             ((empty? n*) 1)
+             ((zero? (car n*)) 0)
+             (else (my-* (car n*) (mult (cdr n*))))))))
+      (m n*)))
+> (define (mult/acc n*)
+    (letrec 
+      ((m/acc
+         (λ (n* acc)
+           (cond
+             ((empty? n*) acc)
+             ((zero? (car n*)) 0)
+             (else (m/acc (cdr n*) (my-* (car n*) acc)))))))
+      (m/acc n* 1)))
 |# 
 
-;; If you instead require the C311/trace library, and define my-* to
-;; be traced, we see an interesting property. When you have a 0 in the
+
+(define (mult/cc n*)
+  (let/cc k
+    (letrec
+      ((m/cc
+         (λ (n*)
+           ;; complete the definition
+           )))
+      (m/cc n*))))
+
+;; If you require the racket trace library, and define my-* to be
+;; traced, we see an interesting property. When you have a 0 in the
 ;; list, both the direct and accumulator passing versions perform
 ;; multiplications until they reach a 0, yet mult/cc performs //no//
 ;; multiplications in the presence of a 0. Which is neat.
 
 #| 
 > (require racket/trace)
-> (trace-define my-*
-    (lambda (m n)
-      (* m n)))
+> (trace-define (my-* m n)
+    (* m n))
 > (mult '(1 2 3 4 0 6 7 8 9))
 >(my-* 4 0)
 <0
@@ -143,25 +147,14 @@
 0
 |# 
 
-(define mult/cc
-  (lambda (n*)
-    (call/cc
-     (lambda (k)
-       (letrec
-         ((m/cc
-           (lambda (n*)
-
-
-
-             )))
-         (m/cc n*))))))
-
 #| CPS |#
 
 #| 
 
 In this portion of the assignment, you will also have to construct and
-submit your own tests.
+submit your own tests. We use the explicit `λ` syntax here
+because we think it may be helpful to you; of course you are not
+required to do so.
 
 |#
 
@@ -169,9 +162,9 @@ submit your own tests.
 ;; the following times procedure.
 
 (define times
-  (lambda (ls)
+  (λ (ls)
     (cond
-      [(null? ls) 1]
+      [(empty? ls) 1]
       [(zero? (car ls)) 0]
       [else (* (car ls) (times (cdr ls)))])))
 
@@ -182,12 +175,14 @@ submit your own tests.
 ;; violates the standard rules of CPSing the program, it provides an
 ;; interesting look at optimizations CPSing allows us.
 
+
+
 ;; 5. Define and test a procedure plus-cps that is a CPSed version of
 ;; the following plus procedure. 
 
 (define plus
-  (lambda (m)
-    (lambda (n)
+  (λ (m)
+    (λ (n)
       (+ m n))))
 
 ;; Here are some examples of calls to plus:
@@ -205,10 +200,10 @@ submit your own tests.
 ;; version of the following count-syms* procedure:
 
 (define count-syms*
-  (lambda (ls)
+  (λ (ls)
     (cond
-      [(null? ls) 0]
-      [(pair? (car ls)) (+ (count-syms* (car ls)) (count-syms* (cdr ls)))]
+      [(empty? ls) 0]
+      [(cons? (car ls)) (+ (count-syms* (car ls)) (count-syms* (cdr ls)))]
       [(symbol? (car ls)) (add1 (count-syms* (cdr ls)))]
       [else (count-syms* (cdr ls))])))
 
@@ -229,9 +224,9 @@ submit your own tests.
 ;; version of the following cons-cell-count procedure:
 
 (define cons-cell-count
-  (lambda (ls)
+  (λ (ls)
     (cond
-      [(pair? ls) 
+      [(cons? ls) 
        (add1 (+ (cons-cell-count (car ls)) (cons-cell-count (cdr ls))))]
       [else 0])))
 
@@ -239,7 +234,7 @@ submit your own tests.
 ;; the following walk procedure:
 
 (define walk
-  (lambda (v ls)
+  (λ (v ls)
     (cond
       [(symbol? v)
        (let ((p (assq v ls)))
@@ -270,7 +265,7 @@ s
 ;; in for a long wait.
 
 (define ack
-  (lambda (m n)
+  (λ (m n)
     (cond
       [(zero? m) (add1 n)]
       [(zero? n) (ack (sub1 m) 1)]
@@ -282,10 +277,10 @@ s
 
 
 (define fib
-  (lambda (n)
-    ((lambda (fib)
+  (λ (n)
+    ((λ (fib)
        (fib fib n))
-     (lambda (fib n)
+     (λ (fib n)
        (cond
 	 [(zero? n) 0]
 	 [(= 1 n) 1]
@@ -295,11 +290,11 @@ s
 ;; of the following unfold procedure:
 
 (define unfold
-  (lambda (p f g seed)
-    ((lambda (h)
+  (λ (p f g seed)
+    ((λ (h)
        ((h h) seed '()))
-     (lambda (h)
-       (lambda (seed ans)
+     (λ (h)
+       (λ (seed ans)
 	 (if (p seed)
 	     ans
 	     ((h h) (g seed) (cons (f seed) ans))))))))
@@ -308,7 +303,7 @@ s
 
 #| 
 
-> (unfold null? car cdr '(a b c d e))
+> (unfold empty? car cdr '(a b c d e))
 (e d c b a)
 
 |#
@@ -319,16 +314,16 @@ s
 
 #| 
 
-> (define null?-cps
-    (lambda (ls k)
-      (k (null? ls))))
+> (define empty?-cps
+    (λ (ls k)
+      (k (empty? ls))))
 > (define car-cps
-    (lambda (pr k)
+    (λ (pr k)
       (k (car pr))))
 > (define cdr-cps
-    (lambda (pr k)
+    (λ (pr k)
       (k (cdr pr))))
-> (unfold-cps null?-cps car-cps cdr-cps '(a b c d e) (empty-k))
+> (unfold-cps empty?-cps car-cps cdr-cps '(a b c d e) (empty-k))
 (e d c b a)
 
 |# 
@@ -338,10 +333,10 @@ s
 ;; of the following pascal procedure:
 
 (define pascal
-  (lambda (n)
+  (λ (n)
     (let ((pascal
-           (lambda (pascal)
-             (lambda (m a)
+           (λ (pascal)
+             (λ (m a)
                (cond
                  [(> m n) '()]
                  [else (let ((a (+ a m)))
@@ -357,22 +352,22 @@ s
 
 
 (define empty-s
-  (lambda ()
+  (λ ()
     '()))
 
 (define extend-s
-  (lambda (x v s)
+  (λ (x v s)
     (cons `(,x . ,v) s)))
 
 (define unify
-  (lambda (v w s)
+  (λ (v w s)
     (let ([v (walk v s)])
       (let ([w (walk w s)])
         (cond
           [(eqv? v w) s]
           [(symbol? v) (extend-s v w s)]
           [(symbol? w) (extend-s w v s)]
-          [(and (pair? v) (pair? w))
+          [(and (cons? v) (cons? w))
            (let ((s (unify (car v) (car w) s)))
              (cond
                [s (unify (cdr v) (cdr w) s)]
@@ -404,10 +399,10 @@ s
 ;; that any f passed in will also be CPSed.
 
 (define M
-  (lambda (f)
-    (lambda (ls)
+  (λ (f)
+    (λ (ls)
       (cond
-        ((null? ls) '())
+        ((empty? ls) '())
         (else (cons (f (car ls)) ((M f) (cdr ls))))))))
 
 ;; 15. Consider the corresponding call to M, called use-of-M. Using
@@ -416,16 +411,16 @@ s
 ;; use-of-M-cps
 
 (define use-of-M
-  ((M (lambda (n) (add1 n))) '(1 2 3 4 5)))
+  ((M (λ (n) (add1 n))) '(1 2 3 4 5)))
 
 #| Brainteasers - 5400 Only |# 
 
 ;; 16. CPS the following program, and call it strange-cps:
 
 (define strange
-  (lambda (x)
-    ((lambda (g) (lambda (x) (g g)))
-     (lambda (g) (lambda (x) (g g))))))
+  (λ (x)
+    ((λ (g) (λ (x) (g g)))
+     (λ (g) (λ (x) (g g))))))
 
 
 ;; 17. Consider the following use of strange, called
@@ -440,11 +435,11 @@ s
 ;; 18. CPS the following program, and call it why-cps:
 
 (define why
-  (lambda (f)
-    ((lambda (g)
-       (f (lambda (x) ((g g) x))))
-     (lambda (g)
-       (f (lambda (x) ((g g) x)))))))
+  (λ (f)
+    ((λ (g)
+       (f (λ (x) ((g g) x))))
+     (λ (g)
+       (f (λ (x) ((g g) x)))))))
 
 ;; To get you started, you may find it useful to see the
 ;; following-call to why.
@@ -452,9 +447,9 @@ s
 #| 
 
 > (define almost-length
-    (lambda (f)
-      (lambda (ls)
-        (if (null? ls)
+    (λ (f)
+      (λ (ls)
+        (if (empty? ls)
             0
             (add1 (f (cdr ls)))))))
 > ((why almost-length) '(a b c d e))
