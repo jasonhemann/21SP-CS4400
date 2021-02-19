@@ -38,3 +38,4 @@ dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
 - [Purity](https://www.metalevel.at/prolog/purity) and [programming purely in Prolog](http://www.complang.tuwien.ac.at/ulrich/papers/PDF/2008-fdpe.pdf)
 - [Paulson on logic programs as inductive definitions](https://link.springer.com/chapter/10.1007/BFb0038699)
 
+- Chiang's short story ["Seventy-two Letters"](https://ia802706.us.archive.org/33/items/TedChiangSeventyTwoLetters/Ted_Chiang_72_Letters.pdf) ([Audio version](https://archive.org/details/TedChiangSeventyTwoLetters))
