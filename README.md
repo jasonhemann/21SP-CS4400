@@ -19,7 +19,6 @@ new person, or enrichment resource, enter the corresponding
 sub-directory, and from there, create a new entry within `_posts`. The
 existing entries should serve as models.
 
+# Link Checks
 
-
-
-	
+To ensure that links are working, visit [https://agile-woodland-90288.herokuapp.com/](https://agile-woodland-90288.herokuapp.com/).
