@@ -507,7 +507,7 @@ problem.
 
 |# 
 
-(check-true? equal?
+(check-true* equal?
   [((value-of-ri empty-env-fn extend-env-fn apply-env-fn closure-fn-ri apply-closure-fn-ri)
     '((lambda (x) x) 5))
    5]
