@@ -432,7 +432,7 @@ called, so the entire expression would evaluate to 5.
 
 4. Define value-of-dynamic, an interpreter that implements dynamic
 scope. You can start with the dynamically-scoped interpreter we wrote
-in class that used let and pmatch. You should be able to share use
+in class that used let and match. You should be able to share use
 your environment helpers from a previous assignment, but you should
 not implement an abstraction for closures in this
 interpreter. Instead, the value of a lambda abstraction should be that
