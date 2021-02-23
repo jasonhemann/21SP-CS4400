@@ -291,6 +291,16 @@ representation-independent with respect to closures and uses a data
 structure representation. Name your two new closure helpers
 apply-closure-ds and make-closure-ds.
 
+Other than the cosmetic change of -fn to -ds, you shouldn't have to
+change the implementations of valof. This is once again a good thing!
+
+This is evidence we have a tight, well-defined interface for
+closures. We've been able to, on the "behind the
+interface"/implementation side of things, radically change how we're
+implementing closures, and we haven't had to change the client
+code. That's evidence we've done a good job designing our interface.
+
+
 |#
 
 (check-true* equal?
