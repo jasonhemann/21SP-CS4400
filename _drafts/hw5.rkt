@@ -17,16 +17,15 @@
 ;; Your val-of-cbr and val-of-cbv interpreters (not the other two)
 ;; must also handle begin2 and set!.
 
-;; You will need to implement the empty-env, extend-env, apply-env,
-;; make-closure, and apply-closure helpers.
+;; You will need to implement the empty-env, extend-env, apply-env
+;; helpers. You can re-use this same set of helpers for every
+;; interpreter.
 
-;; Use a **functional representation** of both environments and
-;; closures.
-
-;; You can largely re-use the same set of helpers for every
-;; interpreter. However, since make-closure contains a call to the
-;; interpreter, you'll need to implement versions of make-closure to
-;; go along with each interpreter.
+;; You should use a **representation-dependent**, functional
+;; representation of closures. (If it helps you to know, there's
+;; nothing prohibiting you from making representation-independent
+;; closures in whatever representation you wish. It is just slightly
+;; unfortunate to re-implement them in every different interpreter.)
 
 ;; You should use //boxes// to help implement parameter-passing
 ;; conventions.
@@ -60,7 +59,9 @@
 
 #| 
 
-1. val-of-cbv, your call-by-value interpreter
+1. val-of-cbv, your call-by-value interpreter. Implement this by
+/boxing/ values before putting them in the environment, and add
+our "`(rator ,y)" "optimization" line.
 
 |#
 
@@ -105,7 +106,9 @@
 
 #| 
 
-2. val-of-cbr, your call-by-reference interpreter
+2. Here, implement val-of-cbr, your call-by-reference
+interpreter. This should involve only a slight change from your
+val-of-cbv interpreter.
 
 |# 
 (check-true* equal?
@@ -154,7 +157,8 @@
 
 #| 
 
-3. val-of-cbname, your call-by-name interpreter
+3. Implement val-of-cbname, your call-by-name interpreter. This should
+involve only a slight change from your val-of-cbr interpreter.
 
 |# 
 
@@ -178,7 +182,8 @@
 
 #| 
 
-4. val-of-cbneed, your call-by-need interpreter.
+4. Implement val-of-cbneed, your call-by-need interpreter. This should
+involve only a small change from your val-of-cbname interpreter.
 
 |# 
 
