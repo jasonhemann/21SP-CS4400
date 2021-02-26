@@ -26,9 +26,8 @@
 ;; guidance from a TA. This is a second chance at a whack at that
 ;; earlier problem.
 
-;; The main goal of this assignment is to implement dynamic scope, you
-;; must complete value-of-dynamic to get an S- or above on this
-;; assignment.
+;; The main goal of this assignment is to implement dynamic scope; we
+;; are weighting that part of the assignment more heavily.
 
 #| Regression Testing and Enhancing |# 
 

@@ -61,7 +61,7 @@
 
 1. val-of-cbv, your call-by-value interpreter. Implement this by
 /boxing/ values before putting them in the environment, and add
-our "`(rator ,y)" "optimization" line.
+our "`(rator ,y) #:when (symbol? y)" line.
 
 |#
 
