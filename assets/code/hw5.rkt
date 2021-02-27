@@ -75,10 +75,11 @@ set up for the next interpreter.
     '((lambda (f)
         ((lambda (g)
            ((lambda (z) (begin2
-                         (g z)
-                         z))
+                          (g z)
+                          z))
             55))
-         (lambda (y) (f y)))) (lambda (x) (set! x 44)))
+         (lambda (y) (f y))))
+      (lambda (x) (set! x 44)))
     (empty-env))
   55]
   ;; Returns 3 under CBV.
@@ -86,8 +87,11 @@ set up for the next interpreter.
     '((lambda (a)
         ((lambda (p)
            (begin2
-            (p a)
-            a)) (lambda (x) (set! x 4)))) 3)
+             (p a)
+             a))
+         (lambda (x)
+           (set! x 4))))
+      3)
     (empty-env))
   3]
   ;; Returns 33 under CBV.
@@ -96,14 +100,16 @@ set up for the next interpreter.
         ((lambda (a)
            ((lambda (b)
               (begin2
-               ((swap a) b)
-               a)) 44)) 33))
+                ((swap a) b)
+                a)) 
+            44)) 
+         33))
       (lambda (x)
         (lambda (y)
           ((lambda (temp)
              (begin2
-              (set! x y)
-              (set! y temp))) x))))
+               (set! x y)
+               (set! y temp))) x))))
     (empty-env))
   33])
 
@@ -117,8 +123,11 @@ val-of-cbv interpreter.
 (check-true* equal?
   ;; Making sure set! works
   [(val-of-cbr
-    '((lambda (x) (begin2 (set! x #t)
-                          (if x 3 5))) #f)
+    '((lambda (x) 
+        (begin2 
+          (set! x #t)
+          (if x 3 5))) 
+      #f)
     (empty-env))
   3]
   ;; Returns 4 under CBR. 
@@ -126,19 +135,26 @@ val-of-cbv interpreter.
     '((lambda (a)
         ((lambda (p)
            (begin2
-            (p a)
-            a)) (lambda (x) (set! x 4)))) 3)
+             (p a)
+             a)) 
+         (lambda (x) 
+           (set! x 4)))) 
+      3)
     (empty-env))
   4]
   ;; Returns 44 under CBR.
   [(val-of-cbr
     '((lambda (f)
         ((lambda (g)
-           ((lambda (z) (begin2
-                         (g z)
-                         z))
+           ((lambda (z) 
+              (begin2
+                (g z)
+                z))
             55))
-         (lambda (y) (f y)))) (lambda (x) (set! x 44)))
+         (lambda (y) 
+           (f y)))) 
+      (lambda (x) 
+        (set! x 44)))
     (empty-env))
   44]
   ;; Returns 44 under CBR.
@@ -147,14 +163,17 @@ val-of-cbv interpreter.
         ((lambda (a)
            ((lambda (b)
               (begin2
-               ((swap a) b)
-               a)) 44)) 33))
+                ((swap a) b)
+                a)) 
+            44)) 
+         33))
       (lambda (x)
         (lambda (y)
           ((lambda (temp)
              (begin2
-              (set! x y)
-              (set! y temp))) x))))
+               (set! x y)
+               (set! y temp))) 
+           x))))
     (empty-env))
   44])
 
@@ -179,7 +198,8 @@ involve only a slight change from your val-of-cbr interpreter.
   ;; Does not terminate with val-of-cbr or val-of-cbv -- try it!
   [(val-of-cbname
     '((lambda (z) 100)
-      ((lambda (x) (x x)) (lambda (x) (x x))))
+      ((lambda (x) (x x)) 
+       (lambda (x) (x x))))
     (empty-env))
   100])
 
