@@ -61,7 +61,10 @@
 
 1. val-of-cbv, your call-by-value interpreter. Implement this by
 /boxing/ values before putting them in the environment, and add
-our "`(rator ,y) #:when (symbol? y)" line.
+our "`(rator ,y) #:when (symbol? y)" line that directly retrieves it's
+value from the environment. This line should have the "(box (unbox
+...))"  on the right-hand side. We're doing this because it'll help to
+set up for the next interpreter.
 
 |#
 
