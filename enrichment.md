@@ -13,7 +13,9 @@ classes: wide
 - The [feeling you should get looking at our interpreter](https://www.youtube.com/watch?v=Ow9AtuIuMLw)
 
 - Reynold's ["Definitional Interpreters for Higher-order Programming Languages"](https://link.springer.com/content/pdf/10.1023/A:1010027404223.pdf) [(Updated Notes)](https://link.springer.com/content/pdf/10.1023/A:1010075320153.pdf)
+
 - Danvy & Nielsen's ["Defunctionalization at Work"](https://www.brics.dk/RS/01/23/BRICS-RS-01-23.pdf)
+- Essay: ["What does valof defunctionalize?"]({{ site.baseurl }}/assets/code/valof-defunctionalizes.rkt)
 
 - Vanier's [blogpost on the Y combinator](https://mvanier.livejournal.com/2897.html)
 - Yin Wang's [slide deck on (re-)deriving the Y combinator](https://www.slideshare.net/yinwang0/reinventing-the-ycombinator)
