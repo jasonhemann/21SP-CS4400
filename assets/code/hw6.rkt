@@ -14,14 +14,18 @@
 ;; counter, and all the materials used to make it are gone. So you eat
 ;; it.
 
-;; -- Luke Palmer
+;; -- Luke Palmer 
 
 
 #| Assignment Guidelines |# 
 
 ;; When CPSing, you may treat built-in procedures such as empty?,
-;; add1, assq, car, <, and the like as "simple".
+;; add1, assv, car, <, and the like as "simple".
    
+;; No, you may not "simplify" or rewrite any of these programs to
+;; another form and then CPS that simpler formula instead. Use the
+;; method we described in class.
+
 ;; Test your CPSed procedures using the initial continuation returned
 ;; from the following (uncommented) empty-k. You may have seen empty-k
 ;; defined as 
@@ -45,11 +49,14 @@
 ;; which takes a list of numbers and returns the last cdr whose car is
 ;; 0. In other words, when starting from the right of the list, it
 ;; should be all numbers before the first 0 is reached. See the test
-;; cases below and student test file for examples. Your solution
-;; should be naturally recursive, and should not contain any calls to
-;; member-like operations or last-non-zero. You must not modify the
-;; provided code beyond adding a body. You may of course add newlines
-;; as needed.
+;; cases below for examples. Your solution should be naturally
+;; recursive, and should not contain any calls to member-like
+;; operations or last-non-zero. You must not modify the provided code
+;; beyond adding a body. You may of course add newlines as needed. My
+;; advice is to 1. Get it working for the base case. 2 Get it working
+;; for a list without any 0s in it. 3. Get it working for a list with
+;; one 0 in it. 3. Get it working for a list with more than one 0 in
+;; it.
 
 (define (last-non-zero ls)
   (let/cc k
@@ -59,6 +66,7 @@
            ;; complete the definition	     
            )))
       (lnz ls))))
+
 
 (check-true* equal?
   [(last-non-zero '(0)) '()]
@@ -282,8 +290,7 @@ s
        (fib fib n))
      (λ (fib n)
        (cond
-	 [(zero? n) 0]
-	 [(= 1 n) 1]
+	 [(< n 2) n]
 	 [else (+ (fib fib (sub1 n)) (fib fib (sub1 (sub1 n))))])))))
 
 ;; 11. Define and test a procedure unfold-cps that is a CPSed version
