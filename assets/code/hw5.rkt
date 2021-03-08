@@ -12,7 +12,8 @@
 #| Assignment Guidelines |#
 
 ;; All four interpreters must handle the following: booleans, numbers,
-;; variables, lambda, application, zero?, sub1, *, if, and random.
+;; variables, lambda, let, application, zero?, sub1, *, if, and
+;; random.
 
 ;; Your val-of-cbr and val-of-cbv interpreters (not the other two)
 ;; must also handle begin2 and set!.
@@ -52,9 +53,9 @@
     [`(begin2 ,e1 ,e2) (begin (value-of e1 env) (value-of e2 env))]
     [`(random ,n) (random (value-of n env))]
     [`,y #:when (symbol? y) (apply-env env y)]
-    [`(lambda (,x) ,body) (make-closure x body env)]
-    [`(,rator ,rand) (apply-closure (value-of rator env)
-                                    (value-of rand env))]))
+    [`(lambda (,x) ,body) (lambda (a) (value-of body (extend-env x a env)))]
+    [`(,rator ,rand) ((value-of rator env)
+                      (value-of rand env))]))
 
 
 #| 
