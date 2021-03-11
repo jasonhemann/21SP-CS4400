@@ -112,7 +112,81 @@ set up for the next interpreter.
                (set! x y)
                (set! y temp))) x))))
     (empty-env))
-  33])
+  33]
+  ;; begin2 and set! tests
+  [(val-of-cbv
+    '((lambda (x)
+       (begin2 ((lambda (y) (begin2 (set! x 0) y)) 1) x))
+      2)
+    (empty-env))
+   0]
+    [(val-of-cbv
+     '(* (begin2 1 1) 3)
+     (empty-env))
+   3]
+  [(val-of-cbv
+     '((lambda (a)
+         ((lambda (p)
+            (begin2
+              (p a)
+              a))
+          (lambda (x) (set! x 4))))
+       3)
+      (empty-env))
+   3]
+  [(val-of-cbv
+    '((lambda (f)
+        ((lambda (g)
+           ((lambda (z) (begin2
+                         (g z)
+                         z))
+            55))
+         (lambda (y) (f y)))) (lambda (x) (set! x 44)))
+    (empty-env))
+   55]
+  [(val-of-cbv
+     '((lambda (x)
+         (begin2 (set! x 5) x))
+       6)
+     (empty-env))
+   5]
+  [(val-of-cbv 
+     '(let ((a 3)) 
+         (begin2 (begin2 a (set! a 4)) a))
+     (empty-env))
+   4]
+  [(val-of-cbv 
+     '((lambda (x)
+         (begin2
+           ((lambda (y)
+              (begin2
+                (set! x 0)
+                98))
+            99)
+           x))
+       97)
+     (empty-env))
+   0]
+  [(val-of-cbv 
+     '((lambda (y)
+         (let ((x (begin2
+                    (set! y 7)
+                    8)))
+           (begin2
+             (set! y 3)
+               ((lambda (z) y)
+                x))))
+       4)
+     (empty-env))
+   3]
+  [(val-of-cbv 
+     '(let ((a 5))
+        (let ((y (begin2 (set! a (sub1 a)) 6)))
+          (begin2
+            (* y y)
+            a)))
+     (empty-env))
+   4])
 
 #| 
 
