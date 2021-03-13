@@ -53,7 +53,7 @@
     [`(begin2 ,e1 ,e2) (begin (value-of e1 env) (value-of e2 env))]
     [`(random ,n) (random (value-of n env))]
     [`,y #:when (symbol? y) (apply-env env y)]
-    [`(lambda (,x) ,body) (lambda (a) (value-of body (extend-env x a env)))]
+    [`(lambda (,x) ,body) (λ (a) (value-of body (extend-env x a env)))]
     [`(,rator ,rand) ((value-of rator env)
                       (value-of rand env))]))
 
