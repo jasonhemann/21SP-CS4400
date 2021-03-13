@@ -86,7 +86,9 @@
 ;; be naturally-recursive, and should not contain any calls to
 ;; member-like operations or last-non-zero. You must not modify the
 ;; provided code beyond adding a body. You may of course add newlines
-;; as needed.
+;; as needed. For this problem, you should use my-* as your
+;; multiplication operation. 
+
 
 #| 
 > (define (my-* m n)
@@ -166,7 +168,36 @@ required to do so.
 
 |#
 
-;; 3. Define and test a procedure times-cps that is a CPSed version of
+;; 4. Define and test a procedure walk-cps that is a CPSed version of
+;; the following walk procedure:
+
+(define walk
+  (λ (v ls)
+    (cond
+      [(symbol? v)
+       (let ((p (assv v ls)))
+         (cond
+           [p (walk (cdr p) ls)]
+           [else v]))]
+      [else v])))
+
+;; Here are some sample calls to walk:
+
+#| 
+
+> (walk 'a '((a . 5) (b . 6) (c . 7)))
+5
+> (walk 'a '((a . b) (b . c) (c . 7)))
+7
+> (walk 'a '((a . q) (r . s) (q . r)))
+s
+> (walk 'a '((a . q) (r . s) (q . r) (s . 10)))
+10
+
+|# 
+
+
+;; 5. Define and test a procedure times-cps that is a CPSed version of
 ;; the following times procedure.
 
 (define times
@@ -181,30 +212,32 @@ required to do so.
 ;; maintain the behavior of the zero? case in times - simply returning
 ;; the 0 and not performing further computation. While this certainly
 ;; violates the standard rules of CPSing the program, it provides an
-;; interesting look at optimizations CPSing allows us.
+;; interesting look at optimizations CPSing allows us: The
+;; whole-program CPS transformation permits you the kinds of control
+;; operations in languages that don't natively support them. 
 
 
 
-;; 5. Define and test a procedure plus-cps that is a CPSed version of
-;; the following plus procedure. 
+;; 6. Define and test a procedure cexpt-cps that is a CPSed version of
+;; the following cexpt procedure. 
 
-(define plus
+(define cexpt
   (λ (m)
     (λ (n)
-      (+ m n))))
+      (expt m n))))
 
-;; Here are some examples of calls to plus:
+;; Here are some examples of calls to cexpt:
 
 #| 
 
-> ((plus 2) 3)
-5
-> ((plus ((plus 2) 3)) 5)
-10
+> ((cexpt 2) 3)
+8
+> ((cexpt ((cexpt 2) 3)) 2)
+64
 
 |# 
 
-;; 6. Define and test a procedure count-syms*-cps that is a CPSed
+;; 7. Define and test a procedure count-syms*-cps that is a CPSed
 ;; version of the following count-syms* procedure:
 
 (define count-syms*
@@ -228,7 +261,7 @@ required to do so.
 
 |# 
 
-;; 7. Define and test a procedure cons-cell-count-cps that is a CPSed
+;; 8. Define and test a procedure cons-cell-count-cps that is a CPSed
 ;; version of the following cons-cell-count procedure:
 
 (define cons-cell-count
@@ -237,34 +270,6 @@ required to do so.
       [(cons? ls) 
        (add1 (+ (cons-cell-count (car ls)) (cons-cell-count (cdr ls))))]
       [else 0])))
-
-;; 8. Define and test a procedure walk-cps that is a CPSed version of
-;; the following walk procedure:
-
-(define walk
-  (λ (v ls)
-    (cond
-      [(symbol? v)
-       (let ((p (assq v ls)))
-         (cond
-           [p (walk (cdr p) ls)]
-           [else v]))]
-      [else v])))
-
-;; Here are some sample calls to walk:
-
-#| 
-
-> (walk 'a '((a . 5) (b . 6) (c . 7)))
-5
-> (walk 'a '((a . b) (b . c) (c . 7)))
-7
-> (walk 'a '((a . q) (r . s) (q . r)))
-s
-> (walk 'a '((a . q) (r . s) (q . r) (s . 10)))
-10
-
-|# 
 
 ;; 9. Define and test a procedure ack-cps that is a CPSed version of
 ;; the following ack
@@ -368,19 +373,17 @@ s
 
 (define unify
   (λ (v w s)
-    (let ([v (walk v s)])
-      (let ([w (walk w s)])
-        (cond
-          [(eqv? v w) s]
-          [(symbol? v) (extend-s v w s)]
-          [(symbol? w) (extend-s w v s)]
-          [(and (cons? v) (cons? w))
-           (let ((s (unify (car v) (car w) s)))
-             (cond
-               [s (unify (cdr v) (cdr w) s)]
-               [else #f]))]
-          [(equal? v w) s]
-          [else #f])))))
+    (cond
+      [(eqv? v w) s]
+      [(symbol? v) (extend-s v w s)]
+      [(symbol? w) (extend-s w v s)]
+      [(and (cons? v) (cons? w))
+       (let ((s (unify (walk (car v) s) (walk (car w) s) s)))
+         (cond
+           [s (unify (walk (cdr v) s) (walk (cdr w) s) s)]
+           [else #f]))]
+      [(equal? v w) s]
+      [else #f])))
 
 ;; Here are some example calls to unify:
 
@@ -388,12 +391,8 @@ s
 
 > (unify 'x 5 (empty-s))
 ((x . 5))
-> (unify 'x 5 (unify 'y 6 (empty-s)))
-((x . 5) (y . 6))
 > (unify '(x y) '(5 6) (empty-s))
 ((y . 6) (x . 5))
-> (unify 'x 5 (unify 'x 6 (empty-s)))
-#f
 > (unify '(x x) '(5 6) (empty-s))
 #f
 > (unify '(x y z) '(5 x y) (empty-s))
