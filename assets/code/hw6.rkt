@@ -119,7 +119,8 @@
     (letrec
       ((m/cc
          (λ (n*)
-           ;; complete the definition
+           ;; complete the definition.
+           ;; For this problem, use my-* as your mult operator 
            )))
       (m/cc n*))))
 
