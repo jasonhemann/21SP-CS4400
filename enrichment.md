@@ -26,6 +26,8 @@ classes: wide
 - [Kleene's "Church predecessor" via a trip to the
 dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
 
+- [A first-order one-pass CPS transformation](https://link.springer.com/content/pdf/10.1007/3-540-45931-6_8.pdf)
+
 - [Church encoding is the vistor pattern](https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html)
 - [Bohm-Berarducci encoding--an extension of Church encoding](http://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
 
@@ -41,3 +43,9 @@ dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
 - [Paulson on logic programs as inductive definitions](https://link.springer.com/chapter/10.1007/BFb0038699)
 
 - Chiang's short story ["Seventy-two Letters"](https://ia802706.us.archive.org/33/items/TedChiangSeventyTwoLetters/Ted_Chiang_72_Letters.pdf) ([Audio version](https://archive.org/details/TedChiangSeventyTwoLetters))
+
+Additional online textbooks with relevant sections/explanations. 
+
+- [PPL Notes](https://www.cs.bgu.ac.il/~mira/ppl-book-full.pdf)
+- Krishnamurthi's [PLAI](http://cs.brown.edu/courses/cs173/2012/book/)
+- [Barzilay's PL class notes](https://pl.barzilay.org/lec98)
