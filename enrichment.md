@@ -28,8 +28,14 @@ dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
 
 - [A first-order one-pass CPS transformation](https://link.springer.com/content/pdf/10.1007/3-540-45931-6_8.pdf)
 
+- [CONS should not cons its arguments pt II: Cheney on the MTA](https://dl.acm.org/doi/10.1145/214448.214454)
+
+
 - [Church encoding is the vistor pattern](https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html)
 - [Bohm-Berarducci encoding--an extension of Church encoding](http://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
+
+
+
 
 - [A Profile of Mathematical Logic](https://store.doverpublications.com/0486434753.html) (A fun, quick-ish read on the story of modern logic)
 - [The Search for Mathematical Roots, 1870-1940: Logics, Set Theories and the Foundations of Mathematics from Cantor through Russell to Gödel](https://press.princeton.edu/books/paperback/9780691058580/the-search-for-mathematical-roots-1870-1940) (A grown-up text on much of the same.)
