@@ -1,14 +1,28 @@
 #|
 
-CPS Lecture
+CPS Lecture Notes 
 
-No published books do this subject justice (including Dan's!)
+-- Adam Foltzer
 
-Which part of (f (g (h i) j) k) can be done first? (h i), since it
-must be evaluated before (g (h i) j) can be applied.
+Subsequently edited by Jason Hemann; all errors are my own.
 
-What about (f (g (h i) (j k)))? Scheme doesn't specify the order in
-which arguments are evaluated so it could be either (h i) or (j k).
+|# 
+
+;; No published books do this subject justice (including EoPL) 
+
+;; 1. In (f (g (h i) j) k), what application must be done first?
+
+;; The evaluation of (the value of) h to (the value of) i. We must
+;; have the value of all subexpressions before doing an application,
+;; and so we must have the value of (h i) before we can complete the
+;; evaluation of (g (h i) j).
+
+;; 1. In (f (g (h i) (j k))), what application must be done first?
+
+There isn't *a* single, first, most critical lead-time application. So
+either (h i) or (j k) could be completed first.
+
+CPSing /is/ linearizing a partially-ordered dependency graph. 
 
 So, let's take control. (h i (lambda (hi) ...)) We assume that hi is
 the result of applying (h i). Then, we drop in everything else that
