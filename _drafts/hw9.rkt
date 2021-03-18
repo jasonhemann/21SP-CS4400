@@ -33,7 +33,7 @@
 ;; code you used to generate your C programs.
 
 ;; Once you've done the assignment, you must meet for an ~15m time
-;; slot with the instructor or one of the AIs to demonstrate your
+;; slot with the instructor or one of the TAs to demonstrate your
 ;; knowledge of your code. We will schedule meeting times, likely
 ;; during office hours, the week of April 5th to April 9th.
 
