@@ -23,11 +23,11 @@ classes: wide
 - [Poly-variadic fixpoint combinators for *mutual* recursion](http://okmij.org/ftp/Computation/fixed-point-combinators.html#Poly-variadic)
 
 - [Hunting the history of Moses Schönfinkel](https://writings.stephenwolfram.com/2020/12/where-did-combinators-come-from-hunting-the-story-of-moses-schonfinkel/)
-- [Kleene's "Church predecessor" via a trip to the
-dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
+- [Kleene's "Church predecessor" via a trip to the dentist](http://link.springer.com/chapter/10.1007%2FBFb0062850)
 
 - [A first-order one-pass CPS transformation](https://link.springer.com/content/pdf/10.1007/3-540-45931-6_8.pdf)
 
+- [Lambda: the Ultimate GOTO](https://web.archive.org/web/20110718095430/http://repository.readscheme.org/ftp/papers/ai-lab-pubs/AIM-443.pdf)
 - [CONS should not cons its arguments pt II: Cheney on the MTA](https://dl.acm.org/doi/10.1145/214448.214454)
 
 
