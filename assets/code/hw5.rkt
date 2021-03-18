@@ -120,6 +120,11 @@ set up for the next interpreter.
       2)
     (empty-env))
    0]
+  [(val-of-cbv
+     '(let [(x 34)]
+        x)
+     (empty-env))
+  34]
     [(val-of-cbv
      '(* (begin2 1 1) 3)
      (empty-env))
@@ -217,6 +222,11 @@ val-of-cbv interpreter.
       3)
     (empty-env))
   4]
+  [(val-of-cbr
+     '(let [(x 34)]
+        x)
+     (empty-env))
+  34]
   ;; Returns 44 under CBR.
   [(val-of-cbr
     '((lambda (f)
@@ -276,6 +286,14 @@ involve only a slight change from your val-of-cbr interpreter.
       ((lambda (x) (x x)) 
        (lambda (x) (x x))))
     (empty-env))
+  100]
+  [(val-of-cbname
+    '((lambda (x)
+        (let ((z x))
+          100))
+      ((lambda (x) (x x))
+       (lambda (x) (x x))))
+    (empty-env))
   100])
 
 #| 
@@ -288,7 +306,23 @@ involve only a small change from your val-of-cbname interpreter.
 (check-true* equal? 
   ;; call-by-need
   [(val-of-cbneed random-sieve (empty-env))
-  #t])
+   #t]
+  [(val-of-cbneed
+    '((lambda (x)
+        (let ((z x))
+          100))
+      ((lambda (x) (x x))
+       (lambda (x) (x x))))
+    (empty-env))
+  100]
+  [(val-of-cbneed
+    '((lambda (x)
+        (let ((z x))
+          (* x z)))
+      ((lambda (x) x)
+       1000000))
+    (empty-env))
+   100])
 
 #| Brainteasers - 5400 Only |#
 

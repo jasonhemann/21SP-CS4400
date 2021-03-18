@@ -113,10 +113,21 @@
   [(pascal-cps 10 (pascal-empty-k)) '(1 3 6 10 15 21 28 36 45 55)])
 
 (check-true* equal? 
+  [(ack-reg-driver 0 1) 2]
+  [(ack-reg-driver 0 9) 10]
+  [(ack-reg-driver 1 1) 3]
+  [(ack-reg-driver 1 3) 5]
+  [(ack-reg-driver 2 1) 5]
   [(ack-reg-driver 2 2) 7]
+  [(depth-reg-driver '()) 1]
   [(depth-reg-driver '(1 (2 (3 (4))))) 4]
+  [(depth-reg-driver '(1 2 3 4)) 1]
+  [(fact-reg-driver 0) 1]
+  [(fact-reg-driver 1) 1]
   [(fact-reg-driver 5) 120]
-  [(pascal-reg-driver 10) '(1 3 6 10 15 21 28 36 45 55)])
+  [(pascal-reg-driver 10) '(1 3 6 10 15 21 28 36 45 55)]
+  [(pascal-reg-driver 20) '(1 3 6 10 15 21 28 36 45 55 66 78 91 105 120 136 153 171 190 210)]
+  [(pascal-reg-driver 1) '(1)])
 
 
 #| ===== Brainteaser ===== |# 

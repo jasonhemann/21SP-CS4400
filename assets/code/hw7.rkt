@@ -19,7 +19,7 @@
 
 1. Just when you thought you'd seen the last of it---lex is back. If
    you've got the previous version working, then all we're asking for is
-   a handful of changes.
+   a handful of changes. Don't CPS this function.
 
   - Start by copying and pasting in your most recent implementation.
   - Replace your application line with the following [`(,rator ,rand) `(app ,(lex rator acc) ,(lex rand acc))]
@@ -139,11 +139,11 @@ These first three changes aren't required to correctly perform lexical addressin
 
 ;; This part of the assignment will be completed in several
 ;; stages. You should do each of these steps in a separate file. Turn
-;; in a file containing the last step, and call it a7.rkt. But it is
+;; in a file containing the last step, and call it hw7.rkt. But it is
 ;; **imperative** that you keep each of the previous steps. We will
 ;; ask to see them at some point in the future. Again, it is
 ;; **imperative** that you keep previous steps. You should have at
-;; least these concrete milestones. 
+;; least these concrete milestones.
 
 ;; You should begin with the interpreter below. This is an interpreter
 ;; for a lexed language, like the interpreter of problem 5 on
@@ -152,19 +152,19 @@ These first three changes aren't required to correctly perform lexical addressin
 (define value-of
   (lambda (expr env)
     (match expr
-      [`(const ,expr) expr]
-      [`(mult ,x1 ,x2) (* (value-of x1 env) (value-of x2 env))]
-      [`(sub1 ,x) (sub1 (value-of x env))]
-      [`(zero ,x) (zero? (value-of x env))]
+      [`(const ,cexpr) cexpr]
+      [`(mult ,nexp1 ,nexp2) (* (value-of nexp1 env) (value-of nexp2 env))]
+      [`(sub1 ,nexp) (sub1 (value-of nexp env))]
+      [`(zero ,nexp) (zero? (value-of nexp env))]
       [`(if ,test ,conseq ,alt) (if (value-of test env)
                                     (value-of conseq env)
                                     (value-of alt env))]
-      [`(let/cc ,body) (let/cc k
-                         (value-of body (lambda (y) (if (zero? y) k (env (sub1 y))))))]
+      [`(letcc ,body) (let/cc k
+                        (value-of body (lambda (y) (if (zero? y) k (env (sub1 y))))))]
       [`(throw ,k-exp ,v-exp) ((value-of k-exp env) (value-of v-exp env))]
       [`(let ,e ,body) (let ((a (value-of e env)))
                          (value-of body (lambda (y) (if (zero? y) a (env (sub1 y))))))]
-      [`(var ,expr) (env expr)]
+      [`(var ,y) (env y)]
       [`(lambda ,body) (lambda (a) (value-of body (lambda (y) (if (zero? y) a (env (sub1 y))))))]
       [`(app ,rator ,rand) ((value-of rator env) (value-of rand env))])))
 
@@ -188,7 +188,7 @@ interpreter. You can write test programs in Racket, use your lex
 to transform them to the language of our interpreter, and the results
 in value-of-cps. Use empty-env and empty-k when testing.
 
-===Steps for Part III===
+===Steps for Part II===
 
   1 CPS this interpreter. Call it value-of-cps. Use the "let trick" to
     eliminate the let binding when you CPS the let line. You might
@@ -204,7 +204,7 @@ in value-of-cps. Use empty-env and empty-k when testing.
 
   2 Define apply-env, apply-closure, and apply-k, and add all the
     calls to those functions. Notice that after CPSing, your apply-closure
-    and apply-env now take three arguments
+    and apply-env now take three arguments. 
 
   3 Define extend-env and replace all 3 of your explicitly
     higher-order representations of environments with calls to extend-env.
@@ -254,9 +254,9 @@ in value-of-cps. Use empty-env and empty-k when testing.
  12 Remove the (else (k v)) line to ensure that you've properly
     removed all higher-order function representations of continuations.
 
- 13 **Place your final version in a file named a7.rkt and submit it
-    via Handins.** Make sure to include all parts of the assignment in
-    your final submission as well.
+ 13 **Place your final version in a file named hw7.rkt and submit it
+    via Handins.** Make sure to include both part I and part II of the
+    assignment in your final submission as well.
 
 |# 
 
@@ -264,19 +264,30 @@ in value-of-cps. Use empty-env and empty-k when testing.
         ((value-of-cps '(const 5) (empty-env) (empty-k)) 5)
         ((value-of-cps '(mult (const 5) (const 5)) (empty-env) (empty-k)) 25)
         ((value-of-cps '(zero (const 5)) (empty-env) (empty-k)) #f)
+        ((value-of-cps '(zero (mult (const 5) (const 5))) (empty-env) (empty-k)) #f)
         ((value-of-cps '(sub1 (const 5)) (empty-env) (empty-k)) 4)
         ((value-of-cps '(sub1 (sub1 (const 5))) (empty-env) (empty-k)) 3)
+        ((value-of-cps '(sub1 (sub1 (const 5))) (empty-env) (extend-env 3 (empty-k))) 3)
         ((value-of-cps '(zero (sub1 (const 6))) (empty-env) (empty-k)) #f)
-        ((value-of-cps '(if (zero (const 5)) (const 3) (mult (const 2) (const 2))) (empty-env) (empty-k)) 4)
-        ((value-of-cps '(if (zero (const 0)) (mult (const 2) (const 2)) (const 3)) (empty-env) (empty-k)) 4)
+        ((value-of-cps '(mult (sub1 (const 5)) (const 5)) (empty-env) (empty-k)) 20)
+        ((value-of-cps '(mult (const 5) (sub1 (const 5))) (empty-env) (empty-k)) 25)
+        ((value-of-cps '(if (zero (const 5)) (const 3) (const 4)) (empty-env) (empty-k)) 4)
+        ((value-of-cps '(if (zero (const 0)) (const 4) (const 3)) (empty-env) (empty-k)) 4)
+        ((value-of-cps '(mult (if (zero (const 0)) (const 4) (const 3)) (const 2)) (empty-env) (empty-k)) 8)
+        ((value-of-cps '(mult (const 2) (if (zero (const 0)) (const 4) (const 3))) (empty-env) (empty-k)) 8)
+        ((value-of-cps '(let (const 6) (const 4)) (empty-env) (empty-k)) 4)
+        ((value-of-cps '(let (const 5) (var 0)) (empty-env) (empty-k)) 5)
+        ((value-of-cps '(let (mult (const 5) (const 3)) (var 0)) (empty-env) (empty-k)) 15)
+        ((value-of-cps '(let (const 5) (mult (var 0) (var 0))) (empty-env) (empty-k)) 25)
+        ((value-of-cps '(let (const 5) (let (const 6) (var 0))) (empty-env) (empty-k)) 5)
+        ((value-of-cps '(let (const 5) (let (const 6) (mult (var 0) (var 1)))) (empty-env) (empty-k)) 30)
+        ((value-of-cps '(let (const 5) (let (const 6) (mult (var 1) (var 0)))) (empty-env) (empty-k)) 30)
+        ((value-of-cps '(mult (const 5) (let (const 5) (var 0))) (empty-env) (empty-k)) 25)
         ((value-of-cps '(app (lambda (const 5)) (const 6)) (empty-env) (empty-k)) 5) 
         ((value-of-cps '(app (lambda (var 0)) (const 5)) (empty-env) (empty-k)) 5)
         ((value-of-cps '(app (app (lambda (lambda (var 1))) (const 6)) (const 5)) (empty-env) (empty-k)) 6)
         ((value-of-cps '(app (lambda (app (lambda (var 1)) (const 6))) (const 5)) (empty-env) (empty-k)) 5)
         ((value-of-cps '(app (lambda (if (zero (var 0)) (const 4) (const 5))) (const 3)) (empty-env) (empty-k)) 5)
-        ((value-of-cps '(let (const 6) (const 4)) (empty-env) (empty-k)) 4)
-        ((value-of-cps '(let (const 5) (var 0)) (empty-env) (empty-k)) 5)
-        ((value-of-cps '(mult (const 5) (let (const 5) (var 0))) (empty-env) (empty-k)) 25)
         ((value-of-cps '(app (if (zero (const 4)) (lambda (var 0)) (lambda (const 5))) (const 3)) (empty-env) (empty-k)) 5)
         ((value-of-cps '(app (if (zero (const 0)) (lambda (var 0)) (lambda (const 5))) (const 3)) (empty-env) (empty-k)) 3)
         ((value-of-cps '(letcc (const 5)) (empty-env) (empty-k)) 5)
@@ -329,9 +340,11 @@ To play around, we'll first need to implement a few tools.
 
 #| 
 
-We'll get back to those helpers. For now, it's enough that they're tweaked cons, car, and cdr. 
-The first question to ask is: how do you build an infinite list? The only reasonable answer is: one item at a time, as needed.
-Here, we're going to define an infinite stream of ones. 
+We'll get back to those helpers. For now, it's enough that they're
+tweaked cons, car, and cdr.  The first question to ask is: how do you
+build an infinite list? The only reasonable answer is: one item at a
+time, as needed.  Here, we're going to define an infinite stream of
+ones.
 
 |# 
 
@@ -339,9 +352,11 @@ Here, we're going to define an infinite stream of ones.
 
 #| 
 
-It looks like that can't possibly work. We're definining the stream in terms of itself. That's a circular definition.
-But, in fact, that's precisely what we're after. We're defining a list that has a 1 in front and whose cdr - well, whatever that thing is,
-it has a 1 in the front of it. And thus it's 1s all the way down.
+It looks like that can't possibly work. We're definining the stream in
+terms of itself. That's a circular definition.  But, in fact, that's
+precisely what we're after. We're defining a list that has a 1 in
+front and whose cdr - well, whatever that thing is, it has a 1 in the
+front of it. And thus it's 1s all the way down.
 
 So we can build a procedure take$
 
@@ -400,10 +415,10 @@ every time we force that promise, we get the same value.
 
 #| 
 
-So, to put it all together, we define inf-1s to be a pair whose
+So, to put it all together, we define inf-1s to be a cons whose
 car is 1 and whose cdr is a promise. When we finally get
 around to evaluating that promise, we find that its value is in fact
-inf-1s -- that is, a pair whose car is 1 and whose cdr is
+inf-1s -- that is, a cons whose car is 1 and whose cdr is
 a promise.
 
 Hopefully that all makes sense. Your task this week is to implement
@@ -455,7 +470,7 @@ able to handle fact, fib, and something like the product function below.
        (f f ls))
      (lambda (f ls)
        (cond
-	 [(null? ls) 1]
+	 [(empty? ls) 1]
 	 [(zero? (car ls)) 0]
 	 [else (* (car ls) (f f (cdr ls)))])))))
 

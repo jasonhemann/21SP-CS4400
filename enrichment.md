@@ -30,6 +30,8 @@ classes: wide
 - [Lambda: the Ultimate GOTO](https://web.archive.org/web/20110718095430/http://repository.readscheme.org/ftp/papers/ai-lab-pubs/AIM-443.pdf)
 - [CONS should not cons its arguments pt II: Cheney on the MTA](https://dl.acm.org/doi/10.1145/214448.214454)
 
+- [(An operational investigation of) the CPS Hierarchy](https://link.springer.com/content/pdf/10.1007/3-540-49099-X_15.pdf)
+
 
 - [Church encoding is the vistor pattern](https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html)
 - [Bohm-Berarducci encoding--an extension of Church encoding](http://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
