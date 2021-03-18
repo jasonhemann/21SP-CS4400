@@ -33,6 +33,7 @@ classes: wide
 - [(An operational investigation of) the CPS Hierarchy](https://link.springer.com/content/pdf/10.1007/3-540-49099-X_15.pdf)
 
 
+
 - [Church encoding is the vistor pattern](https://www.haskellforall.com/2021/01/the-visitor-pattern-is-essentially-same.html)
 - [Bohm-Berarducci encoding--an extension of Church encoding](http://okmij.org/ftp/tagless-final/course/Boehm-Berarducci.html)
 
@@ -45,6 +46,7 @@ classes: wide
 - [Logicomix](https://en.wikipedia.org/wiki/Logicomix) (It's a comic about Russell and early 20th century mathematical logic. ᕕ( ᐛ )ᕗ) 
 
 - [SKI Combinator Tetris](https://dirk.rave.org/combinatris/)
+- [Care for your pet combinator]({{ site.baseurl }}/assets/docs/hindley-seldin-combinatory-a4.pdf)
 
 - van Emden on [relational programming, logic beyond prolog](https://arxiv.org/pdf/1412.3480.pdf)
 - [Purity](https://www.metalevel.at/prolog/purity) and [programming purely in Prolog](http://www.complang.tuwien.ac.at/ulrich/papers/PDF/2008-fdpe.pdf)
