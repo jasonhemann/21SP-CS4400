@@ -130,7 +130,7 @@
   [(pascal-reg-driver 1) '(1)])
 
 
-#| ===== Brainteaser ===== |# 
+#| ===== Brainteaser (5400 Only) ===== |# 
 
 ;; Trampolines can be used to execute multiple trampolinized programs
 ;; simultaneously. Write a trampoline-like procedure rampoline that
