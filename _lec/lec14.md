@@ -1,6 +1,7 @@
 ---
 author: Jason Hemann
 title: RI wrt K
+date: 2020-03-10
 ---
 
 # Opening act

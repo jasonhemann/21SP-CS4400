@@ -1,6 +1,7 @@
 ---
 author: Jason Hemann
 title: Continuation-passing style
+date: 2020-03-03
 ---
 
 # Questions
