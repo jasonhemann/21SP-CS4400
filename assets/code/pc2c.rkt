@@ -535,6 +535,7 @@
          "#include <assert.h>\n"
          "#include <stdlib.h>\n" ;; for malloc
          "#include <stdio.h>\n"
+         "#include \"time.h\"\n" ;; because it's being sassy w/o it.
          "#include \"" header-name  "\"\n"
          "\n"
          s1
