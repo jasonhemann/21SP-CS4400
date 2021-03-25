@@ -8,6 +8,9 @@
 ;;
 ;; Richard Pattis
 
+;; This, but un-ironically:
+;; https://old.reddit.com/r/ProgrammerHumor/comments/81re59/why_i_never_worry_about_function_or_class/
+
 #| ===== Assignment Guidelines ===== |# 
 
 
@@ -71,6 +74,8 @@
   (let exp body)              
   (lambda body)
   (app rator rand))
+
+
 
 
 ;; PASTE YOUR VALOF-CPS, APPLY-K, APPLY-ENV, APPLY-CLOSURE, AND THEIR
@@ -200,7 +205,7 @@
 
 #| ===== Just Dessert ===== |# 
 
-;; 2. Add a callcc form to your interpreter that behaves like Scheme's
+;; 2. Add a callcc form to your interpreter that behaves like Racket's
 ;; call/cc. Change the test program to one that uses callcc and send
 ;; this, along with any other required changes, in an email to the
 ;; staff member with whom you conducted your code review.
