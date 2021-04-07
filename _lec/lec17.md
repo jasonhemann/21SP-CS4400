@@ -1,7 +1,7 @@
 ---
 author: Jason Hemann
 title: ParentheC
-date: 2020-03-22
+date: 2021-03-22
 ---
 
 # The rest of the program ... 
@@ -45,3 +45,9 @@ Load `"pc2c.ss"`. Then, in the repl.
 ```
 > (pc2c "foo.pc" "foo.c" "foo.h")
 ```
+
+## Booking meetings:
+
+Book a meeting [here](v2.waitwhile.com/book/4400).
+ 
+ 
