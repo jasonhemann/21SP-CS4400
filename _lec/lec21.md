@@ -1,7 +1,7 @@
 ---
 author: Jason Hemann
 title: Combinatory Logic, Abstraction, iota and jot
-date: 2020-04-07
+date: 2021-04-07
 ---
 
 

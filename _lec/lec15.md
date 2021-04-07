@@ -1,7 +1,7 @@
 ---
 author: Jason Hemann
 title: Registerizing
-date: 2020-03-15
+date: 2021-03-15
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: (Lexical vs) Dynamic Scope
-date: 2020-02-17
+date: 2021-02-17
 ---
 
 
