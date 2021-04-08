@@ -1,5 +1,4 @@
 ---
-author: Jason Hemann
 title: value-of an interpreter for lambda-calculus expressions
 date: 2021-02-03
 ---
