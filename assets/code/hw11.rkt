@@ -137,13 +137,9 @@ you one of your interpreter's clauses
        (λ (env-cps)
          (let ([code1 (ve1 env-cps)]
                [code2 (ve2 env-cps)])
-           ;; You could simplify these /administrative redexes/
-           (code1
-            (λ (v₁)
-              (code2
-               (λ (v₂)
-                 (λ (k)
-                   (k (* v₁ v₂))))))))))]
+           ;; You then simplify the /administrative redexes/ to get to this form
+           (λ (k)
+             (k (* code1 code2))))))]
 |# 
 
 ;; 3a. 
