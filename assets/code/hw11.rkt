@@ -72,8 +72,9 @@ you one of your interpreter's clauses
     [`(if ,te ,ce ,ae) 
      (valof-cps te env-cps 
                 (λ (b)
-                   (valof-cps ce env-cps k)
-                   (valof-cps ae env-cps k)))] 
+                  (if b
+                      (valof-cps ce env-cps k)
+                      (valof-cps ae env-cps k))))] 
     [`(lambda (,x) ,b)
      (k (λ (a k)
           (valof-cps b (λ (y k^)
