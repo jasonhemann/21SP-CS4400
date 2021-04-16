@@ -54,7 +54,7 @@ you one of your interpreter's clauses
 (define (valof-cps expr env-cps k)
   (match expr
     [`,y #:when (symbol? y) (env-cps y k)]
-    [`,n #:when (number? n) n]
+    [`,n #:when (number? n) (k n)]
     [`(* ,nexp₁ ,nexp₂)
      (valof-cps nexp₁ env-cps
                 (λ (v₁)
