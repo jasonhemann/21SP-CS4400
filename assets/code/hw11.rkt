@@ -42,18 +42,13 @@ To further clarify this transformation, we have transformed here for
 you one of your interpreter's clauses
 
     [`(* ,nexp₁ ,nexp₂)
-     (let ([ve1 (valof-cps nexp₁)]
-           [ve2 (valof-cps nexp₂)])
-       (λ (env-cps)
-         (let ([code1 (ve1 env-cps)]
-               [code2 (ve2 env-cps)])
-           ;; You could simplify these /administrative redexes/
-           (code1
-            (λ (v₁)
-              (code2
-               (λ (v₂)
-                 (λ (k)
-                   (k (* v₁ v₂))))))))))]
+     (λ (env-cps)
+         (((valof-cps nexp₁) env-cps)
+          (λ (v₁)
+            (((valof-cps nexp₂) env-cps)
+             (λ (v₂)
+               (λ (k)
+                 (k (* v₁ v₂))))))))]
 |# 
  
 (define (valof-cps expr env-cps k)
@@ -142,11 +137,12 @@ you one of your interpreter's clauses
        (λ (env-cps)
          (let ([code1 (ve1 env-cps)]
                [code2 (ve2 env-cps)])
-           (λ (k)
-             (code1
-              (λ (v₁)
-                (code2
-                 (λ (v₂)
+           ;; You could simplify these /administrative redexes/
+           (code1
+            (λ (v₁)
+              (code2
+               (λ (v₂)
+                 (λ (k)
                    (k (* v₁ v₂))))))))))]
 |# 
 
