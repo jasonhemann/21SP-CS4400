@@ -43,12 +43,12 @@ you one of your interpreter's clauses
 
     [`(* ,nexp₁ ,nexp₂)
      (λ (env-cps)
+       (λ (k)
          (((valof-cps nexp₁) env-cps)
           (λ (v₁)
             (((valof-cps nexp₂) env-cps)
              (λ (v₂)
-               (λ (k)
-                 (k (* v₁ v₂))))))))]
+               (k (* v₁ v₂))))))))]
 |# 
  
 (define (valof-cps expr env-cps k)
@@ -132,14 +132,15 @@ To further clarify this transformation, we have transformed here for
 you one of your interpreter's clauses
 
     [`(* ,nexp₁ ,nexp₂)
-     (let ([ve1 (valof-cps nexp₁)]
-           [ve2 (valof-cps nexp₂)])
+     (let ([ve1 (valof-pe nexp₁)]
+           [ve2 (valof-pe nexp₂)])
        (λ (env-cps)
-         (let ([code1 (ve1 env-cps)]
-               [code2 (ve2 env-cps)])
-           ;; You then simplify the /administrative redexes/ to get to this form
-           (λ (k)
-             (k (* code1 code2))))))]
+         (λ (k)
+           ((ve1 env-cps)
+            (λ (v1)
+              ((ve2 env-cps)
+               (λ (v2)
+                 (k (* v1 v2)))))))))]
 |# 
 
 ;; 3a. 
@@ -165,7 +166,6 @@ loops?
 Answer: 
 
 |#
-
 
 
 (define (eval/pe expr)
