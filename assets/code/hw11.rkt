@@ -43,12 +43,12 @@ you one of your interpreter's clauses
 
     [`(* ,nexp₁ ,nexp₂)
      (λ (env-cps)
-       (λ (k)
          (((valof-cps nexp₁) env-cps)
-                    (λ (v₁)
-                      (((valof-cps nexp₂) env-cps)
-                                 (λ (v₂)
-                                   (k (* v₁ v₂))))))))]
+          (λ (v₁)
+            (((valof-cps nexp₂) env-cps)
+             (λ (v₂)
+               (λ (k)
+                 (k (* v₁ v₂))))))))]
 |# 
  
 (define (valof-cps expr env-cps k)
