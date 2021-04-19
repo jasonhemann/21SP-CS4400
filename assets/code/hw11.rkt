@@ -114,7 +114,7 @@ you one of your interpreter's clauses
                 1 
                 (* n (! (sub1 n)))))))
        5))
-  5])
+  120])
 
 
 ;; 2. Copy your interpreter from 1. above, and name this copy
@@ -185,4 +185,4 @@ Answer:
                        1 
                        (* n (! (sub1 n)))))))
               5))
-   5])
+   120])
