@@ -2,7 +2,6 @@
 title: Closure conversion? Lambda lifting
 ---
 
-
 Consider at least two different approaches to taking a "block
 structured program" (for our purposes, a program with nested lambdas)
 and transforming it to the sort of program we could run easily on our
@@ -27,7 +26,10 @@ clever. But as a consequence of this transformation, your inner
 functions are now scope-free, so you can lift them up (thus the name)
 to global definitions. Your whole program becomes a set of mutually
 recursive definitions. We might call this first step "combinator
-conversion", and then the second, semi-trivial step lambda lifting.
+conversion", and then the second, semi-trivial step lambda
+lifting. Notice this transformation does not, in and of itself,
+address the use of higher-order functions; it simply permits
+block-structured programming.
 
 We have also omitted small details like coming up with adequate global
 names for formerly-anonymous inner functions. In this model, `letrec`
