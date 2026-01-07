@@ -45,6 +45,7 @@ classes: wide
 - [Philosophy of Computer Science](https://cse.buffalo.edu/~rapaport/Papers/phics.pdf) (Draft text)
 - [Logicomix](https://en.wikipedia.org/wiki/Logicomix) (It's a comic about Russell and early 20th century mathematical logic. ᕕ( ᐛ )ᕗ) 
 
+- [History of Lambda Calculus and Combinatory Logic](https://hope.simons-rock.edu/~pshields/cs/cmpt312/cardone-hindley.pdf)
 - [SKI Combinator Tetris](https://dirk.rave.org/combinatris/)
 - [Care for your pet combinator]({{ site.baseurl }}/assets/docs/hindley-seldin-combinatory-a4.pdf)
 
