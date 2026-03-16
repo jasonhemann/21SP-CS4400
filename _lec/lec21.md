@@ -258,7 +258,7 @@ systematic construction of a one-combinator
 basis"](http://www.cs.uu.nl/research/techreps/repo/CS-1989/1989-14.pdf)
 for more details.
 
-![Comparison]({{ site.baseurl }}assets/images/one-point-combinator-comparison.jpeg)
+![Comparison]({{ site.baseurl }}/assets/images/one-point-combinator-comparison.jpeg)
 
 
 ### Iota and Jot 
