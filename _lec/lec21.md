@@ -127,7 +127,7 @@ ideas like
 did gain some traction. But the story goes back way earlier, and even
 predates computers. It begins with Moses Schonfinkel, if you remember
 the name. See Hindley's ["History of Lambda Calculus and Combinatory
-Logic"](https://hope.simons-rock.edu/~pshields/cs/cmpt312/cardone-hindley.pdf)
+Logic"](https://web.archive.org/web/20240617124312/https://hope.simons-rock.edu/~pshields/cs/cmpt312/cardone-hindley.pdf)
 if you want to get a general timeline for work in this area. Like work
 in the lambda calculus, this was a project in mathematical logic until
 computer scientists decided to make it run.
@@ -255,7 +255,7 @@ There are plenty of derivations of an X combinator. (It's called "X"
 in the business.) See
 [Fokker](https://link.springer.com/article/10.1007%2FBF03180572) ["The
 systematic construction of a one-combinator
-basis"](http://www.cs.uu.nl/research/techreps/repo/CS-1989/1989-14.pdf)
+basis"](https://link.springer.com/article/10.1007/BF03180572)
 for more details.
 
 ![Comparison]({{ site.baseurl }}/assets/images/one-point-combinator-comparison.jpeg)
@@ -329,4 +329,3 @@ If you want to compare Iota and Jot to others, see [Lazy-K](https://web.archive.
 
 Brief notes on [implementations and combinator-based graph reduction
 machines](https://web.archive.org/web/20040921105306/http://www.ccs.neu.edu/home/matthias/369-s04/Transcripts/abstract-machines-for-graph-reduction-transcript.html)
-

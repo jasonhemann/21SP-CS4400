@@ -7,7 +7,7 @@ classes: wide
 - [More on the Ackermann Function + History]({{ site.baseurl }}/assets/code/ack-etc.rkt)
 - [The first recursive but not primitive-recursive function](http://www.sciencedirect.com/science/article/pii/0315086079900247])
 
-- Hutton's [Tutorial on `fold` operators](http://www.cs.nott.ac.uk/~pszgmh/fold.pdf)
+- Hutton's [Tutorial on `fold` operators](https://web.archive.org/web/20180628032715/http://www.cs.nott.ac.uk/~pszgmh/fold.pdf)
 - [On Barron & Strachey's Cartesian product function](https://www.brics.dk/RS/07/14/BRICS-RS-07-14.pdf)
 
 - The [feeling you should get looking at our interpreter](https://www.youtube.com/watch?v=Ow9AtuIuMLw)
@@ -45,7 +45,7 @@ classes: wide
 - [Philosophy of Computer Science](https://cse.buffalo.edu/~rapaport/Papers/phics.pdf) (Draft text)
 - [Logicomix](https://en.wikipedia.org/wiki/Logicomix) (It's a comic about Russell and early 20th century mathematical logic. ᕕ( ᐛ )ᕗ) 
 
-- [History of Lambda Calculus and Combinatory Logic](https://hope.simons-rock.edu/~pshields/cs/cmpt312/cardone-hindley.pdf)
+- [History of Lambda Calculus and Combinatory Logic](https://web.archive.org/web/20240617124312/https://hope.simons-rock.edu/~pshields/cs/cmpt312/cardone-hindley.pdf)
 - [SKI Combinator Tetris](https://dirk.rave.org/combinatris/)
 - [Care for your pet combinator]({{ site.baseurl }}/assets/docs/hindley-seldin-combinatory-a4.pdf)
 
@@ -53,10 +53,10 @@ classes: wide
 - [Purity](https://www.metalevel.at/prolog/purity) and [programming purely in Prolog](http://www.complang.tuwien.ac.at/ulrich/papers/PDF/2008-fdpe.pdf)
 - [Paulson on logic programs as inductive definitions](https://link.springer.com/chapter/10.1007/BFb0038699)
 
-- Chiang's short story ["Seventy-two Letters"](https://ia802706.us.archive.org/33/items/TedChiangSeventyTwoLetters/Ted_Chiang_72_Letters.pdf) ([Audio version](https://archive.org/details/TedChiangSeventyTwoLetters))
+- Chiang's short story ["Seventy-two Letters"](https://archive.org/download/TedChiangSeventyTwoLetters/Ted_Chiang_72_Letters.pdf) ([Audio version](https://archive.org/details/TedChiangSeventyTwoLetters))
 
 Additional online textbooks with relevant sections/explanations. 
 
-- [PPL Notes](https://www.cs.bgu.ac.il/~mira/ppl-book-full.pdf)
+- [PPL Notes](https://web.archive.org/web/20211025175830/https://www.cs.bgu.ac.il/~mira/ppl-book-full.pdf)
 - Krishnamurthi's [PLAI](http://cs.brown.edu/courses/cs173/2012/book/)
 - [Barzilay's PL class notes](https://pl.barzilay.org/lec98)

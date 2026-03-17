@@ -65,7 +65,7 @@ The best way to get in contact for personal, private (FERPA, etc)
 messages is via my email address
 [jhemann@northeastern.edu](mailto:jhemann@northeastern.edu). You
 should expect a response within 48 hours. You will find that I am
-faster with [Piazza](piazza) or our public forums. If I deem it even
+faster with [Piazza]({{ site.baseurl }}/tech/) or our public forums. If I deem it even
 potentially useful to others, I will likely anonymize your letter,
 re-post it on Piazza, answer it there, and forward you the link.
 
@@ -281,7 +281,7 @@ either modality. Unless the student obtains permission from the
 instructor electronic video and/or audio recording of class is
 prohibited. If permission is granted, any distribution of the
 recording is prohibited. Students with specific electronic recording
-accommodations authorized by the [DRC](academic-accommodations) do not
+accommodations authorized by the [DRC](#academic-accommodations) do not
 require instructor permission; however, the instructor must be
 notified of any such accommodation prior to recording. Any
 distribution of such recordings is prohibited. Obviously I cannot
@@ -344,14 +344,14 @@ perhaps lecture notes from a friend.
 Students of course play an integral part in ensuring they receive the
 full benefit of their coursework. The students of 2800 are certainly
 beholden to the academic integrity policies of [Northeastern
-University](http://www.northeastern.edu/osccr/academic-integrity-policy/),
+University](http://web.archive.org/web/20210518231334/http://www.northeastern.edu/osccr/academic-integrity-policy),
 the [Khoury
 College](https://www.khoury.northeastern.edu/information-for-overview/current-undergrad/undergraduate-advising-academic-support/academic-policies/).
 
 ## Academic Accommodations 
 
 If you have accommodations from the [Disability Resource Center
-(DRC)](http://www.northeastern.edu/drc/) please submit your Professor
+(DRC)](https://web.archive.org/web/20210327072511/http://www.northeastern.edu/drc/) please submit your Professor
 Notification Letter to me by email, preferably within the first two
 weeks of the quarter, so I can do my part to help you achieve equal
 access in this course. I am eager to discuss ways we can ensure your
@@ -359,7 +359,7 @@ full participation.
 
 I encourage all students who may benefit from learning more about DRC
 services to [contact the
-DRC](http://www.northeastern.edu/drc/#fp-blog-entry:~:text=Contact%20Information).
+DRC](https://web.archive.org/web/20210327072511/http://www.northeastern.edu/drc/).
 
 ## Technology and Platforms
 
@@ -411,7 +411,7 @@ To summarize:
   and spaces.
 
 * I will be wearing a [face
-  covering](https://news.northeastern.edu/coronavirus/reopening/frequently-asked-questions/#reopening)
+  covering](http://web.archive.org/web/20210815142735/https://news.northeastern.edu/coronavirus/reopening/frequently-asked-questions/)
   or mask as I teach and expect that you will do the same in class. If
   you come to class without a mask, I’ll ask you to go and [get one on
   campus](https://news.northeastern.edu/coronavirus/reopening/policies-and-protocols/#face-covering-protocol).
@@ -433,7 +433,7 @@ To summarize:
 
 I derived many of our course's lecture's contents and topics, as well
 as assignments, from [Dan
-Friedman](https://legacy.cs.indiana.edu/~dfried/)'s 311 at Indiana
+Friedman](https://web.archive.org/web/20230912060914/https://legacy.cs.indiana.edu/~dfried/)'s 311 at Indiana
 University. [Lindsey Kuper](https://users.soe.ucsc.edu/~lkuper/)
 inspires some of this site as well as being all-around inspirational.
 

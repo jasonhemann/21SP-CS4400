@@ -37,21 +37,20 @@ have the same concern or be feeling the same way.
  contrary to FERPA or your rights under the Northeastern University
  Handbook, please do consider if this can be a Piazza message.
 
-## [KCCS/CCIS/CCS Github](http://ccs.github.neu.edu)
+## KCCS/CCIS/CCS Github
 
-I will be utilizing the school's Enterprise git at
-[http://ccs.github.neu.edu]. You should have access to that with your
-KCCS account. I will expect you to know how to access this, for your
-own benefits and for coursework. If you are not familiar, please
-consult the Khoury Systems group's [documentation and
-walk-through](https://northeastern.service-now.com/kb_view.do?sysparm_article=KB0012152).
+Historically, this course used the Khoury Enterprise git host at
+`http://ccs.github.neu.edu` (now retired/unavailable).
+
+For Spring 2021 CS4400, use the public course repository:
+[https://github.com/jasonhemann/21SP-CS4400](https://github.com/jasonhemann/21SP-CS4400).
 
 ## Course Homepage
 
 I constructed our course homepage as a Jekyll site built with Github
 Pages. Student corrections and improvements are *incredibly* welcome!
 You can submit a [pull request
-(PR)](http://github.ccs.neu.edu/jhemann/21SP-2800) for a quick
+(PR)](https://github.com/jasonhemann/21SP-CS4400) for a quick
 correction and improvement. Every page on this website has a direct
 links to its `.md` file in this repository.
 
@@ -80,7 +79,7 @@ There is a [KB Article](https://service.northeastern.edu/tech?id=kb_article&sys_
 I intend to broadcast our course meetings via [Northeastern Zoom](https://northeastern.zoom.us/). I
 prefer it over MS Teams for a variety of reasons. Not the least of
 which is the instantaneous and anonymous feedback that it provides,
-via [Dial testing](http://dialsmith.com/blog/dial-tests-vs-focus-groups-how-are-they-different/). You will find it helpful to have two
+via [Dial testing](https://www.dialsmith.com/blog/dial-testing-vs-focus-groups-how-are-they-different/). You will find it helpful to have two
 internet-enabled devices with at hand when you are attending class
 remotely, once for viewing the class and a second for answering poll
 questions.
@@ -103,12 +102,12 @@ Go to [https://vpn.northeastern.edu](https://vpn.northeastern.edu), and follow t
 install the GlobalProctect VPN client on your machine. You will need
 this to use the VDI linux machines. If you have difficulty please
 consult the [relevant ITS KB articles](http://northeastern.service-now.com/tech?id=kb_category&kb_category=07d42f714f02cf0099c2fd511310c7b2), and if necessary [reach out to
-ITS support](http://its.northeastern.edu/support/#et-boc:~:text=Still%20Need%20Support%3F).
+ITS support](https://its.northeastern.edu/resources/).
 
 ## VDI Linux Machines 
 
 [Khoury VDI Virtual
-Desktops](http://khoury.northeastern.edu/systems/vdi/), and the
+Desktops](https://web.archive.org/web/20200815193823/http://khoury.northeastern.edu/systems/vdi/), and the
 [relevant ITS KB
 articles](http://northeastern.service-now.com/tech?id=kb_category&kb_category=6b863d8d4f3b5b4450a5798e0210c735&kb_id=d82ad28c134922401528f5104244b068).
 
@@ -149,7 +148,6 @@ to complete your homework, nor should you use them.
 
 One of the things I miss most about real, in-person classrooms is
 being able to applaud someone for a job well done, and for giving it a
-shot. Here's our [best
-alternative](https://applause.haggett.org/SP21-CS4400). If each of us
+shot. Here's our best alternative (historical, now offline). If each of us
 goes here and enters his or her name then, when one of us presses the
 applause button, we can all see and hear it.

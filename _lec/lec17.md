@@ -48,6 +48,6 @@ Load `"pc2c.ss"`. Then, in the repl.
 
 ## Booking meetings:
 
-Book a meeting [here](v2.waitwhile.com/book/4400).
+Book a meeting [here](https://waitwhile.com/book/4400).
  
  
