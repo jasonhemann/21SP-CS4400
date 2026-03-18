@@ -10,14 +10,14 @@ As a course and a student body, we are more remote than usual, and
 preferable. To help bridge the chasm, I will leverage some of the
 technology platforms Northeastern makes available to us.
 
-## [Duo 2FA](https://get2fa.northeastern.edu/)
+## [Duo 2FA](https://web.archive.org/web/20240912000806/https://get2fa.northeastern.edu/)
 
 Most if not all students will already have enrolled themselves for the
 Duo 2FA system. It is essential that you do so to access
 Northeastern's digital resources. Northeastern has at least two
 tutorials for installing and using the Duo 2FA system:
 
-   - [The express version](https://express.northeastern.edu/get2fa/how-to-enroll-in-2fa/)
+   - [The express version](https://web.archive.org/web/20200726162700/https://express.northeastern.edu/get2fa/how-to-enroll-in-2fa/)
    - [The `servicenow` guide, (with pictures)](https://northeastern.service-now.com/kb_view.do?sys_kb_id=436cd1dbdb808854c5575e38dc9619e3&sysparm_class_name=kb_knowledge)
 
 ## Piazza 
@@ -56,7 +56,7 @@ links to its `.md` file in this repository.
 
 ## Handin Server
 
-We will use the [Handin server](http://handins.ccs.neu.edu/) (bottlenose) to submit homework. You
+We will use the [Handin server](https://handins.ccs.neu.edu/) (bottlenose) to submit homework. You
 will likely have experience with this platform from Fundies I; if you
 do not, please read the [Handin Server Guide](http://ccs.neu.edu/home/blerner/handin-server/handin-server-guide.html). 
 
@@ -72,7 +72,7 @@ You can use the web browser, the [desktop app](https://www.polleverywhere.com/de
 [(Apple)](https://apps.apple.com/us/app/poll-everywhere/id893375312) [(Android)](https://play.google.com/store/apps/details?id=com.polleverywhere.mobile&hl=en_US). Regardless of however you configure this, have it
 with you and available at all times.
 
-There is a [KB Article](https://service.northeastern.edu/tech?id=kb_article&sys_id=69a02a6fdb0d001084ba5595ce96199c) on logging in via Northeastern.
+There is a [KB Article](https://web.archive.org/web/20220505081744/https://service.northeastern.edu/tech?id=kb_article&sys_id=69a02a6fdb0d001084ba5595ce96199c) on logging in via Northeastern.
 
 ## Zoom 
 
@@ -98,7 +98,7 @@ comparison [here](https://support.zoom.us/hc/en-us/articles/360027397692#query:~
 
 ## NEU VPN 
 
-Go to [https://vpn.northeastern.edu](https://vpn.northeastern.edu), and follow the instructions to
+Go to [https://web.archive.org/web/20231012021843/https://vpn.northeastern.edu/](https://web.archive.org/web/20231012021843/https://vpn.northeastern.edu/), and follow the instructions to
 install the GlobalProctect VPN client on your machine. You will need
 this to use the VDI linux machines. If you have difficulty please
 consult the [relevant ITS KB articles](http://northeastern.service-now.com/tech?id=kb_category&kb_category=07d42f714f02cf0099c2fd511310c7b2), and if necessary [reach out to
