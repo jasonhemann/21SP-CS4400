@@ -327,7 +327,7 @@ contain supplementary material that complements that lecture. Both are
 available at the campus bookstore.
 
   - "Scheme and the Art of Programming" (Selections made available on this website)
-  - ["Essentials of Programming Languages", 3rd edition](https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51224732410001401)
+  - ["Essentials of Programming Languages", 3rd edition](https://web.archive.org/web/20240726100141/https://onesearch.library.northeastern.edu/permalink/f/365rt0/NEU_ALMA51224732410001401)
 
 Neither will cover topics precisely the way we do in lecture. Their
 implementations will also differ in technical details and particulars
@@ -346,7 +346,7 @@ full benefit of their coursework. The students of 2800 are certainly
 beholden to the academic integrity policies of [Northeastern
 University](http://web.archive.org/web/20210518231334/http://www.northeastern.edu/osccr/academic-integrity-policy),
 the [Khoury
-College](https://www.khoury.northeastern.edu/information-for-overview/current-undergrad/undergraduate-advising-academic-support/academic-policies/).
+College](https://web.archive.org/web/20240920031252/https://www.khoury.northeastern.edu/information-for-overview/current-undergrad/undergraduate-advising-academic-support/academic-policies/).
 
 ## Academic Accommodations 
 
@@ -379,7 +379,7 @@ site.baseurl }}/tech/) for more details.
 The university has put into place a robust plan to make the campus
 healthy and safe for all — but you must do your part. On August 22, all
 students received an
-[email](https://news.northeastern.edu/coronavirus/university-messages/university-response-to-unsafe-behavior/)
+[email](https://web.archive.org/web/20241110214801/https://news.northeastern.edu/coronavirus/university-messages/university-response-to-unsafe-behavior/)
 from Senior Vice Chancellor for Student Affairs Madeleine Estabrook on
 the expectations for behavior both on campus and off campus. **Please
 read it carefully today.**
@@ -406,7 +406,7 @@ To summarize:
   telehealth team who will provide you with next steps.
 
 * Do a Daily Wellness Check
-  ([wellness-check.northeastern.edu](https://wellness-check.northeastern.edu)),
+  ([wellness-check.northeastern.edu](https://web.archive.org/web/20210927132732/http://www.wellness-check.northeastern.edu/)),
   wash your hands well and regularly, and disinfect high-touch surfaces
   and spaces.
 
@@ -414,7 +414,7 @@ To summarize:
   covering](http://web.archive.org/web/20210815142735/https://news.northeastern.edu/coronavirus/reopening/frequently-asked-questions/)
   or mask as I teach and expect that you will do the same in class. If
   you come to class without a mask, I’ll ask you to go and [get one on
-  campus](https://news.northeastern.edu/coronavirus/reopening/policies-and-protocols/#face-covering-protocol).
+  campus](https://web.archive.org/web/20241103200633/https://news.northeastern.edu/coronavirus/reopening/policies-and-protocols/#face-covering-protocol).
   You can get a mask at the Visitor Center or at the Curry Student
   Center Help Desk. If you refuse to wear a mask in class, I won’t be
   able to continue the class. If you are not sitting six feet apart from

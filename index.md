@@ -27,9 +27,9 @@ current and upcoming future trends.
 
 ## Lecture
 
-This being a [NUflex](https://nuflex.northeastern.edu/) class,
+This being a [NUflex](https://web.archive.org/web/20240808154712/https://nuflex.northeastern.edu/) class,
 students may attend in different ways. Please defer to the [dynamic
-scheduler](https://nuflex.northeastern.edu/dynamic-scheduling/) on how to attend on any given day.
+scheduler](http://web.archive.org/web/20210726060550/https://nuflex.northeastern.edu/dynamic-scheduling/) on how to attend on any given day.
 
  | 30368 | Jason | M, W | 14:50-16:30 | ISEC 102 or Zoom |
 
